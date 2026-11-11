@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Arya A.K | Solo Developer & Cloud Architect</title>
+  <title>Dika Aditya | Solo Developer & Cloud Architect</title>
   <meta name="description" content="Portofolio pribadi solo developer & pemesanan proyek VIP eksklusif. Full-stack, mobile-first, dan cloud architect." />
-  <meta property="og:title" content="Arya A.K | Solo Developer VIP" />
+  <meta property="og:title" content="Dika Aditya | Solo Developer VIP" />
   <meta property="og:description" content="Portofolio pribadi solo developer & pemesanan proyek VIP eksklusif." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0d0c0a" />
@@ -442,33 +442,143 @@
       100% { transform: rotate(0deg); }
     }
 
-    /* User Avatar Pill */
-    .user-pill {
+    /* Header Profile Avatar Button */
+    .header-avatar-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      padding: 0;
+      border: 1.5px solid var(--border-glass);
+      background: var(--bg-surface-elevated);
+      cursor: pointer;
+      overflow: hidden;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0.65rem 0.3rem 0.4rem;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 9999px;
-      cursor: pointer;
+      justify-content: center;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+      flex-shrink: 0;
     }
 
-    .user-pill img {
-      width: 28px;
-      height: 28px;
+    .header-avatar-btn:hover {
+      border-color: var(--accent);
+      transform: scale(1.04);
+    }
+
+    .header-avatar-btn img {
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
     }
 
-    .user-pill span {
-      font-size: 0.82rem;
-      font-weight: 600;
+    /* Glassmorphism Profile Menu Dropdown */
+    .profile-menu-dropdown {
+      position: fixed;
+      top: calc(var(--safe-top) + 58px);
+      right: max(0.85rem, calc((100vw - 820px) / 2 + 0.85rem));
+      width: 270px;
+      max-width: calc(100vw - 1.7rem);
+      background: var(--bg-surface-elevated);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass);
+      border-radius: 18px;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.65), 0 0 24px var(--accent-glow);
+      padding: 1rem;
+      z-index: 60;
+      transform-origin: top right;
+      animation: profileMenuPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes profileMenuPop {
+      0% { opacity: 0; transform: scale(0.92) translateY(-6px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .profile-menu-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .profile-menu-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--accent);
+      flex-shrink: 0;
+    }
+
+    .profile-menu-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
       color: var(--text-main);
-      max-width: 95px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .profile-menu-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .profile-menu-divider {
+      border-top: 1px solid var(--border-subtle);
+      margin: 0.75rem 0;
+    }
+
+    .profile-menu-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .profile-menu-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 12px;
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: left;
+    }
+
+    .profile-menu-item:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--border-glass);
+    }
+
+    #menu-dev-dash-btn {
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--accent-light);
+      border-color: var(--border-glass);
+    }
+
+    .profile-menu-item.logout {
+      background: rgba(239, 68, 68, 0.08);
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.25);
+      margin-top: 0.15rem;
+    }
+
+    .profile-menu-item.logout:hover {
+      background: rgba(239, 68, 68, 0.18);
+      border-color: #ef4444;
     }
 
     /* Announcement Banner */
@@ -481,12 +591,140 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    body.is-dev-mode .announcement-banner {
+      cursor: pointer;
+    }
+
+    body.is-dev-mode .announcement-banner:hover {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(124, 154, 130, 0.2) 100%);
+      border-color: var(--border-glass);
     }
 
     .announcement-text {
       flex: 1;
       text-align: center;
       color: var(--accent-light);
+    }
+
+    /* Skills Wrap & Dev Tags */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    body.is-dev-mode .skill-tag {
+      cursor: pointer;
+      position: relative;
+      transition: all 0.18s ease;
+    }
+
+    body.is-dev-mode .skill-tag:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    /* Custom Confirmation & Prompt Modal System */
+    .custom-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+
+    .custom-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .custom-modal-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass);
+      border-radius: 22px;
+      padding: 1.75rem 1.5rem;
+      max-width: 410px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px var(--accent-glow);
+      transform: scale(0.92) translateY(12px);
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      outline: none;
+    }
+
+    .custom-modal-overlay.active .custom-modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .custom-modal-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-modal-icon.danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .custom-modal-icon.normal {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--border-glass);
+    }
+
+    .custom-modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .custom-modal-message {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      word-break: break-word;
+    }
+
+    .custom-modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .custom-modal-actions button {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      font-size: 0.88rem;
+    }
+
+    .custom-modal-btn-danger {
+      background: #dc2626 !important;
+      color: #ffffff !important;
+      border-color: #ef4444 !important;
+    }
+
+    .custom-modal-btn-danger:hover {
+      background: #b91c1c !important;
     }
 
     /* Intro Opening Animation (Sequence ~2s) */
@@ -1688,10 +1926,9 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#hero" class="brand-mark">
-        <div class="monogram-badge" id="monogram-text">DA</div>
+        <div class="monogram-badge" id="monogram-text">AA</div>
         <div>
           <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.98rem; line-height: 1.1;" id="header-author-name">Arya A.K</div>
-          <div style="font-size: 0.72rem; color: var(--text-muted);" id="header-author-role">Solo Developer</div>
         </div>
       </a>
 
@@ -1708,7 +1945,7 @@
           <span class="badge-dot" id="notif-dot"></span>
         </button>
 
-        <!-- Auth Button / Profile -->
+        <!-- Auth Slot (Compact "Masuk" or Avatar Circle Button) -->
         <div id="auth-slot">
           <button id="login-nav-btn" class="btn-secondary" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
@@ -1719,12 +1956,46 @@
     </div>
   </header>
 
-  <!-- Dismissible Announcement Banner -->
-  <div id="announcement-bar" class="announcement-banner">
-    <div class="announcement-text" id="announcement-content" data-editable="true">
+  <!-- Glassmorphism Profile Menu Dropdown -->
+  <div id="profile-menu-dropdown" class="profile-menu-dropdown" style="display: none;" role="menu" aria-label="Menu Profil">
+    <div class="profile-menu-header">
+      <img id="menu-avatar-img" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="profile-menu-avatar" />
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <div id="menu-user-name" class="profile-menu-name">Pengguna</div>
+          <span id="menu-dev-badge" class="dev-badge-indicator" style="display: none;">DEV</span>
+        </div>
+        <div id="menu-user-sub" class="profile-menu-sub">user@email.com</div>
+      </div>
+    </div>
+    <div class="profile-menu-divider"></div>
+    <div class="profile-menu-items">
+      <button id="menu-dev-dash-btn" class="profile-menu-item" style="display: none;" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Dasbor & Pesanan</span>
+      </button>
+      <button id="menu-my-requests-btn" class="profile-menu-item" style="display: none;" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Pesanan Saya</span>
+      </button>
+      <button id="menu-logout-btn" class="profile-menu-item logout" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Keluar</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Announcement Banner & Dev Placeholder -->
+  <div id="announcement-bar" class="announcement-banner" style="display: none;">
+    <div class="announcement-text" id="announcement-content">
       ✨ <strong>Pengumuman:</strong> Slot batch bulan ini tersisa 2 proyek VIP. Konsultasi langsung via chat!
     </div>
-    <button id="close-announcement-btn" style="color: var(--text-muted); font-size: 1.1rem; padding: 0 4px;" title="Tutup">✕</button>
+    <button id="close-announcement-btn" style="color: var(--text-muted); font-size: 1.1rem; padding: 0 4px; background: none; border: none; cursor: pointer;" title="Tutup">✕</button>
+  </div>
+  <div id="dev-announcement-placeholder" style="display: none; padding: 0.5rem 1rem; text-align: center;">
+    <button id="dev-add-announcement-btn" class="btn-secondary" style="font-size: 0.78rem; padding: 0.3rem 0.75rem; border-style: dashed; border-color: var(--accent); color: var(--accent);">
+      + Tambah pengumuman
+    </button>
   </div>
 
   <!-- Main Content Container -->
@@ -1747,7 +2018,7 @@
 
       <!-- Staggered Name Reveal -->
       <div class="hero-name-container">
-        <h1 class="hero-name-shimmer" id="hero-display-name" data-dev-text="authorName" data-dev-label="Nama Lengkap">Arya A.K</h1>
+        <h1 class="hero-name-shimmer" id="hero-display-name" data-dev-text="authorName" data-dev-label="Nama Lengkap">Dika Aditya</h1>
       </div>
 
       <div class="hero-role" id="hero-display-role" data-dev-text="authorRole" data-dev-label="Peran / Profesi">Full-Stack & Cloud Solo Developer</div>
@@ -1892,7 +2163,7 @@
 
     <!-- FOOTER -->
     <footer style="text-align: center; padding: 2rem 0; color: var(--text-subtle); font-size: 0.84rem;">
-      <p id="footer-copyright-p">© <span id="current-year"></span> <strong id="footer-author-name" data-dev-text="authorName" data-dev-label="Nama Lengkap di Footer">Arya A.K</strong>. <span id="footer-copyright-text" data-dev-text="footerCopyright" data-dev-label="Teks Footer Hak Cipta">Dibuat dengan cinta & efisiensi solo dev.</span></p>
+      <p id="footer-copyright-p">© <span id="current-year"></span> <strong id="footer-author-name" data-dev-text="authorName" data-dev-label="Nama Lengkap di Footer">Dika Aditya</strong>. <span id="footer-copyright-text" data-dev-text="footerCopyright" data-dev-label="Teks Footer Hak Cipta">Dibuat dengan cinta & efisiensi solo dev.</span></p>
       <p id="footer-badge-text" data-dev-text="footerBadge" data-dev-label="Teks Footer Platform" style="margin-top: 0.3rem;">Berjalan di Firebase Spark & PWA GitHub Pages.</p>
     </footer>
 
@@ -1993,7 +2264,7 @@
               <!-- Rendered or loaded from site/qris -->
             </div>
             <div id="bank-info-container" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
-              BCA: 123-456-7890 a.n Arya A.K<br />
+              BCA: 123-456-7890 a.n Dika Aditya<br />
               GoPay / Dana: 0812-3456-7890
             </div>
           </div>
@@ -2155,7 +2426,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">Info Rekening & E-Wallet</label>
-          <textarea id="dev-bank-text" class="form-control" placeholder="BCA: 123-456-7890 a.n Arya A.K&#10;GoPay: 0812-3456-7890"></textarea>
+          <textarea id="dev-bank-text" class="form-control" placeholder="BCA: 123-456-7890 a.n Dika Aditya&#10;GoPay: 0812-3456-7890"></textarea>
         </div>
         <button id="save-qris-btn" class="btn-vip" style="width: 100%;">Simpan Pengaturan Pembayaran</button>
       </div>
@@ -2579,6 +2850,97 @@
     </div>
   </div>
 
+  <!-- 16. DEV ANNOUNCEMENT BOTTOM SHEET (MANAGE ANNOUNCEMENT) -->
+  <div class="sheet-overlay" id="dev-announcement-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div>
+          <h3 class="sheet-title">Kelola Pengumuman</h3>
+          <div style="font-size: 0.8rem; color: var(--accent-light);">Tampil di baris atas situs untuk semua pengunjung</div>
+        </div>
+        <button class="sheet-close-btn" data-close-sheet="dev-announcement-sheet">✕</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Teks Pengumuman</label>
+        <textarea id="dev-announcement-input" class="form-control" rows="3" placeholder="Contoh: ✨ Slot batch bulan ini tersisa 2 proyek VIP..."></textarea>
+      </div>
+
+      <div class="form-group" style="display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); padding: 0.75rem 1rem; border-radius: 12px; border: 1px solid var(--border-subtle);">
+        <div>
+          <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-main);">Tampilkan Pengumuman</div>
+          <div style="font-size: 0.76rem; color: var(--text-muted);">Aktifkan agar banner tampil ke semua pengunjung</div>
+        </div>
+        <input type="checkbox" id="dev-announcement-toggle" style="width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer;" />
+      </div>
+
+      <div style="display: flex; gap: 0.6rem; margin-top: 0.5rem;">
+        <button id="dev-announcement-save-btn" class="btn-vip" style="flex: 1;" type="button">
+          <span>Simpan Pengumuman</span>
+        </button>
+        <button id="dev-announcement-delete-btn" class="btn-secondary" style="padding: 0.65rem 1rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35);" type="button">
+          Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. DEV SKILL BOTTOM SHEET (ADD/EDIT/DELETE SKILL TAGS) -->
+  <div class="sheet-overlay" id="dev-skill-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div>
+          <h3 class="sheet-title" id="dev-skill-sheet-title">Kelola Keahlian</h3>
+          <div style="font-size: 0.8rem; color: var(--accent-light);">Badge keahlian di bagian Tentang Saya</div>
+        </div>
+        <button class="sheet-close-btn" data-close-sheet="dev-skill-sheet">✕</button>
+      </div>
+
+      <input type="hidden" id="dev-skill-edit-index" value="-1" />
+
+      <div class="form-group">
+        <label class="form-label">Ikon / Emoji</label>
+        <input type="text" id="dev-skill-icon-input" class="form-control" placeholder="⚡, 🔥, 🌐, 📱, dll." maxlength="10" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nama Keahlian</label>
+        <input type="text" id="dev-skill-name-input" class="form-control" placeholder="Contoh: Full-Stack TypeScript" maxlength="50" required />
+      </div>
+
+      <div style="display: flex; gap: 0.6rem; margin-top: 0.5rem;">
+        <button id="dev-skill-save-btn" class="btn-vip" style="flex: 1;" type="button">
+          <span>Simpan Keahlian</span>
+        </button>
+        <button id="dev-skill-delete-btn" class="btn-secondary" style="padding: 0.65rem 1rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35); display: none;" type="button">
+          Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. CUSTOM CONFIRM & PROMPT MODAL (REPLACES BROWSER CONFIRM/PROMPT) -->
+  <div class="custom-modal-overlay" id="custom-modal-overlay">
+    <div class="custom-modal-card" id="custom-modal-dialog" role="dialog" aria-modal="true" tabindex="-1">
+      <div class="custom-modal-icon" id="custom-modal-icon-wrap">
+        <!-- Dynamic icon -->
+      </div>
+      <h3 class="custom-modal-title" id="custom-modal-title">Konfirmasi</h3>
+      <p class="custom-modal-message" id="custom-modal-message">Pesan konfirmasi...</p>
+
+      <div id="custom-modal-input-wrap" style="display: none; width: 100%; margin: 0.85rem 0;">
+        <input type="text" id="custom-modal-input" class="form-control" style="width: 100%; text-align: left;" />
+      </div>
+
+      <div class="custom-modal-actions">
+        <button id="custom-modal-cancel-btn" class="btn-secondary" type="button">Batal</button>
+        <button id="custom-modal-confirm-btn" class="btn-vip" type="button">Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ==========================================================================
        FIREBASE SDK & CORE APPLICATION LOGIC (PURE NATIVE JAVASCRIPT ES MODULE)
        ========================================================================== -->
@@ -2648,6 +3010,7 @@
       packages: [],
       reviews: [],
       contacts: [],
+      skills: [],
       activeRequests: [],
       currentActiveChatRequestId: null,
       theme: "dark-gold",
@@ -2656,12 +3019,21 @@
       currentEditingPhotoType: null // "cover" | "avatar"
     };
 
+    const DEFAULT_SKILLS = [
+      { icon: "⚡", name: "Full-Stack TypeScript" },
+      { icon: "🔥", name: "Firebase & Firestore" },
+      { icon: "🌐", name: "Cloud Architecture" },
+      { icon: "📱", name: "PWA & Mobile-First" },
+      { icon: "💳", name: "Integrasi Pembayaran QRIS" },
+      { icon: "🎨", name: "Minimalist Glass Design" }
+    ];
+
     // Default Site Content with complete texts dictionary
     const DEFAULT_SITE_CONTENT = {
       authorName: "Arya A.K",
       authorRole: "Full-Stack & Cloud Solo Developer",
       tagline: '"Membangun produk digital premium, cepat, dan siap pakai dengan arsitektur cloud mandiri."',
-      bio: "Halo! Saya Dika, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.",
+      bio: "Halo! Saya Arya, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.",
       statusOpen: true,
       remainingSlots: 2,
       announcement: "✨ Slot batch bulan ini tersisa 2 proyek VIP. Konsultasi langsung via chat!",
@@ -2669,13 +3041,14 @@
       coverUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
       avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
       theme: "dark-gold",
+      skills: DEFAULT_SKILLS,
       texts: {
         authorName: "Arya A.K",
         authorRole: "Full-Stack & Cloud Solo Developer",
         tagline: '"Membangun produk digital premium, cepat, dan siap pakai dengan arsitektur cloud mandiri."',
         aboutTitle: "Tentang Saya",
         aboutSubtitle: "Filosofi kerja solo developer",
-        aboutContent: "Halo! Saya Dika, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.",
+        aboutContent: "Halo! Saya Arya, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.",
         karyaTitle: "Karya & Portofolio",
         karyaSubtitle: "Proyek unggulan yang telah diselesaikan",
         paketTitle: "Paket Layanan",
@@ -2919,6 +3292,193 @@
     }
     window.showToast = showToast;
 
+    /* Modern Custom Confirmation Dialog (Replaces browser confirm) */
+    function confirmDialog({
+      title = "Konfirmasi",
+      message = "Apakah Anda yakin ingin melanjutkan?",
+      confirmText = "Ya, Lanjutkan",
+      cancelText = "Batal",
+      danger = false
+    } = {}) {
+      return new Promise((resolve) => {
+        const overlay = document.getElementById("custom-modal-overlay");
+        const titleEl = document.getElementById("custom-modal-title");
+        const msgEl = document.getElementById("custom-modal-message");
+        const confirmBtn = document.getElementById("custom-modal-confirm-btn");
+        const cancelBtn = document.getElementById("custom-modal-cancel-btn");
+        const iconWrap = document.getElementById("custom-modal-icon-wrap");
+        const inputWrap = document.getElementById("custom-modal-input-wrap");
+
+        if (!overlay) {
+          resolve(false);
+          return;
+        }
+
+        if (inputWrap) inputWrap.style.display = "none";
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        confirmBtn.textContent = confirmText;
+        cancelBtn.textContent = cancelText;
+
+        if (danger) {
+          iconWrap.className = "custom-modal-icon danger";
+          iconWrap.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+          confirmBtn.className = "btn-secondary custom-modal-btn-danger";
+        } else {
+          iconWrap.className = "custom-modal-icon normal";
+          iconWrap.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
+          confirmBtn.className = "btn-vip";
+        }
+
+        overlay.style.display = "flex";
+        void overlay.offsetWidth;
+        overlay.classList.add("active");
+
+        function cleanup() {
+          overlay.classList.remove("active");
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 220);
+          window.removeEventListener("keydown", onKeyDown);
+          overlay.removeEventListener("click", onBackdropClick);
+        }
+
+        function onConfirm() {
+          cleanup();
+          resolve(true);
+        }
+
+        function onCancel() {
+          cleanup();
+          resolve(false);
+        }
+
+        function onKeyDown(e) {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            onCancel();
+          } else if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            onConfirm();
+          }
+        }
+
+        function onBackdropClick(e) {
+          if (e.target === overlay) {
+            onCancel();
+          }
+        }
+
+        confirmBtn.onclick = onConfirm;
+        cancelBtn.onclick = onCancel;
+        overlay.addEventListener("click", onBackdropClick);
+        window.addEventListener("keydown", onKeyDown);
+
+        setTimeout(() => {
+          if (confirmBtn) confirmBtn.focus();
+        }, 50);
+      });
+    }
+    window.confirmDialog = confirmDialog;
+
+    /* Modern Custom Prompt Dialog (Replaces browser prompt) */
+    function promptDialog({
+      title = "Masukkan Alasan",
+      message = "Silakan isi kolom berikut:",
+      defaultValue = "",
+      placeholder = "",
+      confirmText = "Kirim",
+      cancelText = "Batal",
+      danger = false
+    } = {}) {
+      return new Promise((resolve) => {
+        const overlay = document.getElementById("custom-modal-overlay");
+        const titleEl = document.getElementById("custom-modal-title");
+        const msgEl = document.getElementById("custom-modal-message");
+        const confirmBtn = document.getElementById("custom-modal-confirm-btn");
+        const cancelBtn = document.getElementById("custom-modal-cancel-btn");
+        const iconWrap = document.getElementById("custom-modal-icon-wrap");
+        const inputWrap = document.getElementById("custom-modal-input-wrap");
+        const inputEl = document.getElementById("custom-modal-input");
+
+        if (!overlay || !inputEl) {
+          resolve(null);
+          return;
+        }
+
+        inputWrap.style.display = "block";
+        inputEl.value = defaultValue;
+        inputEl.placeholder = placeholder;
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        confirmBtn.textContent = confirmText;
+        cancelBtn.textContent = cancelText;
+
+        if (danger) {
+          iconWrap.className = "custom-modal-icon danger";
+          iconWrap.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+          confirmBtn.className = "btn-secondary custom-modal-btn-danger";
+        } else {
+          iconWrap.className = "custom-modal-icon normal";
+          iconWrap.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
+          confirmBtn.className = "btn-vip";
+        }
+
+        overlay.style.display = "flex";
+        void overlay.offsetWidth;
+        overlay.classList.add("active");
+
+        function cleanup() {
+          overlay.classList.remove("active");
+          setTimeout(() => {
+            overlay.style.display = "none";
+            inputWrap.style.display = "none";
+          }, 220);
+          window.removeEventListener("keydown", onKeyDown);
+          overlay.removeEventListener("click", onBackdropClick);
+        }
+
+        function onConfirm() {
+          const val = inputEl.value.trim();
+          cleanup();
+          resolve(val);
+        }
+
+        function onCancel() {
+          cleanup();
+          resolve(null);
+        }
+
+        function onKeyDown(e) {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            onCancel();
+          } else if (e.key === "Enter") {
+            e.preventDefault();
+            onConfirm();
+          }
+        }
+
+        function onBackdropClick(e) {
+          if (e.target === overlay) {
+            onCancel();
+          }
+        }
+
+        confirmBtn.onclick = onConfirm;
+        cancelBtn.onclick = onCancel;
+        overlay.addEventListener("click", onBackdropClick);
+        window.addEventListener("keydown", onKeyDown);
+
+        setTimeout(() => {
+          inputEl.focus();
+          inputEl.select();
+        }, 50);
+      });
+    }
+    window.promptDialog = promptDialog;
+
     /* Helper: Open & Close Bottom Sheet */
     function openSheet(id) {
       const sheet = document.getElementById(id);
@@ -3061,7 +3621,14 @@
     }
 
     async function handleLogout() {
-      if (!confirm("Yakin ingin keluar akun?")) return;
+      const ok = await confirmDialog({
+        title: "Keluar Akun",
+        message: "Yakin ingin keluar dari akun Anda saat ini?",
+        confirmText: "Keluar",
+        cancelText: "Batal",
+        danger: true
+      });
+      if (!ok) return;
 
       try {
         if (STATE.isFirebaseActive && auth) {
@@ -3070,6 +3637,10 @@
       } catch (err) {
         console.warn("SignOut warning:", err);
       }
+
+      // Close profile menu if open
+      const menu = document.getElementById("profile-menu-dropdown");
+      if (menu) menu.style.display = "none";
 
       // Close all open sheets/drawers
       document.querySelectorAll(".sheet-overlay.active").forEach(s => closeSheet(s.id));
@@ -3107,13 +3678,16 @@
       });
     }
 
-    /* Render Top Header Auth Slot with clear "Keluar" button */
+    /* Render Top Header Auth Slot: Compact Masuk or Avatar Circle only */
     function renderAuthSlot() {
       const slot = document.getElementById("auth-slot");
+      const menu = document.getElementById("profile-menu-dropdown");
       if (!slot) return;
       slot.innerHTML = "";
 
       if (!STATE.user) {
+        if (menu) menu.style.display = "none";
+
         const loginBtn = document.createElement("button");
         loginBtn.id = "login-nav-btn";
         loginBtn.className = "btn-secondary";
@@ -3126,43 +3700,24 @@
         loginBtn.onclick = () => openSheet("login-sheet");
         slot.appendChild(loginBtn);
       } else {
-        const wrap = document.createElement("div");
-        wrap.style.cssText = "display: flex; align-items: center; gap: 0.45rem;";
-
-        const pill = document.createElement("div");
-        pill.className = "user-pill";
-        pill.title = `Akun: ${STATE.user.displayName || STATE.user.email}`;
+        const avatarBtn = document.createElement("button");
+        avatarBtn.id = "profile-avatar-btn";
+        avatarBtn.className = "header-avatar-btn";
+        avatarBtn.type = "button";
+        avatarBtn.title = STATE.user.displayName || "Menu Profil";
+        avatarBtn.setAttribute("aria-label", "Menu Akun Pengguna");
 
         const img = document.createElement("img");
         img.src = STATE.user.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80";
         img.alt = "Avatar";
+        avatarBtn.appendChild(img);
 
-        const nameSpan = document.createElement("span");
-        nameSpan.textContent = STATE.isDev ? "Dev (Anda)" : (STATE.user.displayName ? STATE.user.displayName.split(" ")[0] : "Klien");
+        avatarBtn.onclick = (e) => {
+          e.stopPropagation();
+          toggleProfileMenu();
+        };
 
-        pill.appendChild(img);
-        pill.appendChild(nameSpan);
-
-        if (STATE.isDev) {
-          const devTag = document.createElement("span");
-          devTag.className = "dev-badge-indicator";
-          devTag.textContent = "DEV";
-          pill.appendChild(devTag);
-        }
-
-        const logoutBtn = document.createElement("button");
-        logoutBtn.id = "header-logout-btn";
-        logoutBtn.className = "btn-secondary";
-        logoutBtn.style.cssText = "padding: 0.35rem 0.65rem; font-size: 0.76rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35);";
-        logoutBtn.innerHTML = `
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          <span>Keluar</span>
-        `;
-        logoutBtn.onclick = handleLogout;
-
-        wrap.appendChild(pill);
-        wrap.appendChild(logoutBtn);
-        slot.appendChild(wrap);
+        slot.appendChild(avatarBtn);
       }
 
       // Dock "Pesanan Saya" visibility
@@ -3171,6 +3726,76 @@
         dockReqBtn.style.display = STATE.user ? "inline-flex" : "none";
       }
     }
+
+    function toggleProfileMenu() {
+      const menu = document.getElementById("profile-menu-dropdown");
+      if (!menu) return;
+
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+        return;
+      }
+
+      if (!STATE.user) return;
+
+      const avatarImg = document.getElementById("menu-avatar-img");
+      const nameEl = document.getElementById("menu-user-name");
+      const devBadge = document.getElementById("menu-dev-badge");
+      const subEl = document.getElementById("menu-user-sub");
+      const devDashBtn = document.getElementById("menu-dev-dash-btn");
+      const myReqBtn = document.getElementById("menu-my-requests-btn");
+      const logoutBtn = document.getElementById("menu-logout-btn");
+
+      if (avatarImg) avatarImg.src = STATE.user.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80";
+      if (nameEl) nameEl.textContent = STATE.user.displayName || (STATE.isDev ? "Developer" : "Klien VIP");
+      if (devBadge) devBadge.style.display = STATE.isDev ? "inline-block" : "none";
+      if (subEl) subEl.textContent = STATE.user.email || (STATE.isDev ? "Solo Developer" : "Klien Terverifikasi");
+
+      if (devDashBtn) {
+        devDashBtn.style.display = STATE.isDev ? "flex" : "none";
+        devDashBtn.onclick = () => {
+          menu.style.display = "none";
+          updatePendingReviewsBadge();
+          openSheet("dev-sheet");
+        };
+      }
+
+      if (myReqBtn) {
+        myReqBtn.style.display = STATE.isDev ? "none" : "flex";
+        myReqBtn.onclick = () => {
+          menu.style.display = "none";
+          openUserRequestsDrawer();
+        };
+      }
+
+      if (logoutBtn) {
+        logoutBtn.onclick = () => {
+          menu.style.display = "none";
+          handleLogout();
+        };
+      }
+
+      menu.style.display = "block";
+    }
+
+    // Dismiss profile menu when clicking outside or pressing Escape
+    document.addEventListener("click", (e) => {
+      const menu = document.getElementById("profile-menu-dropdown");
+      const avatarBtn = document.getElementById("profile-avatar-btn");
+      if (!menu || menu.style.display === "none") return;
+      if (!menu.contains(e.target) && (!avatarBtn || !avatarBtn.contains(e.target))) {
+        menu.style.display = "none";
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const menu = document.getElementById("profile-menu-dropdown");
+        if (menu && menu.style.display === "block") {
+          menu.style.display = "none";
+        }
+      }
+    });
 
     /* Render Dev Controls when Dev is Logged In */
     function renderDevControls() {
@@ -3183,28 +3808,12 @@
       if (addPkg) addPkg.style.display = displayStyle;
       if (addContact) addContact.style.display = displayStyle;
 
-      // Show/Hide Floating Dev Bar
-      let devBar = document.getElementById("dev-floating-bar");
-      if (STATE.isDev) {
-        if (!devBar) {
-          devBar = document.createElement("div");
-          devBar.id = "dev-floating-bar";
-          devBar.style.cssText = "position: fixed; top: calc(var(--safe-top) + 64px); right: 1rem; z-index: 45; display: flex; gap: 0.5rem;";
-          devBar.innerHTML = `
-            <button id="dev-dash-toggle-btn" class="btn-vip" style="padding: 0.4rem 0.85rem; font-size: 0.78rem; box-shadow: 0 4px 18px var(--accent-glow);">
-              ⚡ Dasbor & Pesanan
-            </button>
-          `;
-          document.body.appendChild(devBar);
-          document.getElementById("dev-dash-toggle-btn").onclick = () => {
-            updatePendingReviewsBadge();
-            openSheet("dev-sheet");
-          };
-        }
-        devBar.style.display = "flex";
-      } else if (devBar) {
-        devBar.style.display = "none";
-      }
+      // Clean up any old floating bar if present
+      const oldDevBar = document.getElementById("dev-floating-bar");
+      if (oldDevBar) oldDevBar.remove();
+
+      renderSkills();
+      renderAnnouncement();
     }
 
     /* ==========================================================================
@@ -3315,8 +3924,8 @@
       if (headerName) headerName.textContent = authorName;
       if (footerName) footerName.textContent = authorName;
       if (monogram) {
-        const initials = (authorName || "DA").split(" ").map(n => n[0]).slice(0, 2).join("").toUpperCase();
-        monogram.textContent = initials || "DA";
+        const initials = (authorName || "Arya A.K").split(" ").map(n => n[0]).slice(0, 2).join("").toUpperCase();
+        monogram.textContent = initials || "AA";
       }
       if (heroRole) heroRole.textContent = authorRole;
       if (headerRole) headerRole.textContent = authorRole;
@@ -3453,16 +4062,293 @@
       if (coverPhoto && d.coverUrl) coverPhoto.src = d.coverUrl;
       if (profilePhoto && d.avatarUrl) profilePhoto.src = d.avatarUrl;
 
-      const announcementBar = document.getElementById("announcement-bar");
-      const announcementContent = document.getElementById("announcement-content");
-      if (announcementBar && announcementContent) {
-        announcementContent.textContent = d.announcement || "";
-        announcementBar.style.display = (d.showAnnouncement && d.announcement) ? "flex" : "none";
-      }
+      renderAnnouncement();
+      renderSkills();
 
       if (d.theme) {
         setTheme(d.theme, false);
       }
+    }
+
+    /* ==========================================================================
+       4B. ANNOUNCEMENT SYSTEM (DEV MANAGED + VISITOR LOCAL DISMISS)
+       ========================================================================== */
+    function renderAnnouncement() {
+      const banner = document.getElementById("announcement-bar");
+      const content = document.getElementById("announcement-content");
+      const placeholder = document.getElementById("dev-announcement-placeholder");
+      if (!banner || !content) return;
+
+      const d = STATE.siteData || DEFAULT_SITE_CONTENT;
+      const text = (d.announcement !== undefined) ? d.announcement : DEFAULT_SITE_CONTENT.announcement;
+      const show = (d.showAnnouncement !== undefined) ? Boolean(d.showAnnouncement) : true;
+
+      content.innerHTML = escapeHtml(text).replace(/\n/g, '<br/>');
+
+      let isDismissed = false;
+      if (!STATE.isDev && text) {
+        try {
+          isDismissed = Boolean(localStorage.getItem("dismissed_announcement_" + text.slice(0, 30)));
+        } catch (_) {}
+      }
+
+      if (show && text && text.trim() !== "" && !isDismissed) {
+        banner.style.display = "flex";
+        if (placeholder) placeholder.style.display = "none";
+      } else {
+        banner.style.display = "none";
+        if (placeholder) {
+          placeholder.style.display = STATE.isDev ? "block" : "none";
+        }
+      }
+
+      // Tap-to-edit announcement in Dev mode
+      banner.onclick = (e) => {
+        if (!STATE.isDev) return;
+        if (e.target.id === "close-announcement-btn" || e.target.closest("#close-announcement-btn")) return;
+        openDevAnnouncementSheet();
+      };
+    }
+
+    function openDevAnnouncementSheet() {
+      const d = STATE.siteData || DEFAULT_SITE_CONTENT;
+      const input = document.getElementById("dev-announcement-input");
+      const toggle = document.getElementById("dev-announcement-toggle");
+      if (input) input.value = (d.announcement !== undefined) ? d.announcement : (DEFAULT_SITE_CONTENT.announcement || "");
+      if (toggle) toggle.checked = (d.showAnnouncement !== undefined) ? Boolean(d.showAnnouncement) : true;
+      openSheet("dev-announcement-sheet");
+    }
+
+    const devAddAnnounceBtn = document.getElementById("dev-add-announcement-btn");
+    if (devAddAnnounceBtn) {
+      devAddAnnounceBtn.onclick = () => openDevAnnouncementSheet();
+    }
+
+    const devAnnounceSaveBtn = document.getElementById("dev-announcement-save-btn");
+    if (devAnnounceSaveBtn) {
+      devAnnounceSaveBtn.onclick = async () => {
+        const input = document.getElementById("dev-announcement-input");
+        const toggle = document.getElementById("dev-announcement-toggle");
+        const textVal = input ? input.value.trim() : "";
+        const showVal = toggle ? toggle.checked : true;
+
+        if (!STATE.siteData) STATE.siteData = {};
+        STATE.siteData.announcement = textVal;
+        STATE.siteData.showAnnouncement = showVal;
+
+        renderAnnouncement();
+
+        if (STATE.isFirebaseActive && db) {
+          try {
+            await setDoc(doc(db, "site", "main"), {
+              announcement: textVal,
+              showAnnouncement: showVal
+            }, { merge: true });
+            showToast("Pengumuman berhasil disimpan ke Firestore.");
+          } catch (e) {
+            showToast("Gagal menyimpan pengumuman: " + e.message);
+          }
+        } else {
+          showToast("Pengumuman diperbarui.");
+        }
+        closeSheet("dev-announcement-sheet");
+      };
+    }
+
+    const devAnnounceDeleteBtn = document.getElementById("dev-announcement-delete-btn");
+    if (devAnnounceDeleteBtn) {
+      devAnnounceDeleteBtn.onclick = async () => {
+        const ok = await confirmDialog({
+          title: "Hapus Pengumuman",
+          message: "Hapus pengumuman ini? Teks akan dikosongkan dan disembunyikan.",
+          confirmText: "Hapus",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
+
+        if (!STATE.siteData) STATE.siteData = {};
+        STATE.siteData.announcement = "";
+        STATE.siteData.showAnnouncement = false;
+
+        renderAnnouncement();
+
+        if (STATE.isFirebaseActive && db) {
+          try {
+            await setDoc(doc(db, "site", "main"), {
+              announcement: "",
+              showAnnouncement: false
+            }, { merge: true });
+            showToast("Pengumuman berhasil dihapus dari Firestore.");
+          } catch (e) {
+            showToast("Gagal menghapus pengumuman: " + e.message);
+          }
+        } else {
+          showToast("Pengumuman dihapus.");
+        }
+        closeSheet("dev-announcement-sheet");
+      };
+    }
+
+    const closeAnnounceBtn = document.getElementById("close-announcement-btn");
+    if (closeAnnounceBtn) {
+      closeAnnounceBtn.onclick = (e) => {
+        e.stopPropagation();
+        const banner = document.getElementById("announcement-bar");
+        if (banner) banner.style.display = "none";
+        const d = STATE.siteData || DEFAULT_SITE_CONTENT;
+        const text = d.announcement || "";
+        if (text) {
+          try {
+            localStorage.setItem("dismissed_announcement_" + text.slice(0, 30), "true");
+          } catch (_) {}
+        }
+      };
+    }
+
+    /* ==========================================================================
+       4C. SKILLS SYSTEM (DEV MANAGED IN TENTANG SAYA)
+       ========================================================================== */
+    function renderSkills() {
+      const container = document.getElementById("skills-container");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const skills = (STATE.siteData && Array.isArray(STATE.siteData.skills) && STATE.siteData.skills.length > 0)
+        ? STATE.siteData.skills
+        : DEFAULT_SKILLS;
+
+      if (STATE.siteData && !STATE.siteData.skills) {
+        STATE.siteData.skills = [...skills];
+      }
+
+      skills.forEach((skill, index) => {
+        const tag = document.createElement("span");
+        tag.className = "skill-tag";
+        tag.setAttribute("data-index", index);
+        tag.innerHTML = `<span>${escapeHtml(skill.icon || "⚡")}</span> <span>${escapeHtml(skill.name || "")}</span>`;
+
+        if (STATE.isDev) {
+          tag.title = "Ketuk untuk ubah / hapus keahlian";
+          tag.onclick = (e) => {
+            e.stopPropagation();
+            openDevSkillSheet(index, skill);
+          };
+        }
+
+        container.appendChild(tag);
+      });
+
+      if (STATE.isDev) {
+        const addBtn = document.createElement("button");
+        addBtn.id = "dev-add-skill-btn";
+        addBtn.className = "btn-secondary";
+        addBtn.style.cssText = "font-size: 0.78rem; padding: 0.35rem 0.75rem; border-style: dashed; border-color: var(--accent); color: var(--accent);";
+        addBtn.textContent = "+ Tambah keahlian";
+        addBtn.type = "button";
+        addBtn.onclick = (e) => {
+          e.stopPropagation();
+          openDevSkillSheet(-1, null);
+        };
+        container.appendChild(addBtn);
+      }
+    }
+
+    function openDevSkillSheet(index, skill) {
+      const titleEl = document.getElementById("dev-skill-sheet-title");
+      const indexInput = document.getElementById("dev-skill-edit-index");
+      const iconInput = document.getElementById("dev-skill-icon-input");
+      const nameInput = document.getElementById("dev-skill-name-input");
+      const deleteBtn = document.getElementById("dev-skill-delete-btn");
+
+      if (indexInput) indexInput.value = index;
+      if (index >= 0 && skill) {
+        if (titleEl) titleEl.textContent = "Ubah Keahlian";
+        if (iconInput) iconInput.value = skill.icon || "⚡";
+        if (nameInput) nameInput.value = skill.name || "";
+        if (deleteBtn) deleteBtn.style.display = "inline-flex";
+      } else {
+        if (titleEl) titleEl.textContent = "Tambah Keahlian Baru";
+        if (iconInput) iconInput.value = "⚡";
+        if (nameInput) nameInput.value = "";
+        if (deleteBtn) deleteBtn.style.display = "none";
+      }
+      openSheet("dev-skill-sheet");
+    }
+
+    const devSkillSaveBtn = document.getElementById("dev-skill-save-btn");
+    if (devSkillSaveBtn) {
+      devSkillSaveBtn.onclick = async () => {
+        const indexInput = document.getElementById("dev-skill-edit-index");
+        const iconInput = document.getElementById("dev-skill-icon-input");
+        const nameInput = document.getElementById("dev-skill-name-input");
+        const idx = parseInt(indexInput.value, 10);
+        const nameVal = nameInput.value.trim();
+        const iconVal = iconInput.value.trim() || "⚡";
+
+        if (!nameVal) {
+          showToast("Nama keahlian tidak boleh kosong.");
+          return;
+        }
+
+        if (!STATE.siteData.skills || !Array.isArray(STATE.siteData.skills)) {
+          STATE.siteData.skills = [...DEFAULT_SKILLS];
+        }
+
+        if (idx >= 0 && idx < STATE.siteData.skills.length) {
+          STATE.siteData.skills[idx] = { icon: iconVal, name: nameVal };
+        } else {
+          STATE.siteData.skills.push({ icon: iconVal, name: nameVal });
+        }
+
+        renderSkills();
+
+        if (STATE.isFirebaseActive && db) {
+          try {
+            await setDoc(doc(db, "site", "main"), { skills: STATE.siteData.skills }, { merge: true });
+            showToast("Daftar keahlian berhasil disimpan ke Firestore.");
+          } catch (e) {
+            showToast("Gagal menyimpan keahlian: " + e.message);
+          }
+        } else {
+          showToast("Keahlian diperbarui.");
+        }
+        closeSheet("dev-skill-sheet");
+      };
+    }
+
+    const devSkillDeleteBtn = document.getElementById("dev-skill-delete-btn");
+    if (devSkillDeleteBtn) {
+      devSkillDeleteBtn.onclick = async () => {
+        const indexInput = document.getElementById("dev-skill-edit-index");
+        const idx = parseInt(indexInput.value, 10);
+        if (idx < 0 || !STATE.siteData.skills || !STATE.siteData.skills[idx]) return;
+
+        const skillName = STATE.siteData.skills[idx].name || "ini";
+        const ok = await confirmDialog({
+          title: "Hapus Keahlian",
+          message: `Hapus keahlian "${skillName}" dari profil?`,
+          confirmText: "Hapus",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
+
+        STATE.siteData.skills.splice(idx, 1);
+        renderSkills();
+
+        if (STATE.isFirebaseActive && db) {
+          try {
+            await setDoc(doc(db, "site", "main"), { skills: STATE.siteData.skills }, { merge: true });
+            showToast("Keahlian berhasil dihapus.");
+          } catch (e) {
+            showToast("Gagal menghapus keahlian: " + e.message);
+          }
+        } else {
+          showToast("Keahlian dihapus.");
+        }
+        closeSheet("dev-skill-sheet");
+      };
     }
 
     /* ==========================================================================
@@ -3667,7 +4553,14 @@
     const devPhotoResetBtn = document.getElementById("dev-photo-reset-btn");
     if (devPhotoResetBtn) {
       devPhotoResetBtn.onclick = async () => {
-        if (!confirm("Reset foto ini ke gambar default?")) return;
+        const ok = await confirmDialog({
+          title: "Reset Foto",
+          message: "Reset foto ini ke gambar bawaan default?",
+          confirmText: "Reset Foto",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
         const field = STATE.currentEditingPhotoType === "cover" ? "coverUrl" : "avatarUrl";
         const defaultVal = DEFAULT_SITE_CONTENT[field];
         STATE.siteData[field] = defaultVal;
@@ -3979,7 +4872,14 @@
       projDeleteBtn.onclick = async () => {
         const id = document.getElementById("proj-edit-id").value;
         if (!id) return;
-        if (!confirm("Yakin ingin menghapus karya ini?")) return;
+        const ok = await confirmDialog({
+          title: "Hapus Karya",
+          message: "Yakin ingin menghapus karya ini dari portofolio?",
+          confirmText: "Hapus",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
 
         STATE.projects = STATE.projects.filter(p => p.id !== id);
         renderProjects();
@@ -4215,7 +5115,14 @@
       pkgDeleteBtn.onclick = async () => {
         const id = document.getElementById("pkg-edit-id").value;
         if (!id) return;
-        if (!confirm("Yakin ingin menghapus paket ini?")) return;
+        const ok = await confirmDialog({
+          title: "Hapus Paket",
+          message: "Yakin ingin menghapus paket layanan ini?",
+          confirmText: "Hapus",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
 
         STATE.packages = STATE.packages.filter(p => p.id !== id);
         renderPackages();
@@ -4332,7 +5239,14 @@
       contactDeleteBtn.onclick = async () => {
         const idxStr = document.getElementById("contact-edit-index").value;
         if (idxStr === "") return;
-        if (!confirm("Yakin ingin menghapus kontak ini?")) return;
+        const ok = await confirmDialog({
+          title: "Hapus Kontak",
+          message: "Yakin ingin menghapus saluran kontak ini?",
+          confirmText: "Hapus",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
 
         STATE.contacts.splice(parseInt(idxStr), 1);
         renderContacts();
@@ -4548,7 +5462,14 @@
           deleteBtn.style.cssText = "padding: 0.25rem 0.65rem; font-size: 0.74rem; color: #f87171;";
           deleteBtn.textContent = "🗑 Hapus";
           deleteBtn.onclick = async () => {
-            if (!confirm("Hapus ulasan ini selamanya?")) return;
+            const ok = await confirmDialog({
+              title: "Hapus Ulasan",
+              message: "Hapus ulasan klien ini selamanya dari Firestore?",
+              confirmText: "Hapus",
+              cancelText: "Batal",
+              danger: true
+            });
+            if (!ok) return;
             if (STATE.isFirebaseActive && db && r.id) {
               try {
                 await deleteDoc(doc(db, "reviews", r.id));
@@ -4615,7 +5536,7 @@
 
       const rawQris = STATE.qrisData?.qrisUrl || "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
       const qrisUrl = (rawQris.startsWith("data:image/") || rawQris.startsWith("https://") || rawQris.startsWith("http://")) ? rawQris : "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
-      const bankText = STATE.qrisData?.bankText || "BCA: 123-456-7890 a.n Arya A.K\nGoPay / Dana: 0812-3456-7890";
+      const bankText = STATE.qrisData?.bankText || "BCA: 123-456-7890 a.n Dika Aditya\nGoPay / Dana: 0812-3456-7890";
 
       qrisImgContainer.innerHTML = "";
       const qrisImg = document.createElement("img");
@@ -4643,7 +5564,7 @@
       const bankContainer = document.getElementById("chat-bank-info-container");
       const rawQris = STATE.qrisData?.qrisUrl || "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
       const qrisUrl = (rawQris.startsWith("data:image/") || rawQris.startsWith("https://") || rawQris.startsWith("http://")) ? rawQris : "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
-      const bankText = STATE.qrisData?.bankText || "BCA: 123-456-7890 a.n Arya A.K\nGoPay / Dana: 0812-3456-7890";
+      const bankText = STATE.qrisData?.bankText || "BCA: 123-456-7890 a.n Dika Aditya\nGoPay / Dana: 0812-3456-7890";
 
       if (imgContainer) {
         imgContainer.innerHTML = "";
@@ -4733,12 +5654,18 @@
           );
           const waUrl = `https://wa.me/${DEV_CONFIG.whatsappPhone}?text=${waMessage}`;
 
-          setTimeout(() => {
-            if (confirm("Request tercatat! Ingin langsung kirim ringkasan pesanan ke WhatsApp Dev sekarang?")) {
+          setTimeout(async () => {
+            const ok = await confirmDialog({
+              title: "Kirim ke WhatsApp?",
+              message: "Request VIP berhasil dicatat! Ingin langsung kirim ringkasan pesanan ke WhatsApp Dev sekarang?",
+              confirmText: "Buka WhatsApp",
+              cancelText: "Nanti Saja"
+            });
+            if (ok) {
               window.open(waUrl, "_blank");
             }
             openUserRequestsDrawer();
-          }, 600);
+          }, 500);
 
         } catch (err) {
           console.error("Order error:", err);
@@ -5166,13 +6093,20 @@
         const rejectProofBtn = document.getElementById("dev-btn-reject-proof");
         if (rejectProofBtn) {
           rejectProofBtn.onclick = async () => {
-            const reason = prompt("Masukkan alasan penolakan bukti transfer:", "Nominal tidak sesuai / foto buram");
+            const reason = await promptDialog({
+              title: "Tolak Bukti Transfer",
+              message: "Masukkan alasan penolakan bukti transfer untuk klien:",
+              defaultValue: "Nominal tidak sesuai / foto buram",
+              confirmText: "Kirim Penolakan",
+              cancelText: "Batal",
+              danger: true
+            });
             if (!reason) return;
 
             if (STATE.isFirebaseActive && db) {
               await addDoc(collection(db, "requests", requestId, "chat"), {
                 senderId: STATE.user.uid,
-                senderName: "Dev (Dika)",
+                senderName: "Dev (Arya)",
                 text: `⚠️ Bukti transfer ditolak: ${reason}. Silakan unggah kembali bukti pembayaran yang valid.`,
                 isDev: true,
                 createdAt: serverTimestamp()
@@ -5197,7 +6131,14 @@
         const delProofBtn = document.getElementById("dev-btn-delete-proof");
         if (delProofBtn) {
           delProofBtn.onclick = async () => {
-            if (!confirm("Hapus seluruh data bukti transfer di request ini dari Firestore untuk menjaga kuota Spark?")) return;
+            const ok = await confirmDialog({
+              title: "Bersihkan Bukti Transfer",
+              message: "Hapus seluruh data bukti transfer di request ini dari Firestore untuk menjaga kuota Spark?",
+              confirmText: "Bersihkan",
+              cancelText: "Batal",
+              danger: true
+            });
+            if (!ok) return;
             showToast("Membersihkan data bukti...");
             showToast("Data bukti transfer dibersihkan.");
           };
@@ -5759,7 +6700,7 @@
 
           const qrisPayload = {
             qrisUrl: qrisDataUrl || "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80",
-            bankText: bankTextInput?.value.trim() || "BCA: 123-456-7890 a.n Arya A.K\nGoPay: 0812-3456-7890",
+            bankText: bankTextInput?.value.trim() || "BCA: 123-456-7890 a.n Dika Aditya\nGoPay: 0812-3456-7890",
             updatedAt: new Date().toISOString()
           };
 
