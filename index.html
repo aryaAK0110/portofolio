@@ -46,6 +46,12 @@
       --accent-contrast: #0d0c0a;
       --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
 
+      /* Glassmorphism Variables */
+      --glass-bg: rgba(22, 20, 17, 0.78);
+      --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+      --dev-bubble-bg: linear-gradient(135deg, rgba(34, 30, 24, 0.98) 0%, rgba(48, 41, 31, 0.96) 100%);
+      --dev-bubble-border: rgba(212, 175, 55, 0.24);
+
       /* Harmonious Pastel Accents for Cards */
       --card-sage: rgba(124, 154, 130, 0.12);
       --border-sage: rgba(124, 154, 130, 0.35);
@@ -75,6 +81,10 @@
       --accent-glow: rgba(212, 175, 55, 0.28);
       --accent-contrast: #0d0c0a;
       --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+      --glass-bg: rgba(22, 20, 17, 0.78);
+      --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+      --dev-bubble-bg: linear-gradient(135deg, rgba(34, 30, 24, 0.98) 0%, rgba(48, 41, 31, 0.96) 100%);
+      --dev-bubble-border: rgba(212, 175, 55, 0.24);
       --text-main: #f5f3ef;
       --text-muted: #aba69d;
       --text-subtle: #736e65;
@@ -91,6 +101,10 @@
       --accent-glow: rgba(96, 165, 250, 0.3);
       --accent-contrast: #080c14;
       --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+      --glass-bg: rgba(14, 21, 35, 0.78);
+      --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+      --dev-bubble-bg: linear-gradient(135deg, rgba(18, 27, 46, 0.98) 0%, rgba(28, 42, 70, 0.96) 100%);
+      --dev-bubble-border: rgba(96, 165, 250, 0.25);
     }
 
     [data-theme="rose-noir"] {
@@ -104,6 +118,10 @@
       --accent-glow: rgba(244, 114, 182, 0.3);
       --accent-contrast: #110b0e;
       --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+      --glass-bg: rgba(28, 18, 24, 0.78);
+      --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+      --dev-bubble-bg: linear-gradient(135deg, rgba(38, 23, 32, 0.98) 0%, rgba(56, 32, 46, 0.96) 100%);
+      --dev-bubble-border: rgba(244, 114, 182, 0.25);
     }
 
     [data-theme="sage-forest"] {
@@ -117,6 +135,10 @@
       --accent-glow: rgba(74, 222, 128, 0.3);
       --accent-contrast: #0a100d;
       --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+      --glass-bg: rgba(16, 26, 21, 0.78);
+      --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+      --dev-bubble-bg: linear-gradient(135deg, rgba(22, 36, 29, 0.98) 0%, rgba(32, 54, 43, 0.96) 100%);
+      --dev-bubble-border: rgba(74, 222, 128, 0.25);
     }
 
     [data-theme="clean-white"] {
@@ -131,6 +153,10 @@
       --accent-glow: rgba(15, 23, 42, 0.15);
       --accent-contrast: #ffffff;
       --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+      --glass-bg: rgba(255, 255, 255, 0.80);
+      --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+      --dev-bubble-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --dev-bubble-border: rgba(15, 23, 42, 0.15);
       --text-main: #0f172a;
       --text-muted: #475569;
       --text-subtle: #94a3b8;
@@ -149,6 +175,10 @@
         --accent-glow: rgba(15, 23, 42, 0.15);
         --accent-contrast: #ffffff;
         --btn-vip-gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
+        --glass-bg: rgba(255, 255, 255, 0.80);
+        --glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+        --dev-bubble-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        --dev-bubble-border: rgba(15, 23, 42, 0.15);
         --text-main: #0f172a;
         --text-muted: #475569;
         --text-subtle: #94a3b8;
@@ -478,12 +508,12 @@
       right: max(0.85rem, calc((100vw - 820px) / 2 + 0.85rem));
       width: 270px;
       max-width: calc(100vw - 1.7rem);
-      background: var(--bg-surface-elevated);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
       border: 1px solid var(--border-glass);
       border-radius: 18px;
-      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.65), 0 0 24px var(--accent-glow);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.65), 0 0 25px var(--accent-glow), var(--glass-highlight);
       padding: 1rem;
       z-index: 60;
       transform-origin: top right;
@@ -650,14 +680,16 @@
     }
 
     .custom-modal-card {
-      background: var(--bg-surface-elevated);
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
       border: 1px solid var(--border-glass);
       border-radius: 22px;
       padding: 1.75rem 1.5rem;
       max-width: 410px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px var(--accent-glow);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65), 0 0 35px var(--accent-glow), var(--glass-highlight);
       transform: scale(0.92) translateY(12px);
       transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       outline: none;
@@ -1241,19 +1273,35 @@
     }
 
     .bottom-sheet {
-      background: var(--bg-surface-elevated);
-      border-top: 1px solid var(--border-glass);
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      border: 1px solid var(--border-glass);
+      border-bottom: none;
       border-radius: 28px 28px 0 0;
       padding: 1.5rem 1.25rem calc(1.5rem + var(--safe-bottom));
       max-height: 88vh;
       overflow-y: auto;
       transform: translateY(100%);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 -14px 45px rgba(0, 0, 0, 0.65), 0 -2px 35px var(--accent-glow), var(--glass-highlight);
     }
 
     .sheet-overlay.active .bottom-sheet {
       transform: translateY(0);
+    }
+
+    /* Fallback for devices/browsers without backdrop-filter support */
+    @supports not ((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))) {
+      .bottom-sheet {
+        background: var(--bg-surface-elevated);
+      }
+      .custom-modal-card {
+        background: var(--bg-surface-elevated);
+      }
+      .profile-menu-dropdown {
+        background: var(--bg-surface-elevated);
+      }
     }
 
     .sheet-handle {
@@ -1483,9 +1531,10 @@
 
     .chat-bubble.dev {
       align-self: flex-start;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--dev-bubble-bg);
+      border: 1px solid var(--dev-bubble-border);
       border-bottom-left-radius: 4px;
+      color: var(--text-main);
     }
 
     .chat-bubble.user {
@@ -1726,6 +1775,29 @@
       font-weight: 700 !important;
       border-color: var(--accent) !important;
       box-shadow: 0 4px 14px var(--accent-glow) !important;
+    }
+
+    /* Dev Orders Filter Buttons */
+    .dev-order-filter-btn {
+      background: transparent !important;
+      color: var(--text-muted) !important;
+      border: 1px solid var(--border-subtle) !important;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .dev-order-filter-btn:hover:not(.active) {
+      border-color: var(--border-glass) !important;
+      color: var(--text-main) !important;
+    }
+    .dev-order-filter-btn.active {
+      background: var(--btn-vip-gradient) !important;
+      color: var(--accent-contrast) !important;
+      font-weight: 700 !important;
+      border-color: var(--accent) !important;
+      box-shadow: 0 2px 8px var(--accent-glow) !important;
     }
 
     /* Package Cards Transition (~250ms) */
@@ -2433,6 +2505,24 @@
 
       <!-- Tab 4: All Requests (Dev Management) -->
       <div id="tab-orders" class="dev-tab-content" style="display: none;">
+        <div id="dev-orders-filter-bar" style="margin-bottom: 0.85rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            <div class="dev-filter-pills" style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button type="button" class="btn-secondary dev-order-filter-btn active" data-filter="semua" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;">
+                Semua <span id="count-filter-all">(0)</span>
+              </button>
+              <button type="button" class="btn-secondary dev-order-filter-btn" data-filter="aktif" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;">
+                Aktif <span id="count-filter-active">(0)</span>
+              </button>
+              <button type="button" class="btn-secondary dev-order-filter-btn" data-filter="selesai" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;">
+                Selesai <span id="count-filter-completed">(0)</span>
+              </button>
+            </div>
+            <button type="button" id="dev-delete-all-completed-btn" class="btn-secondary" style="display: none; padding: 0.3rem 0.65rem; font-size: 0.76rem; color: #f87171; border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.08);">
+              🗑 Hapus Semua yang Selesai
+            </button>
+          </div>
+        </div>
         <div id="dev-orders-list">
           <!-- Rendered dynamically -->
         </div>
@@ -2966,6 +3056,8 @@
       onSnapshot,
       addDoc,
       deleteDoc,
+      getDocs,
+      writeBatch,
       serverTimestamp,
       increment
     } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
@@ -3018,6 +3110,7 @@
       currentEditingTextKey: null,
       currentEditingPhotoType: null // "cover" | "avatar"
     };
+    window.STATE = STATE;
 
     const DEFAULT_SKILLS = [
       { icon: "⚡", name: "Full-Stack TypeScript" },
@@ -3489,6 +3582,8 @@
       const sheet = document.getElementById(id);
       if (sheet) sheet.classList.remove("active");
     }
+    window.openSheet = openSheet;
+    window.closeSheet = closeSheet;
 
     // Attach close listeners
     document.querySelectorAll("[data-close-sheet]").forEach(btn => {
@@ -3507,16 +3602,28 @@
       if (!lightbox || !lightboxImg) return;
       lightboxImg.src = src;
       lightbox.classList.add("active");
+      window.dispatchEvent(new CustomEvent("app:lightbox-change", { detail: { open: true } }));
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove("active");
+      window.dispatchEvent(new CustomEvent("app:lightbox-change", { detail: { open: false } }));
     }
 
     if (lightboxClose) {
-      lightboxClose.addEventListener("click", () => lightbox.classList.remove("active"));
+      lightboxClose.addEventListener("click", closeLightbox);
     }
     if (lightbox) {
       lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) lightbox.classList.remove("active");
+        if (e.target === lightbox) closeLightbox();
       });
     }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox && lightbox.classList.contains("active")) {
+        closeLightbox();
+      }
+    });
 
     /* Client-side Image Compressor (Max width, JPEG quality, size limit check) */
     function compressImageFile(file, maxWidth = 800, quality = 0.7) {
@@ -4581,13 +4688,26 @@
     /* ==========================================================================
        6. RENDERING COMPONENTS (PROJECTS, PACKAGES, REVIEWS, CONTACTS)
        ========================================================================== */
-    // 6A. Render Projects (with tap to edit for Dev)
+    // 6A. Render Projects (with auto-sliding carousel & tap to edit for Dev)
+    let projectCarouselCleanups = [];
+
+    function cleanupProjectCarousels() {
+      projectCarouselCleanups.forEach(fn => {
+        try { fn(); } catch (_) {}
+      });
+      projectCarouselCleanups = [];
+    }
+
     function renderProjects() {
+      cleanupProjectCarousels();
+
       const container = document.getElementById("projects-list");
       if (!container) return;
       container.innerHTML = "";
 
-      STATE.projects.forEach((proj) => {
+      const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      STATE.projects.forEach((proj, projIndex) => {
         const card = document.createElement("div");
         card.className = "glass-card project-card";
 
@@ -4623,28 +4743,6 @@
 
         if (images.length > 1) {
           let currentSlide = 0;
-          const prevBtn = document.createElement("button");
-          prevBtn.className = "carousel-arrow prev";
-          prevBtn.innerHTML = "‹";
-          prevBtn.onclick = (e) => {
-            e.stopPropagation();
-            currentSlide = (currentSlide - 1 + images.length) % images.length;
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            updateDots();
-          };
-
-          const nextBtn = document.createElement("button");
-          nextBtn.className = "carousel-arrow next";
-          nextBtn.innerHTML = "›";
-          nextBtn.onclick = (e) => {
-            e.stopPropagation();
-            currentSlide = (currentSlide + 1) % images.length;
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            updateDots();
-          };
-
-          carousel.appendChild(prevBtn);
-          carousel.appendChild(nextBtn);
 
           const dotsContainer = document.createElement("div");
           dotsContainer.className = "carousel-dots";
@@ -4653,11 +4751,212 @@
             dot.className = `carousel-dot ${i === 0 ? "active" : ""}`;
             dotsContainer.appendChild(dot);
           });
-          carousel.appendChild(dotsContainer);
 
           function updateDots() {
             const dots = dotsContainer.querySelectorAll(".carousel-dot");
             dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+          }
+
+          function goToSlide(idx) {
+            currentSlide = (idx + images.length) % images.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateDots();
+          }
+
+          function nextSlide() {
+            goToSlide(currentSlide + 1);
+          }
+
+          function prevSlide() {
+            goToSlide(currentSlide - 1);
+          }
+
+          // Auto-slide Controller
+          let isCardVisible = false;
+          let isUserInteracting = false;
+          let slideTimer = null;
+          let resumeTimer = null;
+
+          function canRunAutoSlide() {
+            if (isReducedMotion) return false;
+            if (!isCardVisible) return false;
+            if (isUserInteracting) return false;
+            if (document.visibilityState !== "visible") return false;
+            if (lightbox && lightbox.classList.contains("active")) return false;
+            return true;
+          }
+
+          function stopSlideTimer() {
+            if (slideTimer) {
+              clearTimeout(slideTimer);
+              slideTimer = null;
+            }
+          }
+
+          function startSlideTimer(delay = 4000) {
+            stopSlideTimer();
+            if (!canRunAutoSlide()) return;
+            slideTimer = setTimeout(() => {
+              if (canRunAutoSlide()) {
+                nextSlide();
+              }
+              if (canRunAutoSlide()) {
+                startSlideTimer(4000);
+              }
+            }, delay);
+          }
+
+          function pauseAutoSlide() {
+            isUserInteracting = true;
+            stopSlideTimer();
+            if (resumeTimer) {
+              clearTimeout(resumeTimer);
+              resumeTimer = null;
+            }
+          }
+
+          function scheduleResume(delay = 6000) {
+            if (resumeTimer) clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => {
+              isUserInteracting = false;
+              if (canRunAutoSlide()) {
+                startSlideTimer(4000);
+              }
+            }, delay);
+          }
+
+          const prevBtn = document.createElement("button");
+          prevBtn.className = "carousel-arrow prev";
+          prevBtn.innerHTML = "‹";
+          prevBtn.setAttribute("aria-label", "Foto Sebelumnya");
+          prevBtn.onclick = (e) => {
+            e.stopPropagation();
+            prevSlide();
+            pauseAutoSlide();
+            scheduleResume(6000);
+          };
+
+          const nextBtn = document.createElement("button");
+          nextBtn.className = "carousel-arrow next";
+          nextBtn.innerHTML = "›";
+          nextBtn.setAttribute("aria-label", "Foto Berikutnya");
+          nextBtn.onclick = (e) => {
+            e.stopPropagation();
+            nextSlide();
+            pauseAutoSlide();
+            scheduleResume(6000);
+          };
+
+          carousel.appendChild(prevBtn);
+          carousel.appendChild(nextBtn);
+          carousel.appendChild(dotsContainer);
+
+          dotsContainer.querySelectorAll(".carousel-dot").forEach((dot, dotIdx) => {
+            dot.onclick = (e) => {
+              e.stopPropagation();
+              goToSlide(dotIdx);
+              pauseAutoSlide();
+              scheduleResume(6000);
+            };
+          });
+
+          // Only initialize auto-slide if not reduced-motion
+          if (!isReducedMotion) {
+            // Touch & Swipe Support
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let isTrackingTouch = false;
+
+            const onTouchStart = (e) => {
+              if (!e.touches || e.touches.length === 0) return;
+              touchStartX = e.touches[0].clientX;
+              touchStartY = e.touches[0].clientY;
+              isTrackingTouch = true;
+              pauseAutoSlide();
+            };
+
+            const onTouchEnd = (e) => {
+              if (!isTrackingTouch) return;
+              isTrackingTouch = false;
+              if (e.changedTouches && e.changedTouches.length > 0) {
+                const deltaX = e.changedTouches[0].clientX - touchStartX;
+                const deltaY = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                  if (deltaX < 0) {
+                    nextSlide();
+                  } else {
+                    prevSlide();
+                  }
+                }
+              }
+              scheduleResume(6000);
+            };
+
+            carousel.addEventListener("touchstart", onTouchStart, { passive: true });
+            carousel.addEventListener("touchend", onTouchEnd, { passive: true });
+
+            // Mouse hover pause
+            const onMouseEnter = () => pauseAutoSlide();
+            const onMouseLeave = () => scheduleResume(6000);
+            carousel.addEventListener("mouseenter", onMouseEnter);
+            carousel.addEventListener("mouseleave", onMouseLeave);
+
+            // IntersectionObserver: only run when card is visible on screen
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                isCardVisible = entry.isIntersecting;
+                if (isCardVisible) {
+                  if (canRunAutoSlide()) {
+                    startSlideTimer(4000);
+                  }
+                } else {
+                  stopSlideTimer();
+                }
+              });
+            }, { threshold: 0.2 });
+            observer.observe(card);
+
+            // Visibility change (tab switch)
+            const onVisibilityChange = () => {
+              if (document.visibilityState === "visible") {
+                if (canRunAutoSlide()) {
+                  startSlideTimer(4000);
+                }
+              } else {
+                stopSlideTimer();
+              }
+            };
+            document.addEventListener("visibilitychange", onVisibilityChange);
+
+            // Lightbox state change
+            const onLightboxChange = (e) => {
+              const isOpen = e.detail && e.detail.open;
+              if (isOpen) {
+                stopSlideTimer();
+              } else {
+                if (canRunAutoSlide()) {
+                  startSlideTimer(4000);
+                }
+              }
+            };
+            window.addEventListener("app:lightbox-change", onLightboxChange);
+
+            // Staggered initial start: each card starts with a different offset
+            const staggeredDelay = 4000 + ((projIndex * 850) % 3400);
+            startSlideTimer(staggeredDelay);
+
+            // Register cleanup for this carousel instance
+            projectCarouselCleanups.push(() => {
+              stopSlideTimer();
+              if (resumeTimer) clearTimeout(resumeTimer);
+              observer.disconnect();
+              carousel.removeEventListener("touchstart", onTouchStart);
+              carousel.removeEventListener("touchend", onTouchEnd);
+              carousel.removeEventListener("mouseenter", onMouseEnter);
+              carousel.removeEventListener("mouseleave", onMouseLeave);
+              document.removeEventListener("visibilitychange", onVisibilityChange);
+              window.removeEventListener("app:lightbox-change", onLightboxChange);
+            });
           }
         }
 
@@ -5832,40 +6131,281 @@
     window.createOrderStatusStepper = createOrderStatusStepper;
     window.updateStepperProgress = updateStepperProgress;
 
+    /* ==========================================================================
+       DEV ORDERS MANAGEMENT (FILTERS & CASCADE DELETION)
+       ========================================================================== */
+    let devOrdersFilter = "semua"; // "semua" | "aktif" | "selesai"
+
+    async function deleteRequestCascade(requestId, onProgress) {
+      if (!STATE.isFirebaseActive || !db) {
+        throw new Error("Firebase tidak aktif.");
+      }
+
+      // If chat is currently open for this request, close it
+      if (STATE.currentActiveChatRequestId === requestId) {
+        STATE.currentActiveChatRequestId = null;
+        closeSheet("my-requests-sheet");
+        renderUserRequestsList(STATE.activeRequests);
+      }
+
+      if (onProgress) onProgress("Menghapus chat...");
+
+      // (a) Delete requests/{id}/chat
+      const chatRef = collection(db, "requests", requestId, "chat");
+      const chatSnap = await getDocs(chatRef);
+      if (!chatSnap.empty) {
+        let batch = writeBatch(db);
+        let count = 0;
+        for (const dSnap of chatSnap.docs) {
+          batch.delete(dSnap.ref);
+          count++;
+          if (count >= 400) {
+            await batch.commit();
+            batch = writeBatch(db);
+            count = 0;
+          }
+        }
+        if (count > 0) {
+          await batch.commit();
+        }
+      }
+
+      if (onProgress) onProgress("Menghapus bukti...");
+
+      // (b) Delete requests/{id}/proofs
+      const proofsRef = collection(db, "requests", requestId, "proofs");
+      const proofsSnap = await getDocs(proofsRef);
+      if (!proofsSnap.empty) {
+        let batch = writeBatch(db);
+        let count = 0;
+        for (const pSnap of proofsSnap.docs) {
+          batch.delete(pSnap.ref);
+          count++;
+          if (count >= 400) {
+            await batch.commit();
+            batch = writeBatch(db);
+            count = 0;
+          }
+        }
+        if (count > 0) {
+          await batch.commit();
+        }
+      }
+
+      if (onProgress) onProgress("Membersihkan notifikasi...");
+
+      // (c) Delete notifications with requestId == requestId if exists
+      try {
+        const notifQ = query(collection(db, "notifications"), where("requestId", "==", requestId));
+        const notifSnap = await getDocs(notifQ);
+        if (!notifSnap.empty) {
+          let batch = writeBatch(db);
+          let count = 0;
+          for (const nSnap of notifSnap.docs) {
+            batch.delete(nSnap.ref);
+            count++;
+            if (count >= 400) {
+              await batch.commit();
+              batch = writeBatch(db);
+              count = 0;
+            }
+          }
+          if (count > 0) {
+            await batch.commit();
+          }
+        }
+      } catch (notifErr) {
+        console.warn("Pembersihan notifikasi dilewati:", notifErr);
+      }
+
+      if (onProgress) onProgress("Menghapus pesanan...");
+
+      // (d) Lastly delete requests/{id}
+      await deleteDoc(doc(db, "requests", requestId));
+    }
+
+    async function handleSingleOrderDelete(req, btn) {
+      if (!STATE.isDev) return;
+
+      const isCompleted = req.status === "selesai";
+      let confirmMsg;
+      if (isCompleted) {
+        const pkgName = req.packageName || req.planTitle || "Proyek";
+        const client = req.userName || req.clientName || "Klien";
+        confirmMsg = `Hapus pesanan selesai "${pkgName}" oleh ${client}? Seluruh riwayat chat dan bukti transfer akan dihapus permanen.`;
+      } else {
+        confirmMsg = `Pesanan ini belum selesai. Hapus tetap?`;
+      }
+
+      const ok = await confirmDialog({
+        title: isCompleted ? "Hapus Pesanan" : "Hapus Pesanan Belum Selesai",
+        message: confirmMsg,
+        confirmText: "Hapus Pesanan",
+        cancelText: "Batal",
+        danger: true
+      });
+      if (!ok) return;
+
+      btn.disabled = true;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<span>⏳ Menghapus...</span>`;
+
+      try {
+        await deleteRequestCascade(req.id, (step) => {
+          btn.innerHTML = `<span>⏳ ${step}</span>`;
+        });
+
+        STATE.activeRequests = STATE.activeRequests.filter(r => r.id !== req.id);
+        renderDevOrdersList(STATE.activeRequests);
+        renderUserRequestsList(STATE.activeRequests);
+        showToast("Pesanan dihapus");
+      } catch (err) {
+        console.error("Gagal hapus pesanan:", err);
+        showToast("Gagal menghapus pesanan: " + (err.message || "Terjadi kesalahan"));
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
+    }
+
+    async function handleDeleteAllCompleted(completedList) {
+      if (!STATE.isDev || !completedList || completedList.length === 0) return;
+      const count = completedList.length;
+
+      const ok = await confirmDialog({
+        title: "Hapus Semua Pesanan Selesai",
+        message: `Hapus semua ${count} pesanan yang selesai? Seluruh riwayat chat dan bukti transfer akan dihapus permanen.`,
+        confirmText: `Hapus ${count} Pesanan`,
+        cancelText: "Batal",
+        danger: true
+      });
+      if (!ok) return;
+
+      const btn = document.getElementById("dev-delete-all-completed-btn");
+      const originalHtml = btn ? btn.innerHTML : "";
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span>⏳ Menghapus...</span>`;
+      }
+
+      let deletedCount = 0;
+      try {
+        for (const req of completedList) {
+          if (btn) btn.innerHTML = `<span>⏳ Menghapus (${deletedCount + 1}/${count})...</span>`;
+          await deleteRequestCascade(req.id);
+          deletedCount++;
+          STATE.activeRequests = STATE.activeRequests.filter(r => r.id !== req.id);
+        }
+        renderDevOrdersList(STATE.activeRequests);
+        renderUserRequestsList(STATE.activeRequests);
+        showToast("Pesanan dihapus");
+      } catch (err) {
+        console.error("Gagal hapus massal pesanan:", err);
+        showToast("Gagal menghapus beberapa pesanan: " + (err.message || "Terjadi kesalahan"));
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = originalHtml;
+        }
+      }
+    }
+
+    function setupDevOrdersFilterEvents() {
+      document.querySelectorAll(".dev-order-filter-btn").forEach(btn => {
+        btn.onclick = () => {
+          document.querySelectorAll(".dev-order-filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          devOrdersFilter = btn.getAttribute("data-filter") || "semua";
+          renderDevOrdersList(STATE.activeRequests);
+        };
+      });
+    }
+
     function renderDevOrdersList(requests) {
       const devOrdersList = document.getElementById("dev-orders-list");
       if (!devOrdersList) return;
+
+      setupDevOrdersFilterEvents();
+
+      const allReqs = Array.isArray(requests) ? requests : [];
+      const totalAll = allReqs.length;
+      const totalActive = allReqs.filter(r => r.status !== "selesai").length;
+      const totalCompleted = allReqs.filter(r => r.status === "selesai").length;
+
+      // Update count badges
+      const countAll = document.getElementById("count-filter-all");
+      const countActive = document.getElementById("count-filter-active");
+      const countCompleted = document.getElementById("count-filter-completed");
+      if (countAll) countAll.textContent = `(${totalAll})`;
+      if (countActive) countActive.textContent = `(${totalActive})`;
+      if (countCompleted) countCompleted.textContent = `(${totalCompleted})`;
+
+      // Update bulk delete button visibility in Selesai tab
+      const bulkDeleteBtn = document.getElementById("dev-delete-all-completed-btn");
+      if (bulkDeleteBtn) {
+        if (devOrdersFilter === "selesai" && totalCompleted > 0) {
+          bulkDeleteBtn.style.display = "inline-flex";
+          bulkDeleteBtn.innerHTML = `🗑 Hapus Semua yang Selesai (${totalCompleted})`;
+          bulkDeleteBtn.onclick = () => handleDeleteAllCompleted(allReqs.filter(r => r.status === "selesai"));
+        } else {
+          bulkDeleteBtn.style.display = "none";
+        }
+      }
+
+      // Filter requests
+      let filteredReqs = allReqs;
+      if (devOrdersFilter === "aktif") {
+        filteredReqs = allReqs.filter(r => r.status !== "selesai");
+      } else if (devOrdersFilter === "selesai") {
+        filteredReqs = allReqs.filter(r => r.status === "selesai");
+      }
+
       devOrdersList.innerHTML = "";
 
-      if (requests.length === 0) {
-        devOrdersList.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Belum ada pesanan masuk dari klien.</div>`;
+      if (filteredReqs.length === 0) {
+        const emptyMsg = devOrdersFilter === "aktif" 
+          ? "Tidak ada pesanan aktif saat ini."
+          : (devOrdersFilter === "selesai" ? "Belum ada pesanan yang selesai." : "Belum ada pesanan masuk dari klien.");
+        devOrdersList.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem; font-size: 0.88rem;">${emptyMsg}</div>`;
         return;
       }
 
-      requests.forEach(req => {
+      filteredReqs.forEach(req => {
         const item = document.createElement("div");
-        item.className = "glass-card";
+        item.className = "glass-card dev-order-item";
         item.style.padding = "1rem";
         item.style.marginBottom = "0.75rem";
+
+        const isCompleted = req.status === "selesai";
+
         item.innerHTML = `
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
             <strong>${escapeHtml(req.userName)}</strong>
-            <span style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 9999px; background: rgba(212,175,55,0.15); color: var(--accent-light);">
+            <span style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 9999px; background: ${isCompleted ? 'rgba(16,185,129,0.15)' : 'rgba(212,175,55,0.15)'}; color: ${isCompleted ? '#10b981' : 'var(--accent-light)'};">
               ${escapeHtml(req.status || 'baru')}
             </span>
           </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.65rem;">
             Paket: ${escapeHtml(req.packageName)} • WA: ${escapeHtml(req.whatsapp || '-')}
           </div>
-          <button class="btn-vip" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; width: 100%;">
-            💬 Buka Chat & Kelola Pesanan
-          </button>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" class="btn-vip dev-card-chat-btn" style="flex: 1; padding: 0.35rem 0.75rem; font-size: 0.78rem;">
+              💬 Buka Chat & Kelola
+            </button>
+            <button type="button" class="btn-secondary dev-card-delete-btn" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.06);">
+              🗑 Hapus Pesanan
+            </button>
+          </div>
         `;
-        item.querySelector("button").onclick = () => {
+
+        item.querySelector(".dev-card-chat-btn").onclick = () => {
           closeSheet("dev-sheet");
           openSheet("my-requests-sheet");
           openChatForRequest(req.id);
         };
+
+        const deleteBtn = item.querySelector(".dev-card-delete-btn");
+        deleteBtn.onclick = () => handleSingleOrderDelete(req, deleteBtn);
+
         devOrdersList.appendChild(item);
       });
     }
@@ -5940,6 +6480,7 @@
         };
       });
     }
+    window.renderDevOrdersList = renderDevOrdersList;
 
     async function updateRequestStatus(requestId, newStatus) {
       if (!STATE.isDev) return;
