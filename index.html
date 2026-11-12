@@ -1264,7 +1264,8 @@
       justify-content: flex-end;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.28s ease;
+      transition: opacity 0.28s ease, background-color 0.25s ease, backdrop-filter 0.25s ease;
+      overscroll-behavior: contain;
     }
 
     .sheet-overlay.active {
@@ -1280,15 +1281,37 @@
       border-bottom: none;
       border-radius: 28px 28px 0 0;
       padding: 1.5rem 1.25rem calc(1.5rem + var(--safe-bottom));
-      max-height: 88vh;
+      max-height: 92vh !important;
       overflow-y: auto;
       transform: translateY(100%);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 -14px 45px rgba(0, 0, 0, 0.65), 0 -2px 35px var(--accent-glow), var(--glass-highlight);
+      touch-action: pan-y;
+      will-change: transform;
+      overscroll-behavior: contain;
+    }
+
+    .bottom-sheet.is-dragging {
+      transition: none !important;
+      user-select: none;
+    }
+
+    .bottom-sheet.is-snapping {
+      transition: transform 0.36s cubic-bezier(0.175, 0.885, 0.32, 1.08) !important;
+    }
+
+    .bottom-sheet.is-closing {
+      transition: transform 0.26s cubic-bezier(0.32, 1, 0.23, 1) !important;
     }
 
     .sheet-overlay.active .bottom-sheet {
       transform: translateY(0);
+    }
+
+    body.sheet-open {
+      overflow: hidden !important;
+      touch-action: none;
+      overscroll-behavior: none;
     }
 
     /* Fallback for devices/browsers without backdrop-filter support */
@@ -1308,8 +1331,30 @@
       width: 44px;
       height: 5px;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
       margin: 0 auto 1.25rem;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      outline: none;
+      border: 1px solid transparent;
+      transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .sheet-handle:hover,
+    .sheet-handle:focus-visible {
+      width: 58px;
+      background: rgba(255, 255, 255, 0.48);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .sheet-handle:active,
+    .bottom-sheet.is-dragging .sheet-handle {
+      width: 64px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+      cursor: grabbing;
     }
 
     .sheet-header {
@@ -1317,6 +1362,32 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.25rem;
+      touch-action: none;
+      user-select: none;
+    }
+
+    .sheet-header .sheet-close-btn,
+    .sheet-header button,
+    .sheet-header a,
+    .sheet-header input {
+      touch-action: auto;
+      user-select: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bottom-sheet {
+        transition: transform 0.15s ease !important;
+      }
+      .bottom-sheet.is-snapping,
+      .bottom-sheet.is-closing {
+        transition: transform 0.15s ease !important;
+      }
+      .sheet-overlay {
+        transition: opacity 0.15s ease !important;
+      }
+      .sheet-handle {
+        transition: none !important;
+      }
     }
 
     .sheet-title {
@@ -2265,7 +2336,7 @@
   <!-- 1. LOGIN PROMPT BOTTOM SHEET -->
   <div class="sheet-overlay" id="login-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <h3 class="sheet-title">Akses VIP Diperlukan</h3>
         <button class="sheet-close-btn" data-close-sheet="login-sheet">✕</button>
@@ -2291,7 +2362,7 @@
   <!-- 2. VIP REQUEST FORM BOTTOM SHEET -->
   <div class="sheet-overlay" id="request-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title">Form Pemesanan VIP</h3>
@@ -2359,7 +2430,7 @@
   <!-- 3. MY REQUESTS & LIVE CHAT DRAWER -->
   <div class="sheet-overlay" id="my-requests-sheet">
     <div class="bottom-sheet" style="max-height: 94vh;">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title">Ruang Proyek VIP Saya</h3>
@@ -2377,7 +2448,7 @@
   <!-- 4. DEV DASHBOARD & THEME DRAWER -->
   <div class="sheet-overlay" id="dev-sheet">
     <div class="bottom-sheet" style="max-height: 94vh;">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
@@ -2533,7 +2604,7 @@
   <!-- 5. NOTIFICATIONS DRAWER -->
   <div class="sheet-overlay" id="notif-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <h3 class="sheet-title">Notifikasi</h3>
         <button class="sheet-close-btn" data-close-sheet="notif-sheet">✕</button>
@@ -2547,7 +2618,7 @@
   <!-- 6. iOS PWA INSTALL GUIDE MODAL -->
   <div class="sheet-overlay" id="ios-guide-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <h3 class="sheet-title">Pasang di iPhone / iPad</h3>
         <button class="sheet-close-btn" data-close-sheet="ios-guide-sheet">✕</button>
@@ -2573,7 +2644,7 @@
   <!-- 8. DEV TEXT EDITOR BOTTOM SHEET (TAP TO EDIT) -->
   <div class="sheet-overlay" id="dev-text-editor-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" id="dev-text-editor-title">Ubah Teks</h3>
@@ -2604,7 +2675,7 @@
   <!-- 9. DEV PACKAGE EDITOR BOTTOM SHEET -->
   <div class="sheet-overlay" id="dev-package-sheet">
     <div class="bottom-sheet" style="max-height: 94vh;">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" id="dev-package-sheet-title">Kelola Paket Layanan</h3>
@@ -2675,7 +2746,7 @@
   <!-- 10. DEV PROJECT / KARYA EDITOR BOTTOM SHEET -->
   <div class="sheet-overlay" id="dev-project-sheet">
     <div class="bottom-sheet" style="max-height: 94vh;">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" id="dev-project-sheet-title">Kelola Karya & Portofolio</h3>
@@ -2750,7 +2821,7 @@
   <!-- 11. DEV SLOT & STATUS EDITOR BOTTOM SHEET -->
   <div class="sheet-overlay" id="dev-slot-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title">Atur Slot & Penerimaan Request</h3>
@@ -2793,7 +2864,7 @@
   <!-- 12. DEV CONTACT EDITOR BOTTOM SHEET -->
   <div class="sheet-overlay" id="dev-contact-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" id="dev-contact-sheet-title">Kelola Kontak</h3>
@@ -2837,7 +2908,7 @@
   <!-- 13. DEV PHOTO EDITOR (COVER & AVATAR CROP / COMPRESS) -->
   <div class="sheet-overlay" id="dev-photo-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" id="dev-photo-sheet-title">Ganti Foto</h3>
@@ -2868,7 +2939,7 @@
   <!-- 14. CHAT QRIS & REKENING POPUP MODAL -->
   <div class="sheet-overlay" id="chat-qris-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title">QRIS & Rekening Pembayaran</h3>
@@ -2892,7 +2963,7 @@
   <!-- 15. WRITE REVIEW MODAL SHEET (DENGAN PRATINJAU PRIVASI SENSOR NAMA) -->
   <div class="sheet-overlay" id="write-review-sheet">
     <div class="bottom-sheet" style="max-height: 90vh;">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title">Tulis Ulasan Klien</h3>
@@ -2943,7 +3014,7 @@
   <!-- 16. DEV ANNOUNCEMENT BOTTOM SHEET (MANAGE ANNOUNCEMENT) -->
   <div class="sheet-overlay" id="dev-announcement-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title">Kelola Pengumuman</h3>
@@ -2979,7 +3050,7 @@
   <!-- 17. DEV SKILL BOTTOM SHEET (ADD/EDIT/DELETE SKILL TAGS) -->
   <div class="sheet-overlay" id="dev-skill-sheet">
     <div class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
       <div class="sheet-header">
         <div>
           <h3 class="sheet-title" id="dev-skill-sheet-title">Kelola Keahlian</h3>
@@ -3572,15 +3643,444 @@
     }
     window.promptDialog = promptDialog;
 
+    /* ==========================================================================
+       GESTURE-DRAGGABLE BOTTOM SHEETS CONTROLLER
+       ========================================================================== */
+    function updateBodyScrollLock() {
+      const activeSheets = document.querySelectorAll(".sheet-overlay.active");
+      if (activeSheets.length > 0) {
+        document.body.classList.add("sheet-open");
+      } else {
+        document.body.classList.remove("sheet-open");
+      }
+    }
+
+    function initDraggableBottomSheets() {
+      const isReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Helper to check if virtual keyboard is likely open
+      function isKeyboardOpen() {
+        const active = document.activeElement;
+        const isInput = active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.isContentEditable);
+        const isViewportShrunk = window.visualViewport && (window.visualViewport.height < window.innerHeight * 0.75);
+        return Boolean(isInput && isViewportShrunk);
+      }
+
+      // Helper to find scrollable parent inside sheet
+      function getScrollableParent(target, sheet) {
+        let el = target;
+        while (el && el !== sheet) {
+          if (el.scrollHeight > el.clientHeight + 4) {
+            const oy = window.getComputedStyle(el).overflowY;
+            if (oy === "auto" || oy === "scroll") {
+              return el;
+            }
+          }
+          el = el.parentElement;
+        }
+        return sheet;
+      }
+
+      // Global Esc listener for closing topmost sheet
+      if (!window._bottomSheetEscBound) {
+        window._bottomSheetEscBound = true;
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            const activeOverlays = Array.from(document.querySelectorAll(".sheet-overlay.active"));
+            if (activeOverlays.length > 0) {
+              const top = activeOverlays[activeOverlays.length - 1];
+              closeSheet(top.id);
+            }
+          }
+        });
+      }
+
+      const overlays = document.querySelectorAll(".sheet-overlay");
+      overlays.forEach(overlay => {
+        if (overlay._bottomSheetController) return; // Prevent duplicate binding
+
+        const sheet = overlay.querySelector(".bottom-sheet");
+        if (!sheet) return;
+
+        let handle = sheet.querySelector(".sheet-handle");
+        if (!handle) {
+          handle = document.createElement("div");
+          handle.className = "sheet-handle";
+          sheet.insertBefore(handle, sheet.firstChild);
+        }
+
+        // Accessibility attributes for handle
+        handle.setAttribute("tabindex", "0");
+        handle.setAttribute("role", "button");
+        handle.setAttribute("aria-label", "Tarik untuk menutup atau memperbesar");
+
+        // Controller state
+        let currentSnap = "initial"; // 'initial' or 'expanded'
+        let currentY = 0;
+        let isPointerDown = false;
+        let isDragging = false;
+        let isClosing = false;
+        let activePointerId = null;
+        let startX = 0;
+        let startY = 0;
+        let startSheetY = 0;
+        let lastY = 0;
+        let lastTime = 0;
+        let velocityY = 0;
+        let dragSource = null; // 'handle', 'header', or 'content'
+        let scrollEl = null;
+        let initialScrollTop = 0;
+
+        // Metrics calculation (60vh initial snap, 92vh maximum full snap)
+        function getMetrics() {
+          const vh = window.innerHeight;
+          const fullMax = Math.round(vh * 0.92);
+          const initMax = Math.round(vh * 0.60);
+          const rect = sheet.getBoundingClientRect();
+          const height = Math.min(fullMax, Math.max(rect.height, 120));
+          const isExpandable = height > (initMax + 20);
+          const yExpanded = 0;
+          const yInitial = isExpandable ? (height - initMax) : 0;
+          const visibleInitialH = isExpandable ? initMax : height;
+          return { vh, fullMax, initMax, height, isExpandable, yExpanded, yInitial, visibleInitialH };
+        }
+
+        let metrics = getMetrics();
+
+        function applyBackdropFade(y) {
+          const baseRestY = (currentSnap === "expanded") ? metrics.yExpanded : metrics.yInitial;
+          if (y > baseRestY) {
+            const closeDist = Math.max(1, metrics.height - baseRestY);
+            const progress = Math.max(0, Math.min(1, 1 - (y - baseRestY) / closeDist));
+            overlay.style.backgroundColor = `rgba(0, 0, 0, ${(0.65 * progress).toFixed(3)})`;
+            overlay.style.backdropFilter = `blur(${(8 * progress).toFixed(1)}px)`;
+            overlay.style.webkitBackdropFilter = `blur(${(8 * progress).toFixed(1)}px)`;
+          } else {
+            overlay.style.backgroundColor = "";
+            overlay.style.backdropFilter = "";
+            overlay.style.webkitBackdropFilter = "";
+          }
+        }
+
+        function snapTo(snapTarget) {
+          metrics = getMetrics();
+          currentSnap = snapTarget;
+          const targetY = (snapTarget === "expanded") ? metrics.yExpanded : metrics.yInitial;
+          currentY = targetY;
+
+          sheet.classList.remove("is-dragging", "is-closing");
+          sheet.classList.add("is-snapping");
+          sheet.style.transform = `translateY(${targetY}px)`;
+          overlay.style.backgroundColor = "";
+          overlay.style.backdropFilter = "";
+          overlay.style.webkitBackdropFilter = "";
+
+          const duration = isReducedMotion() ? 160 : 360;
+          setTimeout(() => {
+            sheet.classList.remove("is-snapping");
+          }, duration);
+        }
+
+        function open() {
+          if (isClosing) return;
+          overlay.classList.add("active");
+          updateBodyScrollLock();
+
+          sheet.style.transition = "none";
+          sheet.style.transform = "translateY(100%)";
+          overlay.style.backgroundColor = "";
+          overlay.style.backdropFilter = "";
+          overlay.style.webkitBackdropFilter = "";
+
+          requestAnimationFrame(() => {
+            metrics = getMetrics();
+            currentSnap = "initial";
+            currentY = metrics.yInitial;
+
+            sheet.classList.remove("is-closing", "is-dragging");
+            sheet.classList.add("is-snapping");
+            sheet.style.transition = "";
+            sheet.style.transform = `translateY(${metrics.yInitial}px)`;
+
+            const duration = isReducedMotion() ? 160 : 360;
+            setTimeout(() => {
+              sheet.classList.remove("is-snapping");
+            }, duration);
+          });
+        }
+
+        function close() {
+          if (isClosing || !overlay.classList.contains("active")) return;
+          isClosing = true;
+          metrics = getMetrics();
+
+          sheet.classList.remove("is-dragging", "is-snapping");
+          sheet.classList.add("is-closing");
+          const exitY = Math.max(metrics.height, window.innerHeight) + 40;
+          sheet.style.transform = `translateY(${exitY}px)`;
+          overlay.style.backgroundColor = "rgba(0, 0, 0, 0)";
+          overlay.style.backdropFilter = "none";
+          overlay.style.webkitBackdropFilter = "none";
+
+          const duration = isReducedMotion() ? 140 : 270;
+          setTimeout(() => {
+            overlay.classList.remove("active");
+            sheet.classList.remove("is-closing");
+            sheet.style.transform = "";
+            sheet.style.transition = "";
+            overlay.style.backgroundColor = "";
+            overlay.style.backdropFilter = "";
+            overlay.style.webkitBackdropFilter = "";
+            currentSnap = "initial";
+            currentY = 0;
+            isClosing = false;
+            updateBodyScrollLock();
+          }, duration);
+        }
+
+        function onPointerDown(e) {
+          if (e.button !== undefined && e.button !== 0) return;
+          if (!overlay.classList.contains("active")) return;
+          if (isClosing) return;
+
+          // Requirement 5: Do not drag if virtual keyboard is open
+          if (isKeyboardOpen()) return;
+
+          const target = e.target;
+
+          // Requirement 5: Do not drag from inputs, textareas, selects, buttons (except handle), or horizontal scroll containers
+          if (target.closest("input, textarea, select, option, audio, video, label")) return;
+          if (target.closest(".sheet-close-btn") || (target.closest("button") && !target.closest(".sheet-handle"))) return;
+
+          // Check horizontal carousels or horizontally scrollable elements
+          const horiz = target.closest(".carousel-track, .project-card-gallery, .filter-chips, [data-horizontal-scroll], [class*='carousel']");
+          if (horiz) return;
+          let el = target;
+          let hasHoriz = false;
+          while (el && el !== sheet) {
+            if (el.scrollWidth > el.clientWidth + 12) {
+              const ox = window.getComputedStyle(el).overflowX;
+              if (ox === "auto" || ox === "scroll") {
+                hasHoriz = true;
+                break;
+              }
+            }
+            el = el.parentElement;
+          }
+          if (hasHoriz) return;
+
+          metrics = getMetrics();
+          const isHandle = !!target.closest(".sheet-handle");
+          const isHeader = !isHandle && !!target.closest(".sheet-header");
+          const isContent = !isHandle && !isHeader;
+
+          scrollEl = getScrollableParent(target, sheet);
+          initialScrollTop = scrollEl ? scrollEl.scrollTop : 0;
+
+          // Requirement 4: Swiping down inside content only drags sheet if scrollTop is 0
+          if (isContent && initialScrollTop > 0) return;
+
+          isPointerDown = true;
+          activePointerId = e.pointerId;
+          startX = e.clientX;
+          startY = e.clientY;
+          lastY = e.clientY;
+          lastTime = performance.now();
+          velocityY = 0;
+          dragSource = isHandle ? "handle" : (isHeader ? "header" : "content");
+          startSheetY = currentY;
+        }
+
+        function onPointerMove(e) {
+          if (!isPointerDown || e.pointerId !== activePointerId) return;
+
+          const now = performance.now();
+          const dt = now - lastTime;
+          if (dt > 0) {
+            velocityY = (e.clientY - lastY) / dt;
+          }
+          lastY = e.clientY;
+          lastTime = now;
+
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+
+          if (!isDragging) {
+            // Cancel if horizontal swipe
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+              isPointerDown = false;
+              return;
+            }
+
+            if (dragSource === "content") {
+              if (scrollEl && scrollEl.scrollTop > 0) {
+                isPointerDown = false;
+                return;
+              }
+              // If user swipes UP in expanded mode, allow content to scroll
+              if (dy < 0 && currentSnap === "expanded") {
+                isPointerDown = false;
+                return;
+              }
+              if (Math.abs(dy) < 6) return;
+            } else {
+              if (Math.abs(dy) < 4) return;
+            }
+
+            isDragging = true;
+            sheet.classList.add("is-dragging");
+            sheet.classList.remove("is-snapping");
+            try {
+              sheet.setPointerCapture(e.pointerId);
+            } catch (_) {}
+          }
+
+          let rawY = startSheetY + dy;
+
+          // Requirement 8: Rubber-band resistance if dragged up past expanded (rawY < 0)
+          let appliedY = rawY;
+          if (rawY < 0) {
+            const over = -rawY;
+            const damped = (over * 65) / (over + 180);
+            appliedY = -damped;
+          }
+
+          currentY = appliedY;
+          sheet.style.transform = `translateY(${currentY.toFixed(1)}px)`;
+          applyBackdropFade(currentY);
+        }
+
+        function onPointerUp(e) {
+          if (e.pointerId !== activePointerId && activePointerId !== null) return;
+          const wasDragging = isDragging;
+          const v = velocityY;
+          const finalY = currentY;
+
+          isPointerDown = false;
+          isDragging = false;
+          activePointerId = null;
+          dragSource = null;
+
+          sheet.classList.remove("is-dragging");
+          try {
+            sheet.releasePointerCapture(e.pointerId);
+          } catch (_) {}
+
+          if (!wasDragging) return;
+
+          // Snap destination resolution
+          if (!metrics.isExpandable) {
+            // Single size (fits within 60vh)
+            const threshold = metrics.height * 0.30;
+            if (finalY > threshold || v > 0.45) {
+              close();
+            } else {
+              snapTo("initial");
+            }
+          } else {
+            // Expandable (2 snap sizes: initial @ yInitial, expanded @ yExpanded = 0)
+            if (startSheetY >= (metrics.yInitial - 10)) {
+              // Started at initial position
+              if (finalY < metrics.yInitial) {
+                // Dragged UP towards expanded
+                const distUp = metrics.yInitial - finalY;
+                const totalDist = metrics.yInitial;
+                if ((distUp > 0.30 * totalDist) || v < -0.40) {
+                  snapTo("expanded");
+                } else {
+                  snapTo("initial");
+                }
+              } else {
+                // Dragged DOWN towards close
+                const distDown = finalY - metrics.yInitial;
+                const closeDist = metrics.visibleInitialH;
+                if ((distDown > 0.30 * closeDist) || v > 0.45) {
+                  close();
+                } else {
+                  snapTo("initial");
+                }
+              }
+            } else {
+              // Started at expanded position (y = 0)
+              if (finalY <= 0) {
+                // Dragged above 0 (rubber band) -> return to expanded
+                snapTo("expanded");
+              } else {
+                // Dragged DOWN towards initial or close
+                if (finalY > (metrics.yInitial + 0.30 * metrics.visibleInitialH) || v > 0.85) {
+                  close();
+                } else if ((finalY > 0.30 * metrics.yInitial) || v > 0.40) {
+                  snapTo("initial");
+                } else {
+                  snapTo("expanded");
+                }
+              }
+            }
+          }
+        }
+
+        // Attach pointer listeners to sheet
+        sheet.addEventListener("pointerdown", onPointerDown, { passive: true });
+        sheet.addEventListener("pointermove", onPointerMove, { passive: true });
+        sheet.addEventListener("pointerup", onPointerUp, { passive: true });
+        sheet.addEventListener("pointercancel", onPointerUp, { passive: true });
+
+        // Handle keyboard accessibility (Enter/Space on handle)
+        handle.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            metrics = getMetrics();
+            if (metrics.isExpandable) {
+              if (currentSnap === "expanded") {
+                snapTo("initial");
+              } else {
+                snapTo("expanded");
+              }
+            } else {
+              close();
+            }
+          }
+        });
+
+        // Close on backdrop click (outside bottom-sheet)
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            close();
+          }
+        });
+
+        // Store controller instance on overlay
+        overlay._bottomSheetController = {
+          open,
+          close,
+          snapTo,
+          getMetrics,
+          getCurrentSnap: () => currentSnap
+        };
+      });
+    }
+
     /* Helper: Open & Close Bottom Sheet */
     function openSheet(id) {
-      const sheet = document.getElementById(id);
-      if (sheet) sheet.classList.add("active");
+      const overlay = document.getElementById(id);
+      if (!overlay) return;
+      if (overlay._bottomSheetController) {
+        overlay._bottomSheetController.open();
+      } else {
+        overlay.classList.add("active");
+        updateBodyScrollLock();
+      }
     }
 
     function closeSheet(id) {
-      const sheet = document.getElementById(id);
-      if (sheet) sheet.classList.remove("active");
+      const overlay = document.getElementById(id);
+      if (!overlay) return;
+      if (overlay._bottomSheetController) {
+        overlay._bottomSheetController.close();
+      } else {
+        overlay.classList.remove("active");
+        updateBodyScrollLock();
+      }
     }
     window.openSheet = openSheet;
     window.closeSheet = closeSheet;
@@ -3592,6 +4092,9 @@
         closeSheet(id);
       });
     });
+
+    // Initialize all draggable sheets
+    initDraggableBottomSheets();
 
     /* Lightbox Modal Helper */
     const lightbox = document.getElementById("lightbox");
