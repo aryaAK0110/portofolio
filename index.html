@@ -1760,6 +1760,44 @@
       filter: brightness(1.1);
     }
 
+    /* Privacy Policy Link & Sheet Styles */
+    .privacy-link {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      display: inline;
+      transition: opacity 0.2s ease;
+    }
+
+    .privacy-link:hover,
+    .privacy-link:focus-visible {
+      opacity: 0.85;
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+
+    #privacy-content-text {
+      white-space: pre-line;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-main);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+    }
+
+    body.is-dev-mode .dev-privacy-hint {
+      display: block !important;
+    }
+
     /* Package Switcher Sliding Pill */
     .pkg-tabs-wrap {
       position: relative;
@@ -2308,6 +2346,9 @@
     <footer style="text-align: center; padding: 2rem 0; color: var(--text-subtle); font-size: 0.84rem;">
       <p id="footer-copyright-p">© <span id="current-year"></span> <strong id="footer-author-name" data-dev-text="authorName" data-dev-label="Nama Lengkap di Footer">Dika Aditya</strong>. <span id="footer-copyright-text" data-dev-text="footerCopyright" data-dev-label="Teks Footer Hak Cipta">Dibuat dengan cinta & efisiensi solo dev.</span></p>
       <p id="footer-badge-text" data-dev-text="footerBadge" data-dev-label="Teks Footer Platform" style="margin-top: 0.3rem;">Berjalan di Firebase Spark & PWA GitHub Pages.</p>
+      <p style="margin-top: 0.55rem;">
+        <button type="button" class="privacy-link" data-open-privacy>Kebijakan Privasi</button>
+      </p>
     </footer>
 
   </main>
@@ -2355,6 +2396,9 @@
           <svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
           <span id="google-btn-text">Masuk dengan Google</span>
         </button>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.85rem;">
+          Dengan masuk, kamu menyetujui <button type="button" class="privacy-link" data-open-privacy>Kebijakan Privasi</button>.
+        </p>
       </div>
     </div>
   </div>
@@ -2423,6 +2467,9 @@
         <button type="submit" id="submit-order-btn" class="btn-vip" style="width: 100%; margin-top: 0.5rem;">
           <span>Kirim Request VIP</span>
         </button>
+        <p style="font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 0.65rem;">
+          Dengan melanjutkan, kamu menyetujui <button type="button" class="privacy-link" data-open-privacy>Kebijakan Privasi</button>
+        </p>
       </form>
     </div>
   </div>
@@ -2441,6 +2488,11 @@
 
       <div id="requests-list-container">
         <!-- Rendered dynamically -->
+      </div>
+      <div id="my-requests-privacy-actions" style="display: none; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); text-align: center;">
+        <button type="button" id="request-delete-data-btn" class="btn-secondary" style="width: 100%; font-size: 0.84rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.06);">
+          🗑 Minta hapus data saya
+        </button>
       </div>
     </div>
   </div>
@@ -2632,6 +2684,30 @@
         </ol>
       </div>
       <button class="btn-secondary" data-close-sheet="ios-guide-sheet" style="width: 100%;">Tutup</button>
+    </div>
+  </div>
+
+  <!-- 6B. PRIVACY POLICY BOTTOM SHEET -->
+  <div class="sheet-overlay" id="privacy-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
+      <div class="sheet-header">
+        <div>
+          <h3 class="sheet-title">Kebijakan Privasi</h3>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Transparansi data pribadi Anda</div>
+        </div>
+        <button class="sheet-close-btn" data-close-sheet="privacy-sheet">✕</button>
+      </div>
+
+      <div class="dev-privacy-hint" style="display: none; font-size: 0.78rem; color: var(--accent-light); margin-bottom: 0.65rem;">
+        ✏️ Mode Dev: Ketuk teks kebijakan di bawah untuk mengubahnya.
+      </div>
+
+      <div id="privacy-scroll-wrap" style="max-height: min(42vh, 320px); overflow-y: auto; margin-bottom: 1rem;">
+        <div id="privacy-content-text" data-dev-text="privacyText" data-dev-label="Kebijakan Privasi"></div>
+      </div>
+
+      <button type="button" class="btn-secondary" data-close-sheet="privacy-sheet" style="width: 100%;">Tutup</button>
     </div>
   </div>
 
@@ -3192,6 +3268,24 @@
       { icon: "🎨", name: "Minimalist Glass Design" }
     ];
 
+    const DEFAULT_PRIVACY_TEXT = `Kebijakan Privasi ini menjelaskan bagaimana data Anda dikelola saat menggunakan website ini.
+
+1. Data yang Disimpan
+• Akun & Pesanan: Nama dan email akun Google (melalui Firebase Auth), serta isi form request seperti nama pemesan, nomor WhatsApp, dan detail proyek.
+• Komunikasi & Ulasan: Pesan chat, foto bukti transfer, dan ulasan klien (nama pengulas disamarkan otomatis).
+• Statistik Pengunjung: Hanya berupa angka total kunjungan tanpa identitas pribadi.
+
+2. Tujuan Penggunaan
+Data hanya digunakan untuk memproses pesanan, komunikasi pengerjaan proyek, dan verifikasi pembayaran.
+
+3. Keamanan & Penyimpanan
+Data disimpan menggunakan layanan Google Firebase serta tidak pernah dijual atau dibagikan ke pihak lain. Info QRIS, chat, bukti transfer, dan detail pesanan hanya dapat dilihat oleh Anda (pemilik data) dan Dev (pemilik website), tidak tampil ke pengunjung lain. Foto bukti transfer dihapus setelah pesanan selesai, dan pemilik website dapat menghapus pesanan.
+
+4. Hak Anda & Kontak
+Anda boleh meminta data pesanan, chat, dan bukti transfer Anda dihapus kapan saja melalui tombol "Minta hapus data saya" di menu Pesanan Saya atau lewat kontak yang tertera di website.
+
+Terakhir diperbarui: 13 November 2026.`;
+
     // Default Site Content with complete texts dictionary
     const DEFAULT_SITE_CONTENT = {
       authorName: "Arya A.K",
@@ -3202,6 +3296,7 @@
       remainingSlots: 2,
       announcement: "✨ Slot batch bulan ini tersisa 2 proyek VIP. Konsultasi langsung via chat!",
       showAnnouncement: true,
+      privacyText: DEFAULT_PRIVACY_TEXT,
       coverUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
       avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
       theme: "dark-gold",
@@ -4093,6 +4188,27 @@
       });
     });
 
+    // Attach privacy sheet triggers
+    function openPrivacySheet() {
+      const privacyEl = document.getElementById("privacy-content-text");
+      if (privacyEl) {
+        const txt = (STATE.siteData && STATE.siteData.privacyText !== undefined)
+          ? STATE.siteData.privacyText
+          : DEFAULT_PRIVACY_TEXT;
+        privacyEl.textContent = txt;
+      }
+      openSheet("privacy-sheet");
+    }
+    window.openPrivacySheet = openPrivacySheet;
+
+    document.querySelectorAll("[data-open-privacy]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openPrivacySheet();
+      });
+    });
+
     // Initialize all draggable sheets
     initDraggableBottomSheets();
 
@@ -4675,6 +4791,11 @@
       renderAnnouncement();
       renderSkills();
 
+      const privacyEl = document.getElementById("privacy-content-text");
+      if (privacyEl) {
+        privacyEl.textContent = d.privacyText !== undefined ? d.privacyText : DEFAULT_PRIVACY_TEXT;
+      }
+
       if (d.theme) {
         setTheme(d.theme, false);
       }
@@ -4973,10 +5094,19 @@
 
       if (titleEl) titleEl.textContent = `Ubah: ${label}`;
       if (labelEl) labelEl.textContent = label;
-      
-      const currentVal = STATE.siteData?.texts?.[key] !== undefined 
-        ? STATE.siteData.texts[key] 
-        : (el ? el.textContent.trim() : "");
+
+      let currentVal = "";
+      if (key === "privacyText") {
+        currentVal = STATE.siteData?.privacyText !== undefined
+          ? STATE.siteData.privacyText
+          : DEFAULT_PRIVACY_TEXT;
+        if (inputEl) inputEl.rows = 8;
+      } else {
+        currentVal = STATE.siteData?.texts?.[key] !== undefined 
+          ? STATE.siteData.texts[key] 
+          : (el ? el.textContent.trim() : "");
+        if (inputEl) inputEl.rows = 5;
+      }
       
       if (inputEl) inputEl.value = currentVal;
       openSheet("dev-text-editor-sheet");
@@ -4990,6 +5120,28 @@
 
         const inputEl = document.getElementById("dev-text-editor-input");
         const val = inputEl ? inputEl.value : "";
+
+        if (key === "privacyText") {
+          if (!STATE.siteData) STATE.siteData = {};
+          STATE.siteData.privacyText = val;
+          applySiteContent();
+
+          if (STATE.isFirebaseActive && db) {
+            try {
+              await setDoc(doc(db, "site", "main"), {
+                privacyText: val
+              }, { merge: true });
+              showToast("Kebijakan Privasi berhasil disimpan ke Firestore!");
+            } catch (e) {
+              showToast("Gagal menyimpan ke Firestore: " + e.message);
+            }
+          } else {
+            showToast("Kebijakan Privasi diperbarui.");
+          }
+
+          closeSheet("dev-text-editor-sheet");
+          return;
+        }
 
         if (!STATE.siteData.texts) STATE.siteData.texts = {};
         STATE.siteData.texts[key] = val;
@@ -6499,6 +6651,11 @@
       const devOrdersList = document.getElementById("dev-orders-list");
       if (!container) return;
 
+      const privacyActions = document.getElementById("my-requests-privacy-actions");
+      if (privacyActions) {
+        privacyActions.style.display = (STATE.user && !STATE.isDev) ? "block" : "none";
+      }
+
       if (!STATE.user) {
         container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Silakan masuk terlebih dahulu untuk melihat pesanan.</div>`;
         return;
@@ -6915,6 +7072,10 @@
 
     function renderUserRequestsList(requests) {
       const container = document.getElementById("requests-list-container");
+      const privacyActions = document.getElementById("my-requests-privacy-actions");
+      if (privacyActions) {
+        privacyActions.style.display = (STATE.user && !STATE.isDev) ? "block" : "none";
+      }
       if (!container) return;
       container.innerHTML = "";
 
@@ -7723,6 +7884,50 @@
       // Hook Google login button
       const googleBtn = document.getElementById("google-signin-action-btn");
       if (googleBtn) googleBtn.onclick = handleGoogleLogin;
+
+      // Hook Buyer Data Deletion Request button ("Minta hapus data saya")
+      const reqDeleteDataBtn = document.getElementById("request-delete-data-btn");
+      if (reqDeleteDataBtn) {
+        reqDeleteDataBtn.onclick = async () => {
+          if (!STATE.user) {
+            showToast("Silakan masuk terlebih dahulu.");
+            return;
+          }
+          const ok = await confirmDialog({
+            title: "Minta Hapus Data Saya",
+            message: "Kirim permintaan ke admin untuk menghapus data pesanan, chat, dan bukti transfer Anda?",
+            confirmText: "Kirim Permintaan",
+            cancelText: "Batal",
+            danger: true
+          });
+          if (!ok) return;
+
+          const buyerName = (STATE.user.displayName || STATE.user.email || "Pembeli").trim();
+          const origHtml = reqDeleteDataBtn.innerHTML;
+          reqDeleteDataBtn.disabled = true;
+          reqDeleteDataBtn.textContent = "Mengirim permintaan...";
+
+          try {
+            if (STATE.isFirebaseActive && db) {
+              await addDoc(collection(db, "notifications"), {
+                title: "Permintaan Hapus Data",
+                body: `Pembeli ${buyerName} (${STATE.user.email || STATE.user.uid}) meminta penghapusan data pesanan, chat, dan bukti transfer.`.slice(0, 500),
+                requestId: "",
+                createdAt: serverTimestamp(),
+                read: false,
+                userId: DEV_CONFIG.devEmail
+              });
+            }
+            showToast("Permintaan terkirim. Data akan dihapus oleh admin.");
+          } catch (err) {
+            console.error("Gagal kirim permintaan hapus data:", err);
+            showToast("Gagal mengirim permintaan: " + (err.message || "Terjadi kesalahan"));
+          } finally {
+            reqDeleteDataBtn.disabled = false;
+            reqDeleteDataBtn.innerHTML = origHtml;
+          }
+        };
+      }
 
       // Save QRIS Handler (Dev Dashboard)
       const saveQrisBtn = document.getElementById("save-qris-btn");
