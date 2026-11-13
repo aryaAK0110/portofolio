@@ -64,6 +64,11 @@
       --text-muted: #aba69d;
       --text-subtle: #736e65;
 
+      --status-success: #4ade80;
+      --status-danger: #f87171;
+      --status-danger-text: #fca5a5;
+      --status-warning: #fbbf24;
+
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
@@ -160,6 +165,10 @@
       --text-main: #0f172a;
       --text-muted: #475569;
       --text-subtle: #94a3b8;
+      --status-success: #15803d;
+      --status-danger: #dc2626;
+      --status-danger-text: #b91c1c;
+      --status-warning: #b45309;
     }
 
     /* Auto Dark/Light according to Device */
@@ -182,6 +191,10 @@
         --text-main: #0f172a;
         --text-muted: #475569;
         --text-subtle: #94a3b8;
+        --status-success: #15803d;
+        --status-danger: #dc2626;
+        --status-danger-text: #b91c1c;
+        --status-warning: #b45309;
       }
     }
 
@@ -211,6 +224,8 @@
       flex-direction: column;
       position: relative;
       overflow-x: hidden;
+      background-color: var(--bg-base);
+      color: var(--text-main);
       padding-bottom: calc(72px + var(--safe-bottom));
     }
 
@@ -1275,6 +1290,7 @@
 
     .bottom-sheet {
       background: var(--glass-bg);
+      color: var(--text-main);
       backdrop-filter: blur(22px) saturate(140%);
       -webkit-backdrop-filter: blur(22px) saturate(140%);
       border: 1px solid var(--border-glass);
@@ -1552,7 +1568,7 @@
     .toast-message {
       padding: 0.85rem 1.15rem;
       border-radius: 12px;
-      background: rgba(22, 20, 17, 0.95);
+      background: var(--bg-surface-elevated);
       backdrop-filter: blur(14px);
       border: 1px solid var(--border-glass);
       color: var(--text-main);
@@ -2073,6 +2089,181 @@
       cursor: zoom-in;
     }
 
+    /* Promo Code Input & Breakdown */
+    .promo-input-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .promo-input-row .form-control {
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .promo-feedback {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+      min-height: 1.1em;
+    }
+
+    .promo-feedback.error {
+      color: var(--status-danger);
+    }
+
+    .promo-feedback.success {
+      color: var(--status-success);
+    }
+
+    .price-summary-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.86rem;
+    }
+
+    .price-summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .price-original-struck {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .price-final-highlight {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent-light);
+    }
+
+    .promo-warning-box {
+      margin-top: 0.45rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: var(--status-danger-text);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* Revision Quota Dots & Badges */
+    .revision-quota-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0.65rem 0.8rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .revision-quota-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .revision-dots-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .revision-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
+      background: transparent;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .revision-dot.filled {
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent-glow);
+    }
+
+    .revision-exhausted-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.14rem 0.5rem;
+      border-radius: 9999px;
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--status-danger);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    /* Cancelled Order Banner & Hanging Indicator */
+    .order-cancelled-banner {
+      margin: 0.85rem 0;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.38);
+      color: var(--status-danger-text);
+      font-size: 0.84rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .order-cancelled-title {
+      font-weight: 700;
+      color: var(--status-danger);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hanging-order-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.71rem;
+      font-weight: 700;
+      padding: 0.16rem 0.52rem;
+      border-radius: 9999px;
+      background: rgba(245, 158, 11, 0.18);
+      color: var(--status-warning);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+    }
+
+    .chat-readonly-banner {
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.32);
+      color: var(--status-danger-text);
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .chat-input-bar.is-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
     /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -2089,6 +2280,7 @@
       .toast-message { animation: none !important; }
       .pkg-enter-right, .pkg-enter-left { animation: none !important; }
       .chat-bubble-enter-left, .chat-bubble-enter-right { animation: none !important; }
+      .revision-dot { transition: none !important; }
     }
   </style>
 </head>
@@ -2429,6 +2621,31 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label" for="req-promo-input">Punya kode promo?</label>
+          <div class="promo-input-row">
+            <input type="text" id="req-promo-input" class="form-control" placeholder="CONTOH: DISKON20" maxlength="20" autocomplete="off" />
+            <button type="button" id="apply-promo-btn" class="btn-secondary" style="white-space: nowrap; padding: 0.72rem 1rem;">Terapkan</button>
+            <button type="button" id="clear-promo-btn" class="btn-secondary" style="display: none; white-space: nowrap; padding: 0.72rem 0.85rem; color: var(--status-danger); border-color: rgba(239,68,68,0.35);">Hapus</button>
+          </div>
+          <div id="req-promo-status" class="promo-feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <div id="req-price-summary" class="price-summary-box" style="display: none;">
+          <div class="price-summary-row">
+            <span style="color: var(--text-muted);">Harga Paket</span>
+            <span id="req-price-original">Rp 0</span>
+          </div>
+          <div class="price-summary-row" id="req-price-discount-row" style="display: none;">
+            <span style="color: var(--status-success);">Potongan Promo (<span id="req-price-promo-code"></span>)</span>
+            <span id="req-price-discount" style="color: var(--status-success); font-weight: 600;">- Rp 0</span>
+          </div>
+          <div class="price-summary-row" style="border-top: 1px dashed var(--border-subtle); padding-top: 0.35rem; margin-top: 0.15rem;">
+            <span style="font-weight: 700; color: var(--text-main);">Total Estimasi</span>
+            <span id="req-price-final" class="price-final-highlight">Rp 0</span>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label class="form-label" for="req-whatsapp">Nomor WhatsApp Aktif</label>
           <input type="tel" id="req-whatsapp" class="form-control" required placeholder="08xxxxxxxxxx" maxlength="20" />
         </div>
@@ -2513,11 +2730,12 @@
       </div>
 
       <!-- Dev Tabs -->
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
-        <button class="btn-secondary dev-tab-btn active" data-tab="tab-stats" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">Statistik & Data</button>
-        <button class="btn-secondary dev-tab-btn" data-tab="tab-theme" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">Ganti Tema</button>
-        <button class="btn-secondary dev-tab-btn" data-tab="tab-qris" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">QRIS & Rekening</button>
-        <button class="btn-secondary dev-tab-btn" data-tab="tab-orders" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">Semua Pesanan</button>
+      <div style="display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.6rem;">
+        <button class="btn-secondary dev-tab-btn active" data-tab="tab-stats" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">Statistik & Data</button>
+        <button class="btn-secondary dev-tab-btn" data-tab="tab-theme" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">Ganti Tema</button>
+        <button class="btn-secondary dev-tab-btn" data-tab="tab-qris" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">QRIS & Rekening</button>
+        <button class="btn-secondary dev-tab-btn" data-tab="tab-orders" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">Semua Pesanan</button>
+        <button class="btn-secondary dev-tab-btn" data-tab="tab-promos" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">Kode Promo</button>
       </div>
 
       <!-- Tab 1: Stats & Storage -->
@@ -2640,6 +2858,9 @@
               <button type="button" class="btn-secondary dev-order-filter-btn" data-filter="selesai" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;">
                 Selesai <span id="count-filter-completed">(0)</span>
               </button>
+              <button type="button" class="btn-secondary dev-order-filter-btn" data-filter="dibatalkan" style="padding: 0.3rem 0.65rem; font-size: 0.78rem;">
+                Dibatalkan <span id="count-filter-cancelled">(0)</span>
+              </button>
             </div>
             <button type="button" id="dev-delete-all-completed-btn" class="btn-secondary" style="display: none; padding: 0.3rem 0.65rem; font-size: 0.76rem; color: #f87171; border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.08);">
               🗑 Hapus Semua yang Selesai
@@ -2647,6 +2868,19 @@
           </div>
         </div>
         <div id="dev-orders-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Tab 5: Promo Codes (Dev Management) -->
+      <div id="tab-promos" class="dev-tab-content" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; flex-wrap: wrap;">
+          <div style="font-size: 0.84rem; color: var(--text-muted);">Kelola kode promo di koleksi <code>promos</code></div>
+          <button type="button" id="dev-add-promo-btn" class="btn-vip" style="padding: 0.42rem 0.9rem; font-size: 0.82rem;">
+            + Tambah Kode Promo
+          </button>
+        </div>
+        <div id="dev-promos-list">
           <!-- Rendered dynamically -->
         </div>
       </div>
@@ -2776,6 +3010,12 @@
             <label class="form-label" for="pkg-edit-duration">Estimasi Waktu</label>
             <input type="text" id="pkg-edit-duration" class="form-control" placeholder="3 - 5 Hari Kerja" required maxlength="40" />
           </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pkg-edit-revisions">Kuota Revisi</label>
+          <input type="number" id="pkg-edit-revisions" class="form-control" min="0" max="99" value="2" required />
+          <div style="font-size: 0.76rem; color: var(--text-subtle); margin-top: 0.25rem;">Jumlah revisi gratis yang otomatis disalin ke pesanan saat ditandai dibayar.</div>
         </div>
 
         <div class="form-group">
@@ -3158,6 +3398,115 @@
     </div>
   </div>
 
+  <!-- 17B. DEV PROMO EDITOR BOTTOM SHEET -->
+  <div class="sheet-overlay" id="dev-promo-sheet">
+    <div class="bottom-sheet" style="max-height: 94vh;">
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
+      <div class="sheet-header">
+        <div>
+          <h3 class="sheet-title" id="dev-promo-sheet-title">Tambah Kode Promo</h3>
+          <div style="font-size: 0.8rem; color: var(--accent-light);">Hanya A-Z, 0-9, dan tanda hubung (-) maks 20 karakter</div>
+        </div>
+        <button class="sheet-close-btn" data-close-sheet="dev-promo-sheet">✕</button>
+      </div>
+
+      <form id="dev-promo-form">
+        <input type="hidden" id="promo-edit-mode" value="create" />
+        <div class="form-group">
+          <label class="form-label" for="promo-edit-code">Kode Promo</label>
+          <input type="text" id="promo-edit-code" class="form-control" placeholder="DISKON20" maxlength="20" required style="text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em;" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="form-group">
+            <label class="form-label" for="promo-edit-type">Tipe Potongan</label>
+            <select id="promo-edit-type" class="form-control" required>
+              <option value="percent">Persen (%)</option>
+              <option value="fixed">Potongan Tetap (Rp)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="promo-edit-value">Nilai Potongan</label>
+            <input type="number" id="promo-edit-value" class="form-control" min="1" required placeholder="20" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="form-group">
+            <label class="form-label" for="promo-edit-max-uses">Maksimal Pemakaian</label>
+            <input type="number" id="promo-edit-max-uses" class="form-control" min="0" value="0" required />
+            <div style="font-size: 0.74rem; color: var(--text-subtle); margin-top: 0.2rem;">0 = tanpa batas</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="promo-edit-expires">Kedaluwarsa (Opsional)</label>
+            <input type="datetime-local" id="promo-edit-expires" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Berlaku untuk Paket (Kosongkan = Semua Paket)</label>
+          <div id="promo-edit-packages-wrap" style="display: flex; flex-direction: column; gap: 0.45rem; padding: 0.65rem 0.8rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 10px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="promo-edit-note">Catatan Dev (Internal)</label>
+          <textarea id="promo-edit-note" class="form-control" rows="2" placeholder="Catatan promo hanya terlihat oleh Dev..." maxlength="300"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.88rem;">
+            <input type="checkbox" id="promo-edit-active" checked style="width: 18px; height: 18px; accent-color: var(--accent);" />
+            <span style="font-weight: 600; color: var(--accent-light);">Kode Promo Aktif</span>
+          </label>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; margin-top: 1rem;">
+          <button type="submit" id="promo-save-btn" class="btn-vip" style="flex: 1;">
+            <span>Simpan Promo</span>
+          </button>
+          <button type="button" id="promo-delete-btn" class="btn-secondary" style="padding: 0.65rem 1rem; color: #f87171; border-color: rgba(239, 68, 68, 0.4); display: none;">
+            Hapus
+          </button>
+          <button type="button" class="btn-secondary" data-close-sheet="dev-promo-sheet" style="padding: 0.65rem 1rem;">
+            Batal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 17C. CANCEL ORDER BOTTOM SHEET (BUYER & DEV) -->
+  <div class="sheet-overlay" id="cancel-order-sheet">
+    <div class="bottom-sheet">
+      <div class="sheet-handle" tabindex="0" role="button" aria-label="Tarik untuk menutup atau memperbesar"></div>
+      <div class="sheet-header">
+        <div>
+          <h3 class="sheet-title" id="cancel-order-sheet-title">Batalkan Pesanan</h3>
+          <div id="cancel-order-sheet-sub" style="font-size: 0.8rem; color: var(--text-muted);">Pesanan yang dibatalkan tidak bisa dibuka kembali</div>
+        </div>
+        <button class="sheet-close-btn" data-close-sheet="cancel-order-sheet">✕</button>
+      </div>
+
+      <input type="hidden" id="cancel-order-id" value="" />
+      <div class="form-group">
+        <label class="form-label" for="cancel-reason-input" id="cancel-reason-label">Alasan Pembatalan</label>
+        <textarea id="cancel-reason-input" class="form-control" rows="3" maxlength="200" placeholder="Tulis alasan pembatalan (maks 200 karakter)..."></textarea>
+        <div id="cancel-reason-hint" style="font-size: 0.76rem; color: var(--text-subtle); margin-top: 0.3rem;">Opsional. Maksimal 200 karakter.</div>
+      </div>
+
+      <div style="display: flex; gap: 0.6rem; margin-top: 0.75rem;">
+        <button type="button" id="cancel-order-submit-btn" class="btn-secondary custom-modal-btn-danger" style="flex: 1;">
+          Batalkan Pesanan
+        </button>
+        <button type="button" class="btn-secondary" data-close-sheet="cancel-order-sheet" style="padding: 0.65rem 1rem;">
+          Kembali
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- 18. CUSTOM CONFIRM & PROMPT MODAL (REPLACES BROWSER CONFIRM/PROMPT) -->
   <div class="custom-modal-overlay" id="custom-modal-overlay">
     <div class="custom-modal-card" id="custom-modal-dialog" role="dialog" aria-modal="true" tabindex="-1">
@@ -3206,7 +3555,8 @@
       getDocs,
       writeBatch,
       serverTimestamp,
-      increment
+      increment,
+      Timestamp
     } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
     import {
       initializeAppCheck,
@@ -3251,6 +3601,10 @@
       contacts: [],
       skills: [],
       activeRequests: [],
+      requestsLoadedUid: null,
+      promos: {},
+      promosList: [],
+      appliedPromo: null,
       currentActiveChatRequestId: null,
       theme: "dark-gold",
       activePackageGroup: "utama", // "utama" | "vip"
@@ -3362,6 +3716,7 @@ Terakhir diperbarui: 13 November 2026.`;
         price: "Rp 1.500.000",
         duration: "3 - 5 Hari Kerja",
         group: "utama",
+        revisions: 2,
         isPopular: false,
         features: [
           "1 Halaman Landing Page Responsif",
@@ -3376,6 +3731,7 @@ Terakhir diperbarui: 13 November 2026.`;
         price: "Rp 3.800.000",
         duration: "7 - 10 Hari Kerja",
         group: "vip",
+        revisions: 3,
         isPopular: true,
         features: [
           "Aplikasi Web Full-Stack / PWA",
@@ -3391,6 +3747,7 @@ Terakhir diperbarui: 13 November 2026.`;
         price: "Rp 7.500.000+",
         duration: "14 - 21 Hari Kerja",
         group: "vip",
+        revisions: 3,
         isPopular: false,
         features: [
           "Arsitektur Cloud Skala Tinggi",
@@ -3519,6 +3876,100 @@ Terakhir diperbarui: 13 November 2026.`;
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
     }
+
+    /* Pure Helpers: Harga IDR, Kuota Revisi, Promo, & Status Menggantung */
+    function parsePriceIDR(priceStr) {
+      const digits = String(priceStr || "").replace(/[^\d]/g, "");
+      return digits ? (parseInt(digits, 10) || 0) : 0;
+    }
+
+    function formatIDR(amount) {
+      const n = Math.max(0, Math.round(Number(amount) || 0));
+      return "Rp " + n.toLocaleString("id-ID");
+    }
+
+    function getPackageRevisions(pkg) {
+      if (pkg && typeof pkg.revisions === "number" && !Number.isNaN(pkg.revisions) && pkg.revisions >= 0) {
+        return Math.floor(pkg.revisions);
+      }
+      return pkg && pkg.group === "vip" ? 3 : 2;
+    }
+
+    function toDateMs(val) {
+      if (!val) return null;
+      if (typeof val.toDate === "function") {
+        const d = val.toDate();
+        return d && !Number.isNaN(d.getTime()) ? d.getTime() : null;
+      }
+      if (typeof val === "object" && typeof val.seconds === "number") {
+        return val.seconds * 1000;
+      }
+      if (val instanceof Date) {
+        return !Number.isNaN(val.getTime()) ? val.getTime() : null;
+      }
+      const parsed = new Date(val);
+      return !Number.isNaN(parsed.getTime()) ? parsed.getTime() : null;
+    }
+
+    function computePromoDiscount(basePrice, promo) {
+      const base = Math.max(0, Math.round(Number(basePrice) || 0));
+      if (!promo) return { discount: 0, finalPrice: base };
+      const val = Math.max(0, Number(promo.value) || 0);
+      const rawDiscount = promo.type === "percent"
+        ? Math.floor(base * (val / 100))
+        : Math.floor(val);
+      const discount = Math.max(0, Math.min(base, rawDiscount));
+      const finalPrice = Math.max(0, base - discount);
+      return { discount, finalPrice };
+    }
+
+    function validatePromoForPackage(promoData, packageName, nowMs = Date.now()) {
+      if (!promoData || promoData.active !== true) {
+        return { ok: false, reason: "Kode tidak ditemukan" };
+      }
+      if (promoData.expiresAt) {
+        const expMs = toDateMs(promoData.expiresAt);
+        if (expMs !== null && expMs <= nowMs) {
+          return { ok: false, reason: "Kode sudah kedaluwarsa" };
+        }
+      }
+      const maxUses = Number(promoData.maxUses) || 0;
+      const usedCount = Number(promoData.usedCount) || 0;
+      if (maxUses > 0 && usedCount >= maxUses) {
+        return { ok: false, reason: "Kuota kode habis" };
+      }
+      const pkgNames = Array.isArray(promoData.packageNames)
+        ? promoData.packageNames.map(p => String(p).trim()).filter(Boolean)
+        : [];
+      if (pkgNames.length > 0 && !pkgNames.includes(packageName)) {
+        return { ok: false, reason: "Kode tidak berlaku untuk paket ini" };
+      }
+      return { ok: true, reason: "" };
+    }
+
+    function isOrderHanging(req, nowMs = Date.now()) {
+      if (!req || req.status !== "baru") return false;
+      const createdMs = toDateMs(req.serverCreatedAt) ?? toDateMs(req.createdAt);
+      if (createdMs === null) return false;
+      return (nowMs - createdMs) > (3 * 24 * 60 * 60 * 1000);
+    }
+
+    function countActiveUserOrders(requests, userId) {
+      if (!Array.isArray(requests)) return 0;
+      return requests.filter(r =>
+        (!userId || r.userId === userId) &&
+        r.status !== "selesai" &&
+        r.status !== "dibatalkan"
+      ).length;
+    }
+
+    window.parsePriceIDR = parsePriceIDR;
+    window.formatIDR = formatIDR;
+    window.getPackageRevisions = getPackageRevisions;
+    window.computePromoDiscount = computePromoDiscount;
+    window.validatePromoForPackage = validatePromoForPackage;
+    window.isOrderHanging = isOrderHanging;
+    window.countActiveUserOrders = countActiveUserOrders;
 
     /* Helper: Show Friendly Toast */
     function showToast(message, type = "info") {
@@ -4382,6 +4833,11 @@ Terakhir diperbarui: 13 November 2026.`;
         user.email.toLowerCase() === DEV_CONFIG.devEmail.toLowerCase() &&
         user.emailVerified
       );
+      STATE.appliedPromo = null;
+      if (!user) {
+        STATE.activeRequests = [];
+        STATE.requestsLoadedUid = null;
+      }
 
       // Toggle Dev mode class on body
       if (STATE.isDev) {
@@ -4395,6 +4851,9 @@ Terakhir diperbarui: 13 November 2026.`;
       loadUserRequests();
       listenToNotifications();
       listenToReviews();
+      if (typeof listenToPromos === "function") {
+        listenToPromos();
+      }
     }
 
     // Real Firebase Auth state listener
@@ -5905,7 +6364,7 @@ Terakhir diperbarui: 13 November 2026.`;
 
         const dur = document.createElement("div");
         dur.className = "package-duration";
-        dur.textContent = `⏱ ${pkg.duration || 'Waktu fleksibel'}`;
+        dur.textContent = `⏱ ${pkg.duration || 'Waktu fleksibel'} • 🔄 ${getPackageRevisions(pkg)}x Revisi`;
         card.appendChild(dur);
 
         const list = document.createElement("ul");
@@ -5992,6 +6451,7 @@ Terakhir diperbarui: 13 November 2026.`;
       const nameInput = document.getElementById("pkg-edit-name");
       const priceInput = document.getElementById("pkg-edit-price");
       const durInput = document.getElementById("pkg-edit-duration");
+      const revInput = document.getElementById("pkg-edit-revisions");
       const featuresInput = document.getElementById("pkg-edit-features");
       const popInput = document.getElementById("pkg-edit-popular");
       const delBtn = document.getElementById("pkg-delete-btn");
@@ -6002,6 +6462,7 @@ Terakhir diperbarui: 13 November 2026.`;
         if (nameInput) nameInput.value = pkg.name || "";
         if (priceInput) priceInput.value = pkg.price || "";
         if (durInput) durInput.value = pkg.duration || "";
+        if (revInput) revInput.value = getPackageRevisions(pkg);
         if (featuresInput) featuresInput.value = Array.isArray(pkg.features) ? pkg.features.join("\n") : "";
         if (popInput) popInput.checked = Boolean(pkg.isPopular);
         if (pkg.group === "vip") {
@@ -6016,6 +6477,7 @@ Terakhir diperbarui: 13 November 2026.`;
         if (nameInput) nameInput.value = "";
         if (priceInput) priceInput.value = "";
         if (durInput) durInput.value = "3 - 5 Hari Kerja";
+        if (revInput) revInput.value = STATE.activePackageGroup === "vip" ? 3 : 2;
         if (featuresInput) featuresInput.value = "";
         if (popInput) popInput.checked = false;
         if (STATE.activePackageGroup === "vip") {
@@ -6038,11 +6500,13 @@ Terakhir diperbarui: 13 November 2026.`;
         const price = document.getElementById("pkg-edit-price").value.trim();
         const duration = document.getElementById("pkg-edit-duration").value.trim();
         const group = document.querySelector('input[name="pkg-group"]:checked')?.value || "utama";
+        const revRaw = parseInt(document.getElementById("pkg-edit-revisions")?.value, 10);
+        const revisions = Number.isNaN(revRaw) || revRaw < 0 ? (group === "vip" ? 3 : 2) : revRaw;
         const rawFeatures = document.getElementById("pkg-edit-features").value;
         const features = rawFeatures.split("\n").map(f => f.trim()).filter(Boolean);
         const isPopular = document.getElementById("pkg-edit-popular").checked;
 
-        const pkgPayload = { id, name, price, duration, group, features, isPopular };
+        const pkgPayload = { id, name, price, duration, group, revisions, features, isPopular };
         const idx = STATE.packages.findIndex(p => p.id === id);
         if (idx >= 0) {
           STATE.packages[idx] = pkgPayload;
@@ -6447,8 +6911,211 @@ Terakhir diperbarui: 13 November 2026.`;
     }
 
     /* ==========================================================================
-       7. VIP REQUEST ORDER FLOW, QRIS & WHATSAPP REDIRECT
+       7. VIP REQUEST ORDER FLOW, PROMO CODES, QRIS & WHATSAPP REDIRECT
        ========================================================================== */
+    function resetRequestPromoUI(clearInput = true) {
+      STATE.appliedPromo = null;
+      const input = document.getElementById("req-promo-input");
+      const statusEl = document.getElementById("req-promo-status");
+      const clearBtn = document.getElementById("clear-promo-btn");
+      if (clearInput && input) input.value = "";
+      if (statusEl) {
+        statusEl.textContent = "";
+        statusEl.className = "promo-feedback";
+      }
+      if (clearBtn) clearBtn.style.display = "none";
+      updateOrderPricePreview();
+    }
+
+    function updateOrderPricePreview() {
+      const pkgSelect = document.getElementById("req-package");
+      const summaryBox = document.getElementById("req-price-summary");
+      const origEl = document.getElementById("req-price-original");
+      const discRow = document.getElementById("req-price-discount-row");
+      const promoCodeEl = document.getElementById("req-price-promo-code");
+      const discEl = document.getElementById("req-price-discount");
+      const finalEl = document.getElementById("req-price-final");
+      const statusEl = document.getElementById("req-promo-status");
+      const clearBtn = document.getElementById("clear-promo-btn");
+
+      if (!pkgSelect || !summaryBox) return;
+
+      const selectedPkg = STATE.packages.find(p => p.name === pkgSelect.value) || STATE.packages[0];
+      if (!selectedPkg) {
+        summaryBox.style.display = "none";
+        return;
+      }
+
+      const basePrice = parsePriceIDR(selectedPkg.price);
+      summaryBox.style.display = "flex";
+
+      if (STATE.appliedPromo) {
+        const check = validatePromoForPackage(STATE.appliedPromo.promo, selectedPkg.name);
+        if (!check.ok) {
+          STATE.appliedPromo = null;
+          if (statusEl) {
+            statusEl.textContent = check.reason;
+            statusEl.className = "promo-feedback error";
+          }
+          if (clearBtn) clearBtn.style.display = "none";
+        } else {
+          const calc = computePromoDiscount(basePrice, STATE.appliedPromo.promo);
+          STATE.appliedPromo.basePrice = basePrice;
+          STATE.appliedPromo.discount = calc.discount;
+          STATE.appliedPromo.finalPrice = calc.finalPrice;
+
+          if (origEl) {
+            origEl.textContent = formatIDR(basePrice);
+            origEl.className = "price-original-struck";
+          }
+          if (discRow) discRow.style.display = "flex";
+          if (promoCodeEl) promoCodeEl.textContent = STATE.appliedPromo.code;
+          if (discEl) discEl.textContent = `- ${formatIDR(calc.discount)}`;
+          if (finalEl) finalEl.textContent = formatIDR(calc.finalPrice);
+          return;
+        }
+      }
+
+      if (origEl) {
+        origEl.textContent = basePrice > 0 ? formatIDR(basePrice) : (selectedPkg.price || "Rp 0");
+        origEl.className = "";
+      }
+      if (discRow) discRow.style.display = "none";
+      if (finalEl) finalEl.textContent = basePrice > 0 ? formatIDR(basePrice) : (selectedPkg.price || "Rp 0");
+    }
+
+    const reqPackageSelect = document.getElementById("req-package");
+    if (reqPackageSelect) {
+      reqPackageSelect.addEventListener("change", () => {
+        updateOrderPricePreview();
+      });
+    }
+
+    const reqPromoInput = document.getElementById("req-promo-input");
+    if (reqPromoInput) {
+      reqPromoInput.addEventListener("input", () => {
+        const pos = reqPromoInput.selectionStart;
+        reqPromoInput.value = reqPromoInput.value.toUpperCase();
+        if (typeof pos === "number") {
+          try { reqPromoInput.setSelectionRange(pos, pos); } catch (_) {}
+        }
+      });
+    }
+
+    const clearPromoBtn = document.getElementById("clear-promo-btn");
+    if (clearPromoBtn) {
+      clearPromoBtn.onclick = () => resetRequestPromoUI(true);
+    }
+
+    const applyPromoBtn = document.getElementById("apply-promo-btn");
+    if (applyPromoBtn) {
+      applyPromoBtn.onclick = async () => {
+        if (!STATE.user) {
+          requireAuth(() => applyPromoBtn.click());
+          return;
+        }
+        const inputEl = document.getElementById("req-promo-input");
+        const statusEl = document.getElementById("req-promo-status");
+        const pkgSelect = document.getElementById("req-package");
+        if (!inputEl || !statusEl || !pkgSelect) return;
+
+        const code = inputEl.value.trim().toUpperCase();
+        inputEl.value = code;
+
+        const setPromoError = (msg) => {
+          STATE.appliedPromo = null;
+          statusEl.textContent = msg;
+          statusEl.className = "promo-feedback error";
+          if (clearPromoBtn) clearPromoBtn.style.display = "none";
+          updateOrderPricePreview();
+        };
+
+        if (!code) {
+          setPromoError("Masukkan kode promo terlebih dahulu.");
+          return;
+        }
+        if (!/^[A-Z0-9-]{1,20}$/.test(code)) {
+          setPromoError("Format kode promo hanya huruf A-Z, angka 0-9, dan tanda hubung (-).");
+          return;
+        }
+
+        const origLabel = applyPromoBtn.textContent;
+        applyPromoBtn.disabled = true;
+        applyPromoBtn.textContent = "Mengecek...";
+
+        try {
+          // Pastikan requests milik sendiri sudah dicek untuk mencegah pemakaian ulang kode yang sama
+          let myRequests = STATE.activeRequests.filter(r => r.userId === STATE.user.uid);
+          if (STATE.isFirebaseActive && db && STATE.requestsLoadedUid !== STATE.user.uid) {
+            try {
+              const mySnap = await getDocs(query(collection(db, "requests"), where("userId", "==", STATE.user.uid)));
+              const fetched = [];
+              mySnap.forEach(d => fetched.push({ id: d.id, ...d.data() }));
+              myRequests = fetched;
+              if (!STATE.isDev) {
+                STATE.activeRequests = fetched;
+                STATE.requestsLoadedUid = STATE.user.uid;
+              }
+            } catch (reqErr) {
+              console.warn("Cek riwayat request promo:", reqErr);
+            }
+          }
+
+          const alreadyUsed = myRequests.some(r => (r.promoCode || "").toUpperCase() === code);
+          if (alreadyUsed) {
+            setPromoError("Kode ini sudah pernah kamu pakai");
+            return;
+          }
+
+          let promoData = null;
+          if (STATE.isFirebaseActive && db) {
+            const pSnap = await getDoc(doc(db, "promos", code));
+            if (pSnap.exists()) {
+              promoData = pSnap.data();
+            }
+          } else if (STATE.promos && STATE.promos[code]) {
+            promoData = STATE.promos[code];
+          }
+
+          if (!promoData) {
+            setPromoError("Kode tidak ditemukan");
+            return;
+          }
+
+          const selectedPkgName = pkgSelect.value;
+          const validation = validatePromoForPackage(promoData, selectedPkgName);
+          if (!validation.ok) {
+            setPromoError(validation.reason);
+            return;
+          }
+
+          const selectedPkg = STATE.packages.find(p => p.name === selectedPkgName);
+          const basePrice = parsePriceIDR(selectedPkg?.price);
+          const calc = computePromoDiscount(basePrice, promoData);
+
+          STATE.appliedPromo = {
+            code,
+            promo: promoData,
+            basePrice,
+            discount: calc.discount,
+            finalPrice: calc.finalPrice
+          };
+          STATE.promos[code] = promoData;
+
+          statusEl.textContent = `Kode ${code} diterapkan! Potongan ${formatIDR(calc.discount)}.`;
+          statusEl.className = "promo-feedback success";
+          if (clearPromoBtn) clearPromoBtn.style.display = "inline-flex";
+          updateOrderPricePreview();
+        } catch (err) {
+          console.error("Promo lookup error:", err);
+          setPromoError("Gagal memvalidasi kode promo.");
+        } finally {
+          applyPromoBtn.disabled = false;
+          applyPromoBtn.textContent = origLabel;
+        }
+      };
+    }
+
     function triggerOrderFlow() {
       // Check if open or closed
       const d = STATE.siteData;
@@ -6461,6 +7128,7 @@ Terakhir diperbarui: 13 November 2026.`;
       }
 
       requireAuth(() => {
+        resetRequestPromoUI(true);
         openSheet("request-sheet");
         loadQRISData();
       });
@@ -6567,18 +7235,52 @@ Terakhir diperbarui: 13 November 2026.`;
         submitBtn.disabled = true;
         submitBtn.textContent = "Mengirim Pesanan...";
 
-        const requestData = {
-          userId: STATE.user.uid,
-          userName: nameInput.value.trim().slice(0, 100),
-          userEmail: STATE.user.email,
-          packageName: pkgInput.value,
-          whatsapp: waInput.value.trim().slice(0, 30),
-          notes: detailsInput.value.trim().slice(0, 2000),
-          status: "baru", // baru | dibayar | diproses | selesai
-          createdAt: new Date().toISOString()
-        };
-
         try {
+          // Enforce max 3 active orders per user (status dibatalkan & selesai tidak dihitung)
+          let currentUserOrders = STATE.activeRequests.filter(r => r.userId === STATE.user.uid);
+          if (STATE.isFirebaseActive && db && STATE.requestsLoadedUid !== STATE.user.uid) {
+            try {
+              const snap = await getDocs(query(collection(db, "requests"), where("userId", "==", STATE.user.uid)));
+              currentUserOrders = [];
+              snap.forEach(d => currentUserOrders.push({ id: d.id, ...d.data() }));
+            } catch (countErr) {
+              console.warn("Gagal memeriksa batas request aktif:", countErr);
+            }
+          }
+          if (countActiveUserOrders(currentUserOrders, STATE.user.uid) >= 3) {
+            showToast("Maksimal 3 pesanan aktif per akun. Selesaikan atau batalkan pesanan lama terlebih dahulu.");
+            return;
+          }
+
+          const requestData = {
+            userId: STATE.user.uid,
+            userName: nameInput.value.trim().slice(0, 100),
+            userEmail: STATE.user.email,
+            packageName: pkgInput.value,
+            whatsapp: waInput.value.trim().slice(0, 30),
+            notes: detailsInput.value.trim().slice(0, 2000),
+            status: "baru", // baru | dibayar | diproses | selesai | dibatalkan
+            createdAt: new Date().toISOString()
+          };
+
+          if (STATE.appliedPromo) {
+            const check = validatePromoForPackage(STATE.appliedPromo.promo, requestData.packageName);
+            if (!check.ok) {
+              showToast(check.reason);
+              return;
+            }
+            const usedBefore = currentUserOrders.some(r => (r.promoCode || "").toUpperCase() === STATE.appliedPromo.code);
+            if (usedBefore) {
+              showToast("Kode ini sudah pernah kamu pakai");
+              return;
+            }
+            const pkg = STATE.packages.find(p => p.name === requestData.packageName);
+            const calc = computePromoDiscount(parsePriceIDR(pkg?.price), STATE.appliedPromo.promo);
+            requestData.promoCode = STATE.appliedPromo.code;
+            requestData.promoDiscountClaimed = calc.discount;
+            requestData.priceFinalClaimed = calc.finalPrice;
+          }
+
           let reqId = "req-" + Date.now().toString(36);
 
           if (STATE.isFirebaseActive && db) {
@@ -6592,19 +7294,27 @@ Terakhir diperbarui: 13 November 2026.`;
             await addDoc(collection(db, "notifications"), {
               userId: DEV_CONFIG.devEmail,
               title: "Pesanan VIP Baru!",
-              body: `${requestData.userName} memesan paket ${requestData.packageName}`,
+              body: `${requestData.userName} memesan paket ${requestData.packageName}${requestData.promoCode ? ` (Promo: ${requestData.promoCode})` : ""}`.slice(0, 500),
               requestId: reqId,
               createdAt: serverTimestamp(),
               read: false
             });
+          } else {
+            STATE.activeRequests.unshift({ ...requestData, id: reqId });
+            renderUserRequestsList(STATE.activeRequests);
+            if (STATE.isDev) renderDevOrdersList(STATE.activeRequests);
           }
 
           closeSheet("request-sheet");
           showToast("Pesanan VIP berhasil dikirim! Menyiapkan ruang proyek...");
           orderForm.reset();
+          resetRequestPromoUI(true);
 
+          const waPromoLine = requestData.promoCode
+            ? `\n- Kode Promo: ${requestData.promoCode} (Estimasi Total: ${formatIDR(requestData.priceFinalClaimed)})`
+            : "";
           const waMessage = encodeURIComponent(
-            `Halo Dika, saya sudah submit Request VIP:\n- Nama: ${requestData.userName}\n- Paket: ${requestData.packageName}\n- Catatan: ${requestData.notes}\nMohon konfirmasi ketersediaan dan verifikasi ya.`
+            `Halo Dika, saya sudah submit Request VIP:\n- Nama: ${requestData.userName}\n- Paket: ${requestData.packageName}${waPromoLine}\n- Catatan: ${requestData.notes}\nMohon konfirmasi ketersediaan dan verifikasi ya.`
           );
           const waUrl = `https://wa.me/${DEV_CONFIG.whatsappPhone}?text=${waMessage}`;
 
@@ -6632,8 +7342,13 @@ Terakhir diperbarui: 13 November 2026.`;
     }
 
     /* ==========================================================================
-       8. REALTIME CHAT, BUKTI TRANSFER & MANAJEMEN STATUS
+       8. REALTIME CHAT, BUKTI TRANSFER, REVISI, PROMO DEV & PEMBATALAN
        ========================================================================== */
+    let userRequestsUnsub = null;
+    let promosUnsub = null;
+    let chatMessagesUnsub = null;
+    const promoFetchInFlight = new Set();
+
     const myReqBtn = document.getElementById("dock-my-requests-btn");
     if (myReqBtn) {
       myReqBtn.onclick = () => openUserRequestsDrawer();
@@ -6657,6 +7372,7 @@ Terakhir diperbarui: 13 November 2026.`;
       }
 
       if (!STATE.user) {
+        if (userRequestsUnsub) { userRequestsUnsub(); userRequestsUnsub = null; }
         container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Silakan masuk terlebih dahulu untuk melihat pesanan.</div>`;
         return;
       }
@@ -6665,25 +7381,48 @@ Terakhir diperbarui: 13 November 2026.`;
 
       if (STATE.isFirebaseActive && db) {
         try {
+          if (userRequestsUnsub) {
+            userRequestsUnsub();
+            userRequestsUnsub = null;
+          }
           const q = STATE.isDev
             ? query(collection(db, "requests"), orderBy("serverCreatedAt", "desc"))
             : query(collection(db, "requests"), where("userId", "==", STATE.user.uid));
 
-          onSnapshot(q, (snap) => {
+          userRequestsUnsub = onSnapshot(q, (snap) => {
             const list = [];
             snap.forEach(docSnap => list.push({ id: docSnap.id, ...docSnap.data() }));
             STATE.activeRequests = list;
-            renderUserRequestsList(list);
+            STATE.requestsLoadedUid = STATE.user ? STATE.user.uid : null;
+
             if (STATE.isDev && devOrdersList) {
               renderDevOrdersList(list);
             }
+
             if (STATE.currentActiveChatRequestId) {
               const cur = list.find(r => r.id === STATE.currentActiveChatRequestId);
               if (cur) {
+                const mount = document.getElementById("chat-order-stepper-mount");
                 const chatSt = document.getElementById("chat-order-stepper");
-                if (chatSt) updateStepperProgress(chatSt, cur.status || "baru");
+                if (cur.status === "dibatalkan" && !document.getElementById("chat-readonly-notice")) {
+                  openChatForRequest(cur.id);
+                  return;
+                }
+                if (chatSt) {
+                  updateStepperProgress(chatSt, cur.status || "baru", cur);
+                } else if (mount && cur.status === "dibatalkan") {
+                  mount.innerHTML = "";
+                  mount.appendChild(createOrderStatusStepper("dibatalkan", cur));
+                }
+                const revMount = document.getElementById("chat-revision-mount");
+                if (revMount) {
+                  revMount.innerHTML = renderRevisionQuotaHtml(cur);
+                }
+                return;
               }
             }
+
+            renderUserRequestsList(list);
           });
           return;
         } catch (e) {
@@ -6692,6 +7431,9 @@ Terakhir diperbarui: 13 November 2026.`;
       }
 
       renderUserRequestsList(STATE.activeRequests);
+      if (STATE.isDev && devOrdersList) {
+        renderDevOrdersList(STATE.activeRequests);
+      }
     }
 
     /* ==========================================================================
@@ -6709,7 +7451,28 @@ Terakhir diperbarui: 13 November 2026.`;
       return idx >= 0 ? idx : 0;
     }
 
-    function createOrderStatusStepper(currentStatus = "baru") {
+    function createOrderStatusStepper(currentStatus = "baru", req = null) {
+      if (currentStatus === "dibatalkan") {
+        const box = document.createElement("div");
+        box.className = "order-cancelled-banner";
+        box.setAttribute("data-status", "dibatalkan");
+
+        const title = document.createElement("div");
+        title.className = "order-cancelled-title";
+        const actorLabel = req?.cancelledBy === "dev"
+          ? "Oleh Dev"
+          : (req?.cancelledBy === "buyer" ? "Oleh Pembeli" : "");
+        title.textContent = actorLabel ? `✕ Pesanan Dibatalkan (${actorLabel})` : "✕ Pesanan Dibatalkan";
+        box.appendChild(title);
+
+        if (req && req.cancelReason) {
+          const reasonEl = document.createElement("div");
+          reasonEl.textContent = `Alasan: ${req.cancelReason}`;
+          box.appendChild(reasonEl);
+        }
+        return box;
+      }
+
       const activeIdx = getOrderStepIndex(currentStatus);
       const wrap = document.createElement("div");
       wrap.className = "order-stepper-wrap";
@@ -6759,8 +7522,17 @@ Terakhir diperbarui: 13 November 2026.`;
       return wrap;
     }
 
-    function updateStepperProgress(stepperWrap, newStatus) {
+    function updateStepperProgress(stepperWrap, newStatus, req = null) {
       if (!stepperWrap) return;
+      if (newStatus === "dibatalkan" || stepperWrap.classList.contains("order-cancelled-banner")) {
+        const replacement = createOrderStatusStepper(newStatus, req);
+        if (stepperWrap.id) replacement.id = stepperWrap.id;
+        if (stepperWrap.parentElement) {
+          stepperWrap.parentElement.replaceChild(replacement, stepperWrap);
+        }
+        return;
+      }
+
       stepperWrap.setAttribute("data-status", newStatus);
       const activeIdx = getOrderStepIndex(newStatus);
       const ratio = activeIdx / (ORDER_STEPS.length - 1);
@@ -6792,9 +7564,575 @@ Terakhir diperbarui: 13 November 2026.`;
     window.updateStepperProgress = updateStepperProgress;
 
     /* ==========================================================================
+       REVISION QUOTA & PROMO RECALCULATION HELPERS
+       ========================================================================== */
+    function renderRevisionQuotaHtml(req) {
+      if (!req || typeof req.revisionQuota !== "number") return "";
+      const quota = Math.max(0, Math.floor(req.revisionQuota));
+      const used = Math.max(0, Math.floor(Number(req.revisionsUsed) || 0));
+      const isExhausted = used >= quota;
+      const totalDots = Math.max(quota, used);
+
+      let dotsHtml = "";
+      for (let i = 0; i < totalDots; i++) {
+        dotsHtml += `<span class="revision-dot ${i < used ? "filled" : ""}" aria-hidden="true"></span>`;
+      }
+
+      return `
+        <div class="revision-quota-box">
+          <div class="revision-quota-header">
+            <span>🔄 Revisi: ${used} dari ${quota} terpakai</span>
+            ${isExhausted ? `<span class="revision-exhausted-badge">Kuota revisi habis</span>` : ""}
+          </div>
+          ${totalDots > 0 ? `<div class="revision-dots-row">${dotsHtml}</div>` : ""}
+        </div>
+      `;
+    }
+
+    function fetchSinglePromoIfNeeded(code) {
+      if (!code || !STATE.isFirebaseActive || !db) return;
+      if (STATE.promos[code] || promoFetchInFlight.has(code)) return;
+      promoFetchInFlight.add(code);
+      getDoc(doc(db, "promos", code))
+        .then((snap) => {
+          STATE.promos[code] = snap.exists() ? snap.data() : { _missing: true };
+          if (STATE.isDev) renderDevOrdersList(STATE.activeRequests);
+          if (STATE.currentActiveChatRequestId) {
+            const cur = STATE.activeRequests.find(r => r.id === STATE.currentActiveChatRequestId);
+            if (cur && cur.promoCode === code) openChatForRequest(cur.id);
+          }
+        })
+        .catch(() => {})
+        .finally(() => promoFetchInFlight.delete(code));
+    }
+
+    function recalculateOrderPromo(req) {
+      if (!req || !req.promoCode) return null;
+      const code = String(req.promoCode).toUpperCase();
+      const pkg = STATE.packages.find(p => p.name === req.packageName);
+      const basePrice = pkg ? parsePriceIDR(pkg.price) : 0;
+      const promo = STATE.promos[code];
+
+      if (!promo) {
+        fetchSinglePromoIfNeeded(code);
+        return { code, ready: false, basePrice, pkgFound: Boolean(pkg) };
+      }
+
+      if (promo._missing || !pkg) {
+        return {
+          code,
+          ready: true,
+          basePrice,
+          discount: 0,
+          finalPrice: basePrice,
+          mismatch: true,
+          claimedFinal: req.priceFinalClaimed
+        };
+      }
+
+      const pkgNames = Array.isArray(promo.packageNames)
+        ? promo.packageNames.map(p => String(p).trim()).filter(Boolean)
+        : [];
+      const eligiblePkg = pkgNames.length === 0 || pkgNames.includes(req.packageName);
+      const calc = eligiblePkg ? computePromoDiscount(basePrice, promo) : { discount: 0, finalPrice: basePrice };
+      const claimedFinal = req.priceFinalClaimed !== undefined ? Number(req.priceFinalClaimed) : null;
+      const mismatch = claimedFinal === null || claimedFinal !== calc.finalPrice;
+
+      return {
+        code,
+        ready: true,
+        basePrice,
+        discount: calc.discount,
+        finalPrice: calc.finalPrice,
+        claimedFinal,
+        mismatch,
+        promo
+      };
+    }
+
+    /* ==========================================================================
+       DEV PROMO CODES MANAGEMENT (promos/{code})
+       ========================================================================== */
+    function listenToPromos() {
+      if (promosUnsub) {
+        promosUnsub();
+        promosUnsub = null;
+      }
+      if (!STATE.isDev) {
+        STATE.promosList = [];
+        return;
+      }
+      if (!STATE.isFirebaseActive || !db) {
+        renderDevPromosList();
+        return;
+      }
+
+      try {
+        promosUnsub = onSnapshot(collection(db, "promos"), (snap) => {
+          const list = [];
+          const map = {};
+          snap.forEach((d) => {
+            const data = { code: d.id, ...d.data() };
+            list.push(data);
+            map[d.id] = data;
+          });
+          list.sort((a, b) => a.code.localeCompare(b.code));
+          STATE.promosList = list;
+          STATE.promos = { ...STATE.promos, ...map };
+          renderDevPromosList();
+          renderDevOrdersList(STATE.activeRequests);
+        }, (err) => {
+          console.warn("Promos listener info:", err.message);
+        });
+      } catch (err) {
+        console.warn("Promos listener fallback:", err);
+      }
+    }
+
+    function formatDatetimeLocalValue(ts) {
+      const ms = toDateMs(ts);
+      if (ms === null) return "";
+      const d = new Date(ms);
+      const pad = (n) => String(n).padStart(2, "0");
+      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+
+    function renderDevPromosList() {
+      const container = document.getElementById("dev-promos-list");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const list = Array.isArray(STATE.promosList) ? STATE.promosList : [];
+      if (list.length === 0) {
+        container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem; font-size: 0.88rem;">Belum ada kode promo. Klik "+ Tambah Kode Promo" untuk membuat.</div>`;
+        return;
+      }
+
+      const now = Date.now();
+      list.forEach((promo) => {
+        const expMs = toDateMs(promo.expiresAt);
+        const isExpired = expMs !== null && expMs <= now;
+        const maxUses = Number(promo.maxUses) || 0;
+        const usedCount = Number(promo.usedCount) || 0;
+        const isExhausted = maxUses > 0 && usedCount >= maxUses;
+
+        let statusText = promo.active ? "Aktif" : "Nonaktif";
+        let statusColor = promo.active ? "#4ade80" : "#94a3b8";
+        if (isExpired) {
+          statusText = "Kedaluwarsa";
+          statusColor = "#f87171";
+        } else if (isExhausted) {
+          statusText = "Kuota Habis";
+          statusColor = "#fbbf24";
+        }
+
+        const valueLabel = promo.type === "percent"
+          ? `${Number(promo.value) || 0}%`
+          : formatIDR(promo.value);
+        const quotaLabel = maxUses > 0 ? `${usedCount} / ${maxUses}` : `${usedCount} / ∞`;
+        const expLabel = expMs ? new Date(expMs).toLocaleString("id-ID", { dateStyle: "medium", timeStyle: "short" }) : "Tanpa batas";
+        const pkgLabel = (Array.isArray(promo.packageNames) && promo.packageNames.length > 0)
+          ? promo.packageNames.join(", ")
+          : "Semua paket";
+
+        const card = document.createElement("div");
+        card.className = "glass-card";
+        card.style.padding = "0.95rem";
+        card.style.marginBottom = "0.75rem";
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; flex-wrap: wrap;">
+            <strong style="font-size: 1rem; letter-spacing: 0.04em; color: var(--accent-light);">${escapeHtml(promo.code)}</strong>
+            <span style="font-size: 0.72rem; font-weight: 700; padding: 0.18rem 0.55rem; border-radius: 9999px; background: ${statusColor}22; color: ${statusColor}; border: 1px solid ${statusColor}44;">
+              ${escapeHtml(statusText)}
+            </span>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-main); margin-bottom: 0.25rem;">
+            Potongan: <strong>${escapeHtml(valueLabel)}</strong> • Terpakai: <strong>${escapeHtml(quotaLabel)}</strong>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+            Berlaku: ${escapeHtml(pkgLabel)} • Expired: ${escapeHtml(expLabel)}
+          </div>
+          ${promo.note ? `<div style="font-size: 0.78rem; color: var(--text-subtle); font-style: italic; margin-bottom: 0.5rem;">Catatan: ${escapeHtml(promo.note)}</div>` : '<div style="margin-bottom: 0.5rem;"></div>'}
+          <div style="display: flex; gap: 0.45rem; flex-wrap: wrap;">
+            <button type="button" class="btn-secondary dev-promo-edit-btn" style="padding: 0.32rem 0.7rem; font-size: 0.78rem;">✏️ Edit</button>
+            <button type="button" class="btn-secondary dev-promo-toggle-btn" style="padding: 0.32rem 0.7rem; font-size: 0.78rem;">
+              ${promo.active ? "Nonaktifkan" : "Aktifkan"}
+            </button>
+            <button type="button" class="btn-secondary dev-promo-delete-btn" style="padding: 0.32rem 0.7rem; font-size: 0.78rem; color: #f87171; border-color: rgba(239,68,68,0.35);">
+              🗑 Hapus
+            </button>
+          </div>
+        `;
+
+        card.querySelector(".dev-promo-edit-btn").onclick = () => openDevPromoSheet(promo);
+        card.querySelector(".dev-promo-toggle-btn").onclick = async () => {
+          const nextActive = !promo.active;
+          if (STATE.isFirebaseActive && db) {
+            try {
+              await updateDoc(doc(db, "promos", promo.code), { active: nextActive });
+              showToast(`Promo ${promo.code} ${nextActive ? "diaktifkan" : "dinonaktifkan"}.`);
+            } catch (err) {
+              showToast("Gagal ubah status promo: " + err.message);
+            }
+          } else {
+            promo.active = nextActive;
+            renderDevPromosList();
+          }
+        };
+        card.querySelector(".dev-promo-delete-btn").onclick = async () => {
+          const ok = await confirmDialog({
+            title: "Hapus Kode Promo",
+            message: `Yakin ingin menghapus kode promo "${promo.code}" secara permanen?`,
+            confirmText: "Hapus Promo",
+            cancelText: "Batal",
+            danger: true
+          });
+          if (!ok) return;
+          if (STATE.isFirebaseActive && db) {
+            try {
+              await deleteDoc(doc(db, "promos", promo.code));
+              delete STATE.promos[promo.code];
+              showToast(`Kode promo ${promo.code} dihapus.`);
+            } catch (err) {
+              showToast("Gagal menghapus promo: " + err.message);
+            }
+          } else {
+            STATE.promosList = STATE.promosList.filter(p => p.code !== promo.code);
+            delete STATE.promos[promo.code];
+            renderDevPromosList();
+            showToast(`Kode promo ${promo.code} dihapus.`);
+          }
+        };
+
+        container.appendChild(card);
+      });
+    }
+
+    function openDevPromoSheet(promo = null) {
+      const titleEl = document.getElementById("dev-promo-sheet-title");
+      const modeInput = document.getElementById("promo-edit-mode");
+      const codeInput = document.getElementById("promo-edit-code");
+      const typeInput = document.getElementById("promo-edit-type");
+      const valInput = document.getElementById("promo-edit-value");
+      const maxInput = document.getElementById("promo-edit-max-uses");
+      const expInput = document.getElementById("promo-edit-expires");
+      const pkgWrap = document.getElementById("promo-edit-packages-wrap");
+      const noteInput = document.getElementById("promo-edit-note");
+      const activeInput = document.getElementById("promo-edit-active");
+      const delBtn = document.getElementById("promo-delete-btn");
+
+      if (pkgWrap) {
+        pkgWrap.innerHTML = "";
+        const selectedSet = new Set(Array.isArray(promo?.packageNames) ? promo.packageNames : []);
+        STATE.packages.forEach(pkg => {
+          const label = document.createElement("label");
+          label.style.cssText = "display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer;";
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.className = "promo-pkg-checkbox";
+          cb.value = pkg.name;
+          cb.checked = selectedSet.has(pkg.name);
+          cb.style.accentColor = "var(--accent)";
+          const span = document.createElement("span");
+          span.textContent = `${pkg.name} (${pkg.price})`;
+          label.appendChild(cb);
+          label.appendChild(span);
+          pkgWrap.appendChild(label);
+        });
+      }
+
+      if (promo) {
+        if (titleEl) titleEl.textContent = `Edit Promo: ${promo.code}`;
+        if (modeInput) modeInput.value = "edit";
+        if (codeInput) {
+          codeInput.value = promo.code;
+          codeInput.readOnly = true;
+        }
+        if (typeInput) typeInput.value = promo.type === "fixed" ? "fixed" : "percent";
+        if (valInput) valInput.value = Number(promo.value) || 0;
+        if (maxInput) maxInput.value = Number(promo.maxUses) || 0;
+        if (expInput) expInput.value = formatDatetimeLocalValue(promo.expiresAt);
+        if (noteInput) noteInput.value = promo.note || "";
+        if (activeInput) activeInput.checked = promo.active !== false;
+        if (delBtn) delBtn.style.display = "inline-flex";
+      } else {
+        if (titleEl) titleEl.textContent = "+ Tambah Kode Promo";
+        if (modeInput) modeInput.value = "create";
+        if (codeInput) {
+          codeInput.value = "";
+          codeInput.readOnly = false;
+        }
+        if (typeInput) typeInput.value = "percent";
+        if (valInput) valInput.value = "";
+        if (maxInput) maxInput.value = "0";
+        if (expInput) expInput.value = "";
+        if (noteInput) noteInput.value = "";
+        if (activeInput) activeInput.checked = true;
+        if (delBtn) delBtn.style.display = "none";
+      }
+
+      openSheet("dev-promo-sheet");
+    }
+
+    const promoCodeEditInput = document.getElementById("promo-edit-code");
+    if (promoCodeEditInput) {
+      promoCodeEditInput.addEventListener("input", () => {
+        promoCodeEditInput.value = promoCodeEditInput.value.toUpperCase().replace(/[^A-Z0-9-]/g, "");
+      });
+    }
+
+    const devAddPromoBtn = document.getElementById("dev-add-promo-btn");
+    if (devAddPromoBtn) {
+      devAddPromoBtn.onclick = () => openDevPromoSheet(null);
+    }
+
+    const devPromoForm = document.getElementById("dev-promo-form");
+    if (devPromoForm) {
+      devPromoForm.onsubmit = async (e) => {
+        e.preventDefault();
+        if (!STATE.isDev) return;
+
+        const mode = document.getElementById("promo-edit-mode")?.value || "create";
+        const code = (document.getElementById("promo-edit-code")?.value || "").trim().toUpperCase();
+        const type = document.getElementById("promo-edit-type")?.value === "fixed" ? "fixed" : "percent";
+        const value = Number(document.getElementById("promo-edit-value")?.value);
+        const maxUses = Math.max(0, parseInt(document.getElementById("promo-edit-max-uses")?.value, 10) || 0);
+        const expStr = (document.getElementById("promo-edit-expires")?.value || "").trim();
+        const note = (document.getElementById("promo-edit-note")?.value || "").trim();
+        const active = Boolean(document.getElementById("promo-edit-active")?.checked);
+
+        if (!/^[A-Z0-9-]{1,20}$/.test(code)) {
+          showToast("Kode promo wajib 1-20 karakter (hanya A-Z, 0-9, dan -).");
+          return;
+        }
+        if (!value || value <= 0) {
+          showToast("Nilai potongan harus lebih dari 0.");
+          return;
+        }
+        if (type === "percent" && value > 100) {
+          showToast("Persentase diskon maksimal 100%.");
+          return;
+        }
+
+        const packageNames = Array.from(document.querySelectorAll(".promo-pkg-checkbox:checked"))
+          .map(cb => cb.value)
+          .filter(Boolean);
+
+        let expiresAt = null;
+        if (expStr) {
+          const expDate = new Date(expStr);
+          if (Number.isNaN(expDate.getTime())) {
+            showToast("Format tanggal kedaluwarsa tidak valid.");
+            return;
+          }
+          expiresAt = (STATE.isFirebaseActive && Timestamp)
+            ? Timestamp.fromDate(expDate)
+            : expDate.toISOString();
+        }
+
+        const existing = STATE.promos[code];
+        const payload = {
+          type,
+          value,
+          active,
+          maxUses,
+          usedCount: mode === "edit" && existing ? (Number(existing.usedCount) || 0) : 0,
+          expiresAt,
+          packageNames,
+          note
+        };
+
+        if (STATE.isFirebaseActive && db) {
+          try {
+            await setDoc(doc(db, "promos", code), payload, { merge: mode === "edit" });
+            showToast(`Kode promo ${code} berhasil disimpan.`);
+          } catch (err) {
+            showToast("Gagal menyimpan promo: " + err.message);
+            return;
+          }
+        } else {
+          const localPromo = { code, ...payload };
+          STATE.promos[code] = localPromo;
+          const idx = STATE.promosList.findIndex(p => p.code === code);
+          if (idx >= 0) STATE.promosList[idx] = localPromo;
+          else STATE.promosList.push(localPromo);
+          renderDevPromosList();
+          showToast(`Kode promo ${code} disimpan.`);
+        }
+
+        closeSheet("dev-promo-sheet");
+      };
+    }
+
+    const promoDeleteBtn = document.getElementById("promo-delete-btn");
+    if (promoDeleteBtn) {
+      promoDeleteBtn.onclick = async () => {
+        const code = (document.getElementById("promo-edit-code")?.value || "").trim().toUpperCase();
+        if (!code) return;
+        const ok = await confirmDialog({
+          title: "Hapus Kode Promo",
+          message: `Yakin ingin menghapus kode promo "${code}"?`,
+          confirmText: "Hapus",
+          cancelText: "Batal",
+          danger: true
+        });
+        if (!ok) return;
+
+        if (STATE.isFirebaseActive && db) {
+          try {
+            await deleteDoc(doc(db, "promos", code));
+            delete STATE.promos[code];
+            showToast(`Kode promo ${code} dihapus.`);
+          } catch (err) {
+            showToast("Gagal menghapus promo: " + err.message);
+            return;
+          }
+        } else {
+          STATE.promosList = STATE.promosList.filter(p => p.code !== code);
+          delete STATE.promos[code];
+          renderDevPromosList();
+        }
+        closeSheet("dev-promo-sheet");
+      };
+    }
+
+    /* ==========================================================================
+       CANCEL ORDER FLOW (BUYER & DEV)
+       ========================================================================== */
+    let activeCancelContext = null;
+
+    function openCancelOrderSheet(req, actor = "buyer") {
+      if (!req) return;
+      if (actor === "buyer" && req.status !== "baru") {
+        showToast("Pesanan yang sudah dibayar/diproses hanya bisa dibatalkan oleh Dev.");
+        return;
+      }
+      if (req.status === "dibatalkan") {
+        showToast("Pesanan ini sudah dibatalkan.");
+        return;
+      }
+
+      activeCancelContext = { req, actor };
+      const idInput = document.getElementById("cancel-order-id");
+      const titleEl = document.getElementById("cancel-order-sheet-title");
+      const subEl = document.getElementById("cancel-order-sheet-sub");
+      const reasonInput = document.getElementById("cancel-reason-input");
+      const hintEl = document.getElementById("cancel-reason-hint");
+
+      if (idInput) idInput.value = req.id;
+      if (titleEl) titleEl.textContent = actor === "dev" ? "Batalkan Pesanan (Dev)" : "Batalkan Pesanan";
+      if (subEl) subEl.textContent = `${req.packageName || "Proyek VIP"} • ${req.userName || "Klien"}`;
+      if (reasonInput) {
+        reasonInput.value = "";
+        reasonInput.placeholder = actor === "dev"
+          ? "Wajib diisi: alasan pembatalan untuk pembeli (maks 200 karakter)..."
+          : "Alasan pembatalan (opsional, maks 200 karakter)...";
+      }
+      if (hintEl) {
+        hintEl.textContent = actor === "dev"
+          ? "Wajib diisi oleh Dev. Maksimal 200 karakter."
+          : "Opsional untuk pembeli. Maksimal 200 karakter.";
+      }
+
+      openSheet("cancel-order-sheet");
+    }
+
+    const cancelOrderSubmitBtn = document.getElementById("cancel-order-submit-btn");
+    if (cancelOrderSubmitBtn) {
+      cancelOrderSubmitBtn.onclick = async () => {
+        if (!activeCancelContext) return;
+        const { req, actor } = activeCancelContext;
+        const reasonInput = document.getElementById("cancel-reason-input");
+        const reason = (reasonInput?.value || "").trim().slice(0, 200);
+
+        if (actor === "dev" && !reason) {
+          showToast("Alasan pembatalan wajib diisi.");
+          if (reasonInput) reasonInput.focus();
+          return;
+        }
+        if (actor === "buyer" && req.status !== "baru") {
+          showToast("Pesanan ini tidak lagi berstatus baru.");
+          closeSheet("cancel-order-sheet");
+          return;
+        }
+
+        const ok = await confirmDialog({
+          title: "Konfirmasi Pembatalan",
+          message: actor === "dev"
+            ? `Batalkan pesanan "${req.packageName}" dari ${req.userName}? Notifikasi pembatalan akan dikirim ke pembeli.`
+            : `Yakin ingin membatalkan pesanan "${req.packageName}"? Pesanan yang dibatalkan tidak bisa dibuka lagi.`,
+          confirmText: "Ya, Batalkan",
+          cancelText: "Kembali",
+          danger: true
+        });
+        if (!ok) return;
+
+        cancelOrderSubmitBtn.disabled = true;
+        const origText = cancelOrderSubmitBtn.textContent;
+        cancelOrderSubmitBtn.textContent = "Membatalkan...";
+
+        try {
+          if (STATE.isFirebaseActive && db) {
+            await updateDoc(doc(db, "requests", req.id), {
+              status: "dibatalkan",
+              cancelReason: reason,
+              cancelledAt: serverTimestamp(),
+              cancelledBy: actor
+            });
+
+            if (actor === "dev" && req.userId) {
+              await addDoc(collection(db, "notifications"), {
+                userId: req.userId,
+                title: "Pesanan Dibatalkan",
+                body: `Pesanan ${req.packageName} dibatalkan oleh Dev. Alasan: ${reason}`.slice(0, 500),
+                requestId: req.id,
+                createdAt: serverTimestamp(),
+                read: false
+              });
+            } else if (actor === "buyer") {
+              await addDoc(collection(db, "notifications"), {
+                userId: DEV_CONFIG.devEmail,
+                title: "Pesanan Dibatalkan Pembeli",
+                body: `${req.userName || "Pembeli"} membatalkan pesanan ${req.packageName}${reason ? ` (${reason})` : ""}`.slice(0, 500),
+                requestId: req.id,
+                createdAt: serverTimestamp(),
+                read: false
+              });
+            }
+          }
+
+          // Local state update (immediate feedback + offline fallback)
+          const targetLocal = STATE.activeRequests.find(r => r.id === req.id);
+          if (targetLocal) {
+            targetLocal.status = "dibatalkan";
+            targetLocal.cancelReason = reason;
+            targetLocal.cancelledBy = actor;
+            targetLocal.cancelledAt = new Date().toISOString();
+          }
+
+          closeSheet("cancel-order-sheet");
+          showToast("Pesanan berhasil dibatalkan.");
+
+          if (STATE.isDev) renderDevOrdersList(STATE.activeRequests);
+          if (STATE.currentActiveChatRequestId === req.id) {
+            openChatForRequest(req.id);
+          } else {
+            renderUserRequestsList(STATE.activeRequests);
+          }
+        } catch (err) {
+          console.error("Gagal membatalkan pesanan:", err);
+          showToast("Gagal membatalkan pesanan: " + err.message);
+        } finally {
+          cancelOrderSubmitBtn.disabled = false;
+          cancelOrderSubmitBtn.textContent = origText;
+        }
+      };
+    }
+
+    /* ==========================================================================
        DEV ORDERS MANAGEMENT (FILTERS & CASCADE DELETION)
        ========================================================================== */
-    let devOrdersFilter = "semua"; // "semua" | "aktif" | "selesai"
+    let devOrdersFilter = "semua"; // "semua" | "aktif" | "selesai" | "dibatalkan"
 
     async function deleteRequestCascade(requestId, onProgress) {
       if (!STATE.isFirebaseActive || !db) {
@@ -6988,16 +8326,19 @@ Terakhir diperbarui: 13 November 2026.`;
 
       const allReqs = Array.isArray(requests) ? requests : [];
       const totalAll = allReqs.length;
-      const totalActive = allReqs.filter(r => r.status !== "selesai").length;
+      const totalActive = allReqs.filter(r => r.status !== "selesai" && r.status !== "dibatalkan").length;
       const totalCompleted = allReqs.filter(r => r.status === "selesai").length;
+      const totalCancelled = allReqs.filter(r => r.status === "dibatalkan").length;
 
       // Update count badges
       const countAll = document.getElementById("count-filter-all");
       const countActive = document.getElementById("count-filter-active");
       const countCompleted = document.getElementById("count-filter-completed");
+      const countCancelled = document.getElementById("count-filter-cancelled");
       if (countAll) countAll.textContent = `(${totalAll})`;
       if (countActive) countActive.textContent = `(${totalActive})`;
       if (countCompleted) countCompleted.textContent = `(${totalCompleted})`;
+      if (countCancelled) countCancelled.textContent = `(${totalCancelled})`;
 
       // Update bulk delete button visibility in Selesai tab
       const bulkDeleteBtn = document.getElementById("dev-delete-all-completed-btn");
@@ -7014,17 +8355,23 @@ Terakhir diperbarui: 13 November 2026.`;
       // Filter requests
       let filteredReqs = allReqs;
       if (devOrdersFilter === "aktif") {
-        filteredReqs = allReqs.filter(r => r.status !== "selesai");
+        filteredReqs = allReqs.filter(r => r.status !== "selesai" && r.status !== "dibatalkan");
       } else if (devOrdersFilter === "selesai") {
         filteredReqs = allReqs.filter(r => r.status === "selesai");
+      } else if (devOrdersFilter === "dibatalkan") {
+        filteredReqs = allReqs.filter(r => r.status === "dibatalkan");
       }
 
       devOrdersList.innerHTML = "";
 
       if (filteredReqs.length === 0) {
-        const emptyMsg = devOrdersFilter === "aktif" 
-          ? "Tidak ada pesanan aktif saat ini."
-          : (devOrdersFilter === "selesai" ? "Belum ada pesanan yang selesai." : "Belum ada pesanan masuk dari klien.");
+        const emptyMap = {
+          aktif: "Tidak ada pesanan aktif saat ini.",
+          selesai: "Belum ada pesanan yang selesai.",
+          dibatalkan: "Tidak ada pesanan yang dibatalkan.",
+          semua: "Belum ada pesanan masuk dari klien."
+        };
+        const emptyMsg = emptyMap[devOrdersFilter] || emptyMap.semua;
         devOrdersList.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem; font-size: 0.88rem;">${emptyMsg}</div>`;
         return;
       }
@@ -7036,22 +8383,65 @@ Terakhir diperbarui: 13 November 2026.`;
         item.style.marginBottom = "0.75rem";
 
         const isCompleted = req.status === "selesai";
+        const isCancelled = req.status === "dibatalkan";
+        const hanging = isOrderHanging(req);
+
+        let badgeBg = "rgba(212,175,55,0.15)";
+        let badgeColor = "var(--accent-light)";
+        if (isCompleted) {
+          badgeBg = "rgba(16,185,129,0.15)";
+          badgeColor = "#10b981";
+        } else if (isCancelled) {
+          badgeBg = "rgba(239,68,68,0.15)";
+          badgeColor = "#f87171";
+        }
+
+        const promoInfo = recalculateOrderPromo(req);
+        let promoHtml = "";
+        if (promoInfo) {
+          if (!promoInfo.ready) {
+            promoHtml = `<div style="font-size: 0.78rem; color: var(--accent-light); margin-bottom: 0.45rem;">Promo: <strong>${escapeHtml(promoInfo.code)}</strong> (Menghitung ulang harga...)</div>`;
+          } else {
+            promoHtml = `
+              <div style="font-size: 0.8rem; color: var(--text-main); margin-bottom: 0.45rem; background: var(--bg-surface); padding: 0.45rem 0.65rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+                <div>Promo: <strong>${escapeHtml(promoInfo.code)}</strong> • Total yang harus dibayar: <strong style="color: var(--accent-light);">${escapeHtml(formatIDR(promoInfo.finalPrice))}</strong></div>
+                ${promoInfo.mismatch ? `<div class="promo-warning-box">⚠️ Angka dari pembeli berbeda. Gunakan total di atas.</div>` : ""}
+              </div>
+            `;
+          }
+        }
+
+        const revHtml = renderRevisionQuotaHtml(req);
+        const cancelNoteHtml = (isCancelled && req.cancelReason)
+          ? `<div style="font-size: 0.78rem; color: var(--status-danger-text); margin-bottom: 0.5rem;">Alasan batal (${escapeHtml(req.cancelledBy || "-")}): ${escapeHtml(req.cancelReason)}</div>`
+          : "";
 
         item.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
-            <strong>${escapeHtml(req.userName)}</strong>
-            <span style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 9999px; background: ${isCompleted ? 'rgba(16,185,129,0.15)' : 'rgba(212,175,55,0.15)'}; color: ${isCompleted ? '#10b981' : 'var(--accent-light)'};">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.4rem;">
+            <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+              <strong>${escapeHtml(req.userName)}</strong>
+              ${hanging ? `<span class="hanging-order-badge">⏳ Menggantung</span>` : ""}
+            </div>
+            <span style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 9999px; background: ${badgeBg}; color: ${badgeColor};">
               ${escapeHtml(req.status || 'baru')}
             </span>
           </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.65rem;">
+          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem;">
             Paket: ${escapeHtml(req.packageName)} • WA: ${escapeHtml(req.whatsapp || '-')}
           </div>
+          ${promoHtml}
+          ${revHtml}
+          ${cancelNoteHtml}
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button type="button" class="btn-vip dev-card-chat-btn" style="flex: 1; padding: 0.35rem 0.75rem; font-size: 0.78rem;">
               💬 Buka Chat & Kelola
             </button>
-            <button type="button" class="btn-secondary dev-card-delete-btn" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.06);">
+            ${hanging ? `
+              <button type="button" class="btn-secondary dev-card-cancel-btn" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; color: var(--status-warning); border-color: rgba(245, 158, 11, 0.4);">
+                ✕ Batalkan
+              </button>
+            ` : ""}
+            <button type="button" class="btn-secondary dev-card-delete-btn" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; color: var(--status-danger); border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.06);">
               🗑 Hapus Pesanan
             </button>
           </div>
@@ -7062,6 +8452,11 @@ Terakhir diperbarui: 13 November 2026.`;
           openSheet("my-requests-sheet");
           openChatForRequest(req.id);
         };
+
+        const quickCancelBtn = item.querySelector(".dev-card-cancel-btn");
+        if (quickCancelBtn) {
+          quickCancelBtn.onclick = () => openCancelOrderSheet(req, "dev");
+        }
 
         const deleteBtn = item.querySelector(".dev-card-delete-btn");
         deleteBtn.onclick = () => handleSingleOrderDelete(req, deleteBtn);
@@ -7099,25 +8494,35 @@ Terakhir diperbarui: 13 November 2026.`;
           baru: { label: "Menunggu DP", color: "#f59e0b", desc: "Pembayaran dicek manual oleh Dev, biasanya diproses dalam beberapa jam." },
           dibayar: { label: "DP Terverifikasi", color: "#3b82f6", desc: "Pembayaran telah diverifikasi oleh Dev." },
           diproses: { label: "Sedang Dikerjakan", color: "#8b5cf6", desc: "Dev sedang membangun proyek Anda." },
-          selesai: { label: "Proyek Selesai", color: "#10b981", desc: "Proyek tuntas diserahkan." }
+          selesai: { label: "Proyek Selesai", color: "#10b981", desc: "Proyek tuntas diserahkan." },
+          dibatalkan: { label: "Dibatalkan", color: "#ef4444", desc: "Pesanan ini telah dibatalkan." }
         };
 
         const currentStatus = statusMap[req.status] || statusMap.baru;
+        const canBuyerCancel = !STATE.isDev && req.status === "baru";
+
+        const promoBadgeHtml = req.promoCode
+          ? `<div style="font-size: 0.8rem; color: var(--status-success); margin-bottom: 0.5rem;">🎟 Promo <strong>${escapeHtml(req.promoCode)}</strong>${typeof req.priceFinalClaimed === "number" ? ` • Estimasi Total: <strong>${escapeHtml(formatIDR(req.priceFinalClaimed))}</strong>` : ""}</div>`
+          : "";
+
+        const revHtml = renderRevisionQuotaHtml(req);
 
         item.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; gap: 0.5rem;">
             <div>
               <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem;">${escapeHtml(req.packageName)}</h4>
               <div style="font-size: 0.8rem; color: var(--text-muted);">Pemesan: ${escapeHtml(req.userName)}</div>
             </div>
-            <span style="font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px; background: ${currentStatus.color}22; color: ${currentStatus.color}; border: 1px solid ${currentStatus.color}44;">
+            <span style="font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px; background: ${currentStatus.color}22; color: ${currentStatus.color}; border: 1px solid ${currentStatus.color}44; white-space: nowrap;">
               ${currentStatus.label}
             </span>
           </div>
           <div style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 0.45rem; font-style: italic;">
             ${escapeHtml(currentStatus.desc)}
           </div>
+          ${promoBadgeHtml}
           <div class="card-stepper-mount"></div>
+          ${revHtml}
           <p style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.85rem; background: var(--bg-surface); padding: 0.65rem; border-radius: 8px;">
             ${escapeHtml(req.notes || '')}
           </p>
@@ -7125,12 +8530,22 @@ Terakhir diperbarui: 13 November 2026.`;
             <button class="btn-vip open-chat-btn" data-req-id="${req.id}" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;">
               💬 Buka Chat
             </button>
+            ${canBuyerCancel ? `
+              <button type="button" class="btn-secondary buyer-cancel-order-btn" style="padding: 0.45rem 0.9rem; font-size: 0.82rem; color: #f87171; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.06);">
+                Batalkan pesanan
+              </button>
+            ` : ""}
           </div>
         `;
 
         const mount = item.querySelector(".card-stepper-mount");
         if (mount) {
-          mount.appendChild(createOrderStatusStepper(req.status || 'baru'));
+          mount.appendChild(createOrderStatusStepper(req.status || 'baru', req));
+        }
+
+        const cancelBtn = item.querySelector(".buyer-cancel-order-btn");
+        if (cancelBtn) {
+          cancelBtn.onclick = () => openCancelOrderSheet(req, "buyer");
         }
 
         container.appendChild(item);
@@ -7148,8 +8563,14 @@ Terakhir diperbarui: 13 November 2026.`;
 
     async function updateRequestStatus(requestId, newStatus) {
       if (!STATE.isDev) return;
+      const targetReq = STATE.activeRequests.find(r => r.id === requestId);
+      if (targetReq && targetReq.status === "dibatalkan") {
+        showToast("Pesanan yang dibatalkan tidak bisa diubah statusnya.");
+        return;
+      }
+
       const stepper = document.getElementById("chat-order-stepper");
-      if (stepper) updateStepperProgress(stepper, newStatus);
+      if (stepper) updateStepperProgress(stepper, newStatus, targetReq);
 
       if (STATE.isFirebaseActive && db) {
         try {
@@ -7159,7 +8580,6 @@ Terakhir diperbarui: 13 November 2026.`;
           });
 
           // Notify client
-          const targetReq = STATE.activeRequests.find(r => r.id === requestId);
           if (targetReq && targetReq.userId) {
             await addDoc(collection(db, "notifications"), {
               userId: targetReq.userId,
@@ -7181,10 +8601,34 @@ Terakhir diperbarui: 13 November 2026.`;
     /* Open Chat Sub-Interface */
     function openChatForRequest(requestId) {
       STATE.currentActiveChatRequestId = requestId;
+      if (chatMessagesUnsub) {
+        chatMessagesUnsub();
+        chatMessagesUnsub = null;
+      }
+
       const targetReq = STATE.activeRequests.find(r => r.id === requestId);
       const reqName = targetReq ? targetReq.packageName : "Proyek VIP";
       const clientName = targetReq ? targetReq.userName : "Klien";
       const currentStatus = targetReq ? (targetReq.status || "baru") : "baru";
+      const isCancelled = currentStatus === "dibatalkan";
+
+      const pkg = STATE.packages.find(p => p.name === reqName);
+      const promoInfo = STATE.isDev ? recalculateOrderPromo(targetReq) : null;
+      let devPromoBoxHtml = "";
+      if (STATE.isDev && promoInfo) {
+        if (!promoInfo.ready) {
+          devPromoBoxHtml = `<div style="font-size: 0.78rem; color: var(--accent-light); margin-bottom: 0.5rem;">Promo ${escapeHtml(promoInfo.code)} sedang dihitung ulang...</div>`;
+        } else {
+          devPromoBoxHtml = `
+            <div style="font-size: 0.8rem; background: var(--bg-surface); padding: 0.55rem 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); margin-bottom: 0.55rem;">
+              <div>Promo <strong>${escapeHtml(promoInfo.code)}</strong> • Total yang harus dibayar: <strong style="color: var(--accent-light);">${escapeHtml(formatIDR(promoInfo.finalPrice))}</strong></div>
+              ${promoInfo.mismatch ? `<div class="promo-warning-box">⚠️ Angka dari pembeli berbeda. Gunakan total di atas.</div>` : ""}
+            </div>
+          `;
+        }
+      }
+
+      const showDevRevControls = STATE.isDev && !isCancelled && (typeof targetReq?.revisionQuota === "number" || currentStatus !== "baru");
 
       const container = document.getElementById("requests-list-container");
       container.innerHTML = `
@@ -7198,54 +8642,84 @@ Terakhir diperbarui: 13 November 2026.`;
           </button>
         </div>
 
-        <!-- Order Progress Stepper in Chat -->
+        <!-- Order Progress Stepper & Revision Quota in Chat -->
         <div class="glass-card" style="padding: 0.75rem 0.85rem; margin-bottom: 0.75rem;">
           <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.2rem;">Status Pesanan:</div>
           <div id="chat-order-stepper-mount"></div>
+          <div id="chat-revision-mount">${renderRevisionQuotaHtml(targetReq)}</div>
         </div>
 
         ${STATE.isDev ? `
           <div class="glass-card" style="padding: 0.75rem; margin-bottom: 0.75rem; border-color: var(--accent);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.4rem; flex-wrap: wrap;">
               <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-light);">Kontrol Dev:</span>
-              <select id="dev-status-select" class="form-control" style="width: auto; padding: 0.2rem 0.5rem; font-size: 0.78rem;">
+              <select id="dev-status-select" class="form-control" style="width: auto; padding: 0.2rem 0.5rem; font-size: 0.78rem;" ${isCancelled ? "disabled" : ""}>
                 <option value="baru" ${currentStatus === 'baru' ? 'selected' : ''}>Status: Menunggu DP (Baru)</option>
                 <option value="dibayar" ${currentStatus === 'dibayar' ? 'selected' : ''}>Status: DP Terverifikasi</option>
                 <option value="diproses" ${currentStatus === 'diproses' ? 'selected' : ''}>Status: Sedang Dikerjakan</option>
                 <option value="selesai" ${currentStatus === 'selesai' ? 'selected' : ''}>Status: Selesai</option>
+                ${isCancelled ? `<option value="dibatalkan" selected>Status: Dibatalkan</option>` : ""}
               </select>
             </div>
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-              <button id="dev-btn-mark-paid" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: #4ade80;">
-                ✓ Tandai Dibayar
-              </button>
-              <button id="dev-btn-reject-proof" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: #f59e0b;">
-                ⚠️ Tolak Bukti
-              </button>
-              <button id="dev-btn-delete-proof" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: #f87171;">
-                🗑 Hapus Bukti Transfer
-              </button>
-            </div>
+            ${devPromoBoxHtml}
+            ${isCancelled ? `
+              <div style="font-size: 0.78rem; color: var(--status-danger-text);">Pesanan telah dibatalkan sehingga tidak dapat ditandai dibayar atau diubah statusnya.</div>
+            ` : `
+              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                <button id="dev-btn-mark-paid" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: var(--status-success);">
+                  ✓ Tandai Dibayar
+                </button>
+                <button id="dev-btn-reject-proof" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: var(--status-warning);">
+                  ⚠️ Tolak Bukti
+                </button>
+                <button id="dev-btn-cancel-order" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: var(--status-warning); border-color: rgba(245, 158, 11, 0.35);">
+                  ✕ Batalkan Pesanan
+                </button>
+                <button id="dev-btn-delete-proof" class="btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.75rem; color: var(--status-danger);">
+                  🗑 Hapus Bukti Transfer
+                </button>
+              </div>
+              ${showDevRevControls ? `
+                <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin-top: 0.55rem; padding-top: 0.55rem; border-top: 1px dashed var(--border-subtle);">
+                  <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Kuota Revisi:</span>
+                  <button id="dev-btn-rev-plus" class="btn-secondary" style="padding: 0.28rem 0.6rem; font-size: 0.74rem; color: var(--accent-light);">
+                    +1 revisi terpakai
+                  </button>
+                  <button id="dev-btn-rev-minus" class="btn-secondary" style="padding: 0.28rem 0.55rem; font-size: 0.74rem;">
+                    -1
+                  </button>
+                  <button id="dev-btn-rev-add-quota" class="btn-secondary" style="padding: 0.28rem 0.6rem; font-size: 0.74rem; color: var(--status-success);">
+                    Tambah kuota
+                  </button>
+                </div>
+              ` : ""}
+            `}
           </div>
         ` : ''}
 
         <div class="chat-box glass-card" style="padding: 0.85rem;">
           <div class="chat-messages" id="chat-messages-wrap">
             <div class="chat-bubble dev">
-              <div>Halo! Terima kasih atas pemesananmu. Silakan lakukan pembayaran DP melalui tombol "Lihat QRIS", lalu kirim foto bukti transfer lewat tombol kamera di samping kolom pesan.</div>
+              <div>Halo! Terima kasih atas pemesananmu.${targetReq?.promoCode ? ` Kode promo ${escapeHtml(targetReq.promoCode)} tercatat.` : ""} Silakan lakukan pembayaran DP melalui tombol "Lihat QRIS", lalu kirim foto bukti transfer lewat tombol kamera di samping kolom pesan.</div>
               <div class="chat-meta">Dev • Otomatis</div>
             </div>
           </div>
 
-          <div class="chat-input-bar">
+          ${isCancelled ? `
+            <div id="chat-readonly-notice" class="chat-readonly-banner">
+              🔒 Chat ini read-only karena pesanan telah dibatalkan.
+            </div>
+          ` : ""}
+
+          <div class="chat-input-bar ${isCancelled ? "is-disabled" : ""}">
             <!-- Upload Transfer Receipt Button -->
-            <label class="btn-secondary" style="padding: 0.65rem; cursor: pointer; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;" title="Kirim Foto Bukti Transfer">
+            <label class="btn-secondary" style="padding: 0.65rem; cursor: ${isCancelled ? "not-allowed" : "pointer"}; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;" title="Kirim Foto Bukti Transfer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <input type="file" id="proof-upload-input" accept="image/*" style="display: none;" />
+              <input type="file" id="proof-upload-input" accept="image/*" style="display: none;" ${isCancelled ? "disabled" : ""} />
             </label>
 
-            <input type="text" id="chat-text-input" class="form-control" placeholder="Tulis pesan..." style="border-radius: 9999px;" maxlength="1000" />
-            <button id="chat-send-btn" class="btn-vip" style="padding: 0.65rem 1.1rem; border-radius: 9999px;">
+            <input type="text" id="chat-text-input" class="form-control" placeholder="${isCancelled ? "Chat dinonaktifkan (pesanan dibatalkan)" : "Tulis pesan..."}" style="border-radius: 9999px;" maxlength="1000" ${isCancelled ? "disabled" : ""} />
+            <button id="chat-send-btn" class="btn-vip" style="padding: 0.65rem 1.1rem; border-radius: 9999px;" ${isCancelled ? "disabled" : ""}>
               <span>Kirim</span>
             </button>
           </div>
@@ -7255,45 +8729,187 @@ Terakhir diperbarui: 13 November 2026.`;
       // Mount order status progress stepper into chat
       const chatStepperMount = document.getElementById("chat-order-stepper-mount");
       if (chatStepperMount) {
-        const stepper = createOrderStatusStepper(currentStatus);
+        const stepper = createOrderStatusStepper(currentStatus, targetReq);
         stepper.id = "chat-order-stepper";
         chatStepperMount.appendChild(stepper);
       }
 
-      document.getElementById("back-to-requests-btn").onclick = () => renderUserRequestsList(STATE.activeRequests);
+      document.getElementById("back-to-requests-btn").onclick = () => {
+        STATE.currentActiveChatRequestId = null;
+        if (chatMessagesUnsub) {
+          chatMessagesUnsub();
+          chatMessagesUnsub = null;
+        }
+        renderUserRequestsList(STATE.activeRequests);
+      };
       document.getElementById("chat-view-qris-btn").onclick = openChatQRISModal;
 
-      // Dev Status Controls
-      if (STATE.isDev) {
+      // Dev Status, Promo, & Revision Controls
+      if (STATE.isDev && !isCancelled) {
         const statusSelect = document.getElementById("dev-status-select");
         if (statusSelect) {
           statusSelect.onchange = (e) => {
             const val = e.target.value;
             updateRequestStatus(requestId, val);
             const st = document.getElementById("chat-order-stepper");
-            if (st) updateStepperProgress(st, val);
+            if (st) updateStepperProgress(st, val, targetReq);
           };
         }
 
         const markPaidBtn = document.getElementById("dev-btn-mark-paid");
         if (markPaidBtn) {
           markPaidBtn.onclick = async () => {
-            await updateRequestStatus(requestId, "dibayar");
-            const st = document.getElementById("chat-order-stepper");
-            if (st) updateStepperProgress(st, "dibayar");
-            if (statusSelect) statusSelect.value = "dibayar";
-            // Auto post verification message to chat
+            const latestReq = STATE.activeRequests.find(r => r.id === requestId) || targetReq;
+            if (latestReq && latestReq.status === "dibatalkan") {
+              showToast("Pesanan yang dibatalkan tidak bisa ditandai dibayar.");
+              return;
+            }
+
+            const matchedPkg = STATE.packages.find(p => p.name === (latestReq?.packageName || reqName));
+            const pkgRevisions = getPackageRevisions(matchedPkg);
+            const hasQuota = typeof latestReq?.revisionQuota === "number";
+            const updatePayload = {
+              status: "dibayar",
+              paidAt: serverTimestamp(),
+              verifiedByDev: true,
+              updatedAt: serverTimestamp()
+            };
+            if (!hasQuota) {
+              updatePayload.revisionQuota = pkgRevisions;
+              updatePayload.revisionsUsed = typeof latestReq?.revisionsUsed === "number" ? latestReq.revisionsUsed : 0;
+            }
+
+            let verifiedTotalText = "";
+            if (latestReq && latestReq.promoCode) {
+              const calcInfo = recalculateOrderPromo(latestReq);
+              if (calcInfo && calcInfo.ready) {
+                verifiedTotalText = ` Total terverifikasi (${latestReq.promoCode}): ${formatIDR(calcInfo.finalPrice)}.`;
+              }
+              if (!latestReq.promoCounted) {
+                updatePayload.promoCounted = true;
+              }
+            }
+
+            try {
+              if (STATE.isFirebaseActive && db) {
+                await updateDoc(doc(db, "requests", requestId), updatePayload);
+
+                // Increment usedCount in promos/{code} HANYA SEKALI per pesanan
+                if (latestReq?.promoCode && !latestReq?.promoCounted) {
+                  try {
+                    await updateDoc(doc(db, "promos", latestReq.promoCode), {
+                      usedCount: increment(1)
+                    });
+                  } catch (promoIncErr) {
+                    console.warn("Gagal increment usedCount promo:", promoIncErr);
+                  }
+                }
+
+                if (latestReq && latestReq.userId) {
+                  await addDoc(collection(db, "notifications"), {
+                    userId: latestReq.userId,
+                    title: "DP Terverifikasi",
+                    body: `Pembayaran DP untuk ${latestReq.packageName} telah diverifikasi.${verifiedTotalText}`.slice(0, 500),
+                    requestId: requestId,
+                    createdAt: serverTimestamp(),
+                    read: false
+                  });
+                }
+
+                await addDoc(collection(db, "requests", requestId, "chat"), {
+                  senderId: STATE.user.uid,
+                  senderName: "Dev (Dika)",
+                  text: `✓ Pembayaran DP telah diverifikasi oleh Dev. Status proyek diubah ke DP Terverifikasi.${verifiedTotalText}`,
+                  isDev: true,
+                  createdAt: serverTimestamp()
+                });
+              }
+
+              if (latestReq) {
+                latestReq.status = "dibayar";
+                latestReq.verifiedByDev = true;
+                if (!hasQuota) {
+                  latestReq.revisionQuota = pkgRevisions;
+                  latestReq.revisionsUsed = 0;
+                }
+                if (latestReq.promoCode) latestReq.promoCounted = true;
+              }
+
+              showToast("Pembayaran DP diverifikasi & kuota revisi disiapkan.");
+              openChatForRequest(requestId);
+            } catch (err) {
+              showToast("Gagal menandai dibayar: " + err.message);
+            }
+          };
+        }
+
+        const devCancelBtn = document.getElementById("dev-btn-cancel-order");
+        if (devCancelBtn) {
+          devCancelBtn.onclick = () => {
+            const latestReq = STATE.activeRequests.find(r => r.id === requestId) || targetReq;
+            openCancelOrderSheet(latestReq, "dev");
+          };
+        }
+
+        const handleRevisionChange = async (actionType) => {
+          const latestReq = STATE.activeRequests.find(r => r.id === requestId) || targetReq;
+          if (!latestReq || latestReq.status === "dibatalkan") return;
+
+          const matchedPkg = STATE.packages.find(p => p.name === (latestReq.packageName || reqName));
+          let quota = typeof latestReq.revisionQuota === "number" ? Math.floor(latestReq.revisionQuota) : getPackageRevisions(matchedPkg);
+          let used = typeof latestReq.revisionsUsed === "number" ? Math.floor(latestReq.revisionsUsed) : 0;
+          let sysMsg = "";
+
+          if (actionType === "plus") {
+            if (used >= quota) {
+              showToast("Kuota revisi sudah habis. Klik 'Tambah kuota' jika ingin menambah.");
+              return;
+            }
+            used += 1;
+            sysMsg = `🔄 Revisi ke-${used} dari ${quota} dicatat.`;
+          } else if (actionType === "minus") {
+            if (used <= 0) {
+              showToast("Jumlah revisi terpakai sudah 0.");
+              return;
+            }
+            used -= 1;
+            sysMsg = `🔄 Koreksi kuota revisi: ${used} dari ${quota} terpakai.`;
+          } else if (actionType === "addQuota") {
+            quota += 1;
+            sysMsg = `✨ Kuota revisi ditambah menjadi ${quota} (${used} dari ${quota} terpakai).`;
+          }
+
+          try {
             if (STATE.isFirebaseActive && db) {
+              await updateDoc(doc(db, "requests", requestId), {
+                revisionQuota: quota,
+                revisionsUsed: used,
+                updatedAt: serverTimestamp()
+              });
               await addDoc(collection(db, "requests", requestId, "chat"), {
                 senderId: STATE.user.uid,
                 senderName: "Dev (Dika)",
-                text: "✓ Pembayaran DP telah diverifikasi oleh Dev. Status proyek diubah ke DP Terverifikasi.",
+                text: sysMsg,
                 isDev: true,
                 createdAt: serverTimestamp()
               });
             }
-          };
-        }
+            latestReq.revisionQuota = quota;
+            latestReq.revisionsUsed = used;
+            const revMount = document.getElementById("chat-revision-mount");
+            if (revMount) revMount.innerHTML = renderRevisionQuotaHtml(latestReq);
+            showToast(sysMsg);
+          } catch (err) {
+            showToast("Gagal memperbarui revisi: " + err.message);
+          }
+        };
+
+        const revPlusBtn = document.getElementById("dev-btn-rev-plus");
+        const revMinusBtn = document.getElementById("dev-btn-rev-minus");
+        const revAddQuotaBtn = document.getElementById("dev-btn-rev-add-quota");
+        if (revPlusBtn) revPlusBtn.onclick = () => handleRevisionChange("plus");
+        if (revMinusBtn) revMinusBtn.onclick = () => handleRevisionChange("minus");
+        if (revAddQuotaBtn) revAddQuotaBtn.onclick = () => handleRevisionChange("addQuota");
 
         const rejectProofBtn = document.getElementById("dev-btn-reject-proof");
         if (rejectProofBtn) {
@@ -7357,7 +8973,7 @@ Terakhir diperbarui: 13 November 2026.`;
         let initialChatLoaded = false;
         const renderedMessageIds = new Set();
 
-        onSnapshot(chatQ, (snapshot) => {
+        chatMessagesUnsub = onSnapshot(chatQ, (snapshot) => {
           const wrap = document.getElementById("chat-messages-wrap");
           if (!wrap) return;
 
@@ -7399,10 +9015,15 @@ Terakhir diperbarui: 13 November 2026.`;
         });
       }
 
-      // Handle sending text
+      // Handle sending text (blocked if cancelled)
       const sendBtn = document.getElementById("chat-send-btn");
       const textInput = document.getElementById("chat-text-input");
       const handleSend = async () => {
+        const latestReq = STATE.activeRequests.find(r => r.id === requestId) || targetReq;
+        if (latestReq && latestReq.status === "dibatalkan") {
+          showToast("Chat bersifat read-only karena pesanan telah dibatalkan.");
+          return;
+        }
         const text = textInput.value.trim();
         if (!text) return;
         textInput.value = "";
@@ -7488,13 +9109,18 @@ Terakhir diperbarui: 13 November 2026.`;
         }
       };
 
-      sendBtn.onclick = handleSend;
-      textInput.onkeydown = (e) => { if (e.key === "Enter") handleSend(); };
+      if (sendBtn && !isCancelled) sendBtn.onclick = handleSend;
+      if (textInput && !isCancelled) textInput.onkeydown = (e) => { if (e.key === "Enter") handleSend(); };
 
-      // Handle uploading proof
+      // Handle uploading proof (blocked if cancelled)
       const proofInput = document.getElementById("proof-upload-input");
-      if (proofInput) {
+      if (proofInput && !isCancelled) {
         proofInput.onchange = async (e) => {
+          const latestReq = STATE.activeRequests.find(r => r.id === requestId) || targetReq;
+          if (latestReq && latestReq.status === "dibatalkan") {
+            showToast("Upload bukti dinonaktifkan karena pesanan telah dibatalkan.");
+            return;
+          }
           const file = e.target.files[0];
           if (!file) return;
 
@@ -8078,6 +9704,8 @@ Terakhir diperbarui: 13 November 2026.`;
           const target = tab.getAttribute("data-tab");
           const targetEl = document.getElementById(target);
           if (targetEl) targetEl.style.display = "block";
+          if (target === "tab-promos") renderDevPromosList();
+          if (target === "tab-orders") renderDevOrdersList(STATE.activeRequests);
         };
       });
 
