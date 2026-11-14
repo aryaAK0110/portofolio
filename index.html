@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Dika Aditya | Solo Developer & Cloud Architect</title>
-  <meta name="description" content="Portofolio pribadi solo developer & pemesanan proyek VIP eksklusif. Full-stack, mobile-first, dan cloud architect." />
-  <meta property="og:title" content="Dika Aditya | Solo Developer VIP" />
-  <meta property="og:description" content="Portofolio pribadi solo developer & pemesanan proyek VIP eksklusif." />
+  <title>Portofolio & Request VIP</title>
+  <meta name="description" content="Portofolio pribadi & pemesanan proyek VIP." />
+  <meta property="og:title" content="Portofolio & Request VIP" />
+  <meta property="og:description" content="Portofolio pribadi & pemesanan proyek VIP." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0d0c0a" />
 
@@ -786,7 +786,7 @@
       border-radius: 20px;
       overflow: hidden;
       margin-bottom: -50px;
-      background: linear-gradient(135deg, #1c1813 0%, #2f271a 100%);
+      background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, var(--accent-glow) 100%);
       border: 1px solid var(--border-subtle);
     }
 
@@ -2264,6 +2264,86 @@
       pointer-events: none;
     }
 
+    /* Firestore Error, Timeout, QRIS Empty & Neutral Fallbacks */
+    .firestore-error-card {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-radius: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+
+    .firestore-error-msg {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .firestore-error-dev-code {
+      font-family: monospace;
+      font-size: 0.76rem;
+      color: var(--status-warning);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 0.22rem 0.58rem;
+      border-radius: 6px;
+      word-break: break-word;
+    }
+
+    .qris-empty-box {
+      padding: 1rem 0.85rem;
+      border-radius: 12px;
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .dev-qris-warning-banner {
+      padding: 0.72rem 0.9rem;
+      border-radius: 10px;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: var(--status-warning);
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .profile-avatar-fallback {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-surface-elevated);
+      color: var(--accent);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .carousel-empty-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-subtle);
+      font-size: 0.85rem;
+      background: var(--bg-surface-elevated);
+    }
+
     /* Accessibility: Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -2299,9 +2379,9 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#hero" class="brand-mark">
-        <div class="monogram-badge" id="monogram-text">AA</div>
+        <div class="monogram-badge" id="monogram-text">•</div>
         <div>
-          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.98rem; line-height: 1.1;" id="header-author-name">Arya A.K</div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 0.98rem; line-height: 1.1;" id="header-author-name">Portofolio</div>
         </div>
       </a>
 
@@ -2332,13 +2412,13 @@
   <!-- Glassmorphism Profile Menu Dropdown -->
   <div id="profile-menu-dropdown" class="profile-menu-dropdown" style="display: none;" role="menu" aria-label="Menu Profil">
     <div class="profile-menu-header">
-      <img id="menu-avatar-img" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="profile-menu-avatar" />
+      <img id="menu-avatar-img" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%2323201b'/%3E%3Ccircle cx='32' cy='24' r='11' fill='%23d4af37' opacity='0.85'/%3E%3Cpath d='M14 54c2-11 10-16 18-16s16 5 18 16' fill='%23d4af37' opacity='0.85'/%3E%3C/svg%3E" alt="Avatar" class="profile-menu-avatar" />
       <div style="flex: 1; min-width: 0;">
         <div style="display: flex; align-items: center; gap: 0.4rem;">
           <div id="menu-user-name" class="profile-menu-name">Pengguna</div>
           <span id="menu-dev-badge" class="dev-badge-indicator" style="display: none;">DEV</span>
         </div>
-        <div id="menu-user-sub" class="profile-menu-sub">user@email.com</div>
+        <div id="menu-user-sub" class="profile-menu-sub"></div>
       </div>
     </div>
     <div class="profile-menu-divider"></div>
@@ -2360,9 +2440,7 @@
 
   <!-- Announcement Banner & Dev Placeholder -->
   <div id="announcement-bar" class="announcement-banner" style="display: none;">
-    <div class="announcement-text" id="announcement-content">
-      ✨ <strong>Pengumuman:</strong> Slot batch bulan ini tersisa 2 proyek VIP. Konsultasi langsung via chat!
-    </div>
+    <div class="announcement-text" id="announcement-content"></div>
     <button id="close-announcement-btn" style="color: var(--text-muted); font-size: 1.1rem; padding: 0 4px; background: none; border: none; cursor: pointer;" title="Tutup">✕</button>
   </div>
   <div id="dev-announcement-placeholder" style="display: none; padding: 0.5rem 1rem; text-align: center;">
@@ -2378,27 +2456,28 @@
     <section id="hero" class="hero-intro">
       <!-- Landscape Cover Photo -->
       <div class="cover-wrapper" id="cover-container" title="Ketuk untuk ganti sampul jika Mode Dev">
-        <img id="cover-photo" class="cover-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Cover Developer" />
+        <img id="cover-photo" class="cover-img" src="" alt="Cover Developer" style="display: none;" />
         <button id="edit-cover-btn" class="btn-secondary" style="position: absolute; bottom: 8px; right: 8px; padding: 0.3rem 0.6rem; font-size: 0.72rem; display: none;">Ganti Sampul</button>
       </div>
 
       <!-- Rounded Profile Photo with Rotating Gold Ring -->
       <div class="profile-avatar-container" id="profile-container" title="Ketuk untuk ganti foto jika Mode Dev">
         <div class="profile-ring"></div>
-        <img id="profile-photo" class="profile-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Foto Profil" />
+        <img id="profile-photo" class="profile-avatar-img" src="" alt="Foto Profil" style="display: none;" />
+        <div id="profile-avatar-fallback" class="profile-avatar-fallback" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
         <button id="edit-avatar-btn" class="btn-secondary" style="position: absolute; bottom: 0; right: 0; padding: 0.2rem 0.4rem; font-size: 0.68rem; display: none;">Ganti</button>
       </div>
 
       <!-- Staggered Name Reveal -->
       <div class="hero-name-container">
-        <h1 class="hero-name-shimmer" id="hero-display-name" data-dev-text="authorName" data-dev-label="Nama Lengkap">Dika Aditya</h1>
+        <h1 class="hero-name-shimmer" id="hero-display-name" data-dev-text="authorName" data-dev-label="Nama Lengkap">Portofolio</h1>
       </div>
 
-      <div class="hero-role" id="hero-display-role" data-dev-text="authorRole" data-dev-label="Peran / Profesi">Full-Stack & Cloud Solo Developer</div>
+      <div class="hero-role" id="hero-display-role" data-dev-text="authorRole" data-dev-label="Peran / Profesi"></div>
 
-      <p class="hero-tagline" id="hero-display-tagline" data-dev-text="tagline" data-dev-label="Tagline / Slogan">
-        "Membangun produk digital premium, cepat, dan siap pakai dengan arsitektur cloud mandiri."
-      </p>
+      <p class="hero-tagline" id="hero-display-tagline" data-dev-text="tagline" data-dev-label="Tagline / Slogan" style="display: none;"></p>
 
       <!-- Status Badge & Slot Remaining -->
       <div class="status-badge-container">
@@ -2406,9 +2485,9 @@
           <span class="pulsing-dot"></span>
           <span id="status-text">Request Dibuka</span>
         </div>
-        <div class="pill-badge pill-slots" id="slots-badge" title="Ketuk untuk ubah slot jika Mode Dev">
+        <div class="pill-badge pill-slots" id="slots-badge" style="display: none;" title="Ketuk untuk ubah slot jika Mode Dev">
           <span>⚡</span>
-          <span id="slots-text">Sisa 2 Slot Proyek</span>
+          <span id="slots-text"></span>
         </div>
       </div>
 
@@ -2431,20 +2510,13 @@
         <div class="section-header" style="margin-bottom: 0.8rem;">
           <div>
             <h2 class="section-title" id="about-title" data-dev-text="aboutTitle" data-dev-label="Judul Bagian Tentang">Tentang Saya</h2>
-            <div class="section-subtitle" id="about-subtitle" data-dev-text="aboutSubtitle" data-dev-label="Subjudul Bagian Tentang">Filosofi kerja solo developer</div>
+            <div class="section-subtitle" id="about-subtitle" data-dev-text="aboutSubtitle" data-dev-label="Subjudul Bagian Tentang"></div>
           </div>
         </div>
         <div id="about-bio-text" data-dev-text="aboutContent" data-dev-label="Isi Tentang Saya" style="font-size: 1.02rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.65;">
-          Halo! Saya Dika, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.
+          Belum ada deskripsi profil.
         </div>
-        <div class="skills-wrap" id="skills-container">
-          <span class="skill-tag">⚡ Full-Stack TypeScript</span>
-          <span class="skill-tag">🔥 Firebase & Firestore</span>
-          <span class="skill-tag">🌐 Cloud Architecture</span>
-          <span class="skill-tag">📱 PWA & Mobile-First</span>
-          <span class="skill-tag">💳 Integrasi Pembayaran QRIS</span>
-          <span class="skill-tag">🎨 Minimalist Glass Design</span>
-        </div>
+        <div class="skills-wrap" id="skills-container" style="display: none;"></div>
       </div>
     </section>
 
@@ -2508,13 +2580,7 @@
         <h2 class="section-title" id="syarat-title" data-dev-text="termsTitle" data-dev-label="Judul Syarat & Ketentuan" style="margin-bottom: 0.4rem; font-size: 1.3rem;">Syarat & Ketentuan VIP</h2>
         <p id="syarat-subtitle" data-dev-text="termsSubtitle" data-dev-label="Subjudul Syarat & Ketentuan" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">Harap dipahami sebelum mengirimkan pesanan proyek.</p>
         <div id="terms-content-container" data-dev-text="termsContent" data-dev-label="Isi Syarat & Ketentuan (Tiap baris 1 poin)">
-          <ol id="terms-list">
-            <li><strong>Slot Terbatas:</strong> Saya membatasi maksimal 3 proyek aktif sekaligus agar kualitas dan fokus tetap optimal.</li>
-            <li><strong>Pembayaran:</strong> DP minimal 50% melalui QRIS atau transfer bank resmi untuk mengunci jadwal pengerjaan.</li>
-            <li><strong>Revisi:</strong> Termasuk 2 kali revisi minor gratis dalam masa garansi 14 hari setelah proyek diserahkan.</li>
-            <li><strong>Hak Cipta:</strong> Seluruh kode sumber dan aset diserahkan 100% kepada klien setelah pelunasan penuh.</li>
-            <li><strong>Waktu Pengerjaan:</strong> Dihitung mulai setelah pembayaran DP terverifikasi dan materi awal lengkap.</li>
-          </ol>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Memuat syarat & ketentuan...</p>
         </div>
       </div>
     </section>
@@ -2536,8 +2602,8 @@
 
     <!-- FOOTER -->
     <footer style="text-align: center; padding: 2rem 0; color: var(--text-subtle); font-size: 0.84rem;">
-      <p id="footer-copyright-p">© <span id="current-year"></span> <strong id="footer-author-name" data-dev-text="authorName" data-dev-label="Nama Lengkap di Footer">Dika Aditya</strong>. <span id="footer-copyright-text" data-dev-text="footerCopyright" data-dev-label="Teks Footer Hak Cipta">Dibuat dengan cinta & efisiensi solo dev.</span></p>
-      <p id="footer-badge-text" data-dev-text="footerBadge" data-dev-label="Teks Footer Platform" style="margin-top: 0.3rem;">Berjalan di Firebase Spark & PWA GitHub Pages.</p>
+      <p id="footer-copyright-p">© <span id="current-year"></span> <strong id="footer-author-name" data-dev-text="authorName" data-dev-label="Nama Lengkap di Footer">Portofolio</strong>. <span id="footer-copyright-text" data-dev-text="footerCopyright" data-dev-label="Teks Footer Hak Cipta">Semua hak cipta dilindungi.</span></p>
+      <p id="footer-badge-text" data-dev-text="footerBadge" data-dev-label="Teks Footer Platform" style="margin-top: 0.3rem;"></p>
       <p style="margin-top: 0.55rem;">
         <button type="button" class="privacy-link" data-open-privacy>Kebijakan Privasi</button>
       </p>
@@ -2549,7 +2615,7 @@
   <div class="mobile-dock">
     <div class="dock-left-info">
       <div class="dock-title">Punya Ide Proyek?</div>
-      <div class="dock-sub" id="dock-slot-sub">Sisa 2 slot bulan ini</div>
+      <div class="dock-sub" id="dock-slot-sub" style="display: none;"></div>
     </div>
     <div style="display: flex; gap: 0.5rem; align-items: center;">
       <button id="dock-my-requests-btn" class="btn-secondary" style="padding: 0.65rem 0.9rem; font-size: 0.82rem; display: none;">
@@ -2667,10 +2733,7 @@
             <div id="qris-image-container">
               <!-- Rendered or loaded from site/qris -->
             </div>
-            <div id="bank-info-container" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
-              BCA: 123-456-7890 a.n Dika Aditya<br />
-              GoPay / Dana: 0812-3456-7890
-            </div>
+            <div id="bank-info-container" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;"></div>
           </div>
         </div>
 
@@ -2829,6 +2892,10 @@
 
       <!-- Tab 3: QRIS & Rekening -->
       <div id="tab-qris" class="dev-tab-content" style="display: none;">
+        <div id="dev-qris-missing-warning" class="dev-qris-warning-banner" style="display: none;">
+          ⚠️ QRIS belum disimpan, pembeli melihat pesan kosong
+        </div>
+        <div id="dev-qris-status-area"></div>
         <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
           Disimpan di dokumen terpisah <code>site/qris</code>. Hanya dapat dibaca oleh pengunjung yang sudah login.
         </div>
@@ -2839,7 +2906,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">Info Rekening & E-Wallet</label>
-          <textarea id="dev-bank-text" class="form-control" placeholder="BCA: 123-456-7890 a.n Dika Aditya&#10;GoPay: 0812-3456-7890"></textarea>
+          <textarea id="dev-bank-text" class="form-control" placeholder="Contoh: Nama Bank / E-Wallet, Nomor Rekening, a.n. Pemilik"></textarea>
         </div>
         <button id="save-qris-btn" class="btn-vip" style="width: 100%;">Simpan Pengaturan Pembayaran</button>
       </div>
@@ -3004,7 +3071,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
           <div class="form-group">
             <label class="form-label" for="pkg-edit-price">Harga Tampilan</label>
-            <input type="text" id="pkg-edit-price" class="form-control" placeholder="Rp 1.500.000" required maxlength="40" />
+            <input type="text" id="pkg-edit-price" class="form-control" placeholder="Contoh: Rp 500.000" required maxlength="40" />
           </div>
           <div class="form-group">
             <label class="form-label" for="pkg-edit-duration">Estimasi Waktu</label>
@@ -3579,12 +3646,14 @@
       // Email akun Google developer Anda (harus sama persis dengan yang ada di firestore.rules)
       devEmail: "dikaaditya1102.com@gmail.com",
       
-      // WhatsApp untuk kirim notifikasi langsung
-      whatsappPhone: "6281234567890",
+      // Opsional: nomor WhatsApp cadangan jika belum ada di kontak
+      whatsappPhone: "",
 
       // reCAPTCHA v3 Site Key untuk App Check (dinonaktifkan sampai Anda mengisi site key sendiri)
       recaptchaSiteKey: ""
     };
+
+    const NEUTRAL_AVATAR_SVG = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%2323201b'/%3E%3Ccircle cx='32' cy='24' r='11' fill='%23d4af37' opacity='0.85'/%3E%3Cpath d='M14 54c2-11 10-16 18-16s16 5 18 16' fill='%23d4af37' opacity='0.85'/%3E%3C/svg%3E";
 
     /* State Management */
     const STATE = {
@@ -3595,6 +3664,7 @@
       deferredPrompt: null,
       siteData: null,
       qrisData: null,
+      qrisLoaded: false,
       projects: [],
       packages: [],
       reviews: [],
@@ -3613,14 +3683,7 @@
     };
     window.STATE = STATE;
 
-    const DEFAULT_SKILLS = [
-      { icon: "⚡", name: "Full-Stack TypeScript" },
-      { icon: "🔥", name: "Firebase & Firestore" },
-      { icon: "🌐", name: "Cloud Architecture" },
-      { icon: "📱", name: "PWA & Mobile-First" },
-      { icon: "💳", name: "Integrasi Pembayaran QRIS" },
-      { icon: "🎨", name: "Minimalist Glass Design" }
-    ];
+    const DEFAULT_SKILLS = [];
 
     const DEFAULT_PRIVACY_TEXT = `Kebijakan Privasi ini menjelaskan bagaimana data Anda dikelola saat menggunakan website ini.
 
@@ -3640,132 +3703,47 @@ Anda boleh meminta data pesanan, chat, dan bukti transfer Anda dihapus kapan saj
 
 Terakhir diperbarui: 13 November 2026.`;
 
-    // Default Site Content with complete texts dictionary
+    // Neutral structural defaults (no fake names, prices, WhatsApp, bank info, or stock photos)
     const DEFAULT_SITE_CONTENT = {
-      authorName: "Arya A.K",
-      authorRole: "Full-Stack & Cloud Solo Developer",
-      tagline: '"Membangun produk digital premium, cepat, dan siap pakai dengan arsitektur cloud mandiri."',
-      bio: "Halo! Saya Arya, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.",
+      authorName: "",
+      authorRole: "",
+      tagline: "",
+      bio: "",
       statusOpen: true,
-      remainingSlots: 2,
-      announcement: "✨ Slot batch bulan ini tersisa 2 proyek VIP. Konsultasi langsung via chat!",
-      showAnnouncement: true,
+      remainingSlots: null,
+      announcement: "",
+      showAnnouncement: false,
       privacyText: DEFAULT_PRIVACY_TEXT,
-      coverUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
-      avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      coverUrl: "",
+      avatarUrl: "",
       theme: "dark-gold",
-      skills: DEFAULT_SKILLS,
+      skills: [],
       texts: {
-        authorName: "Arya A.K",
-        authorRole: "Full-Stack & Cloud Solo Developer",
-        tagline: '"Membangun produk digital premium, cepat, dan siap pakai dengan arsitektur cloud mandiri."',
+        authorName: "",
+        authorRole: "",
+        tagline: "",
         aboutTitle: "Tentang Saya",
-        aboutSubtitle: "Filosofi kerja solo developer",
-        aboutContent: "Halo! Saya Arya, seorang solo software engineer yang berfokus membantu founder, UMKM, dan kreator mewujudkan aplikasi web serta sistem otomatisasi tanpa birokrasi tim besar. Setiap proyek ditangani dari hulu ke hilir dengan standar kode yang rapi, cepat, dan teruji.",
+        aboutSubtitle: "",
+        aboutContent: "",
         karyaTitle: "Karya & Portofolio",
         karyaSubtitle: "Proyek unggulan yang telah diselesaikan",
         paketTitle: "Paket Layanan",
-        paketSubtitle: "Transparan, fleksibel, tanpa biaya tersembunyi",
+        paketSubtitle: "Pilih paket yang sesuai kebutuhan Anda",
         testimoniTitle: "Testimoni Klien",
-        testimoniSubtitle: "Ulasan jujur dari pemesan yang puas",
-        termsTitle: "Syarat & Ketentuan VIP",
+        testimoniSubtitle: "Ulasan jujur dari pemesan",
+        termsTitle: "Syarat & Ketentuan",
         termsSubtitle: "Harap dipahami sebelum mengirimkan pesanan proyek.",
-        termsContent: "1. Slot Terbatas: Saya membatasi maksimal 3 proyek aktif sekaligus agar kualitas dan fokus tetap optimal.\n2. Pembayaran: DP minimal 50% melalui QRIS atau transfer bank resmi untuk mengunci jadwal pengerjaan.\n3. Revisi: Termasuk 2 kali revisi minor gratis dalam masa garansi 14 hari setelah proyek diserahkan.\n4. Hak Cipta: Seluruh kode sumber dan aset diserahkan 100% kepada klien setelah pelunasan penuh.\n5. Waktu Pengerjaan: Dihitung mulai setelah pembayaran DP terverifikasi dan materi awal lengkap.",
+        termsContent: "",
         kontakTitle: "Hubungi Saya",
         kontakSubtitle: "Diskusi langsung atau kolaborasi proyek",
-        footerCopyright: "Dibuat dengan cinta & efisiensi solo dev.",
-        footerBadge: "Berjalan di Firebase Spark & PWA GitHub Pages."
+        footerCopyright: "Semua hak cipta dilindungi.",
+        footerBadge: ""
       }
     };
 
-    const DEFAULT_PROJECTS = [
-      {
-        id: "p1",
-        title: "SaaS Analytics Engine",
-        category: "Cloud Dashboard",
-        order: 1,
-        desc: "Sistem analitik realtime untuk UMKM dengan visualisasi data instan dan export laporan PDF otomatis.",
-        tags: ["TypeScript", "Firebase", "Tailwind", "Chart.js"],
-        images: [
-          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-        ],
-        liveUrl: "https://example.com/demo1",
-        repoUrl: "https://github.com/example/analytics"
-      },
-      {
-        id: "p2",
-        title: "Katalog Toko Online QRIS",
-        category: "Mobile Web App",
-        order: 2,
-        desc: "Aplikasi PWA kasir dan pemesanan mandiri pelanggan tanpa biaya langganan bulanan.",
-        tags: ["PWA", "Firestore", "QRIS API", "Clean UI"],
-        images: [
-          "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80"
-        ],
-        liveUrl: "https://example.com/demo2",
-        repoUrl: "https://github.com/example/toko-qris"
-      }
-    ];
-
-    const DEFAULT_PACKAGES = [
-      {
-        id: "pkg-1",
-        name: "Starter MVP",
-        price: "Rp 1.500.000",
-        duration: "3 - 5 Hari Kerja",
-        group: "utama",
-        revisions: 2,
-        isPopular: false,
-        features: [
-          "1 Halaman Landing Page Responsif",
-          "Integrasi Google Analytics & SEO",
-          "Form Kontak & Integrasi WhatsApp",
-          "Garansi Perbaikan 14 Hari"
-        ]
-      },
-      {
-        id: "pkg-2",
-        name: "Pro VIP App",
-        price: "Rp 3.800.000",
-        duration: "7 - 10 Hari Kerja",
-        group: "vip",
-        revisions: 3,
-        isPopular: true,
-        features: [
-          "Aplikasi Web Full-Stack / PWA",
-          "Autentikasi Pengguna & Database Realtime",
-          "Dashboard Admin & Mode Manajemen",
-          "Integrasi Pembayaran QRIS & Notifikasi",
-          "Garansi & Pendampingan 30 Hari"
-        ]
-      },
-      {
-        id: "pkg-3",
-        name: "Custom Enterprise",
-        price: "Rp 7.500.000+",
-        duration: "14 - 21 Hari Kerja",
-        group: "vip",
-        revisions: 3,
-        isPopular: false,
-        features: [
-          "Arsitektur Cloud Skala Tinggi",
-          "Fitur Kustom Sesuai Kebutuhan",
-          "API & Automasi Sistem Bisnis",
-          "Pelatihan & Dokumentasi Lengkap",
-          "Prioritas Support VIP 60 Hari"
-        ]
-      }
-    ];
-
-    const DEFAULT_CONTACTS = [
-      { name: "WhatsApp", url: "https://wa.me/6281234567890", icon: "💬" },
-      { name: "GitHub", url: "https://github.com", icon: "🐙" },
-      { name: "LinkedIn", url: "https://linkedin.com", icon: "💼" },
-      { name: "Email", url: "mailto:dikaaditya1102.com@gmail.com", icon: "✉️" },
-      { name: "Telegram", url: "https://t.me", icon: "✈️" }
-    ];
+    const DEFAULT_PROJECTS = [];
+    const DEFAULT_PACKAGES = [];
+    const DEFAULT_CONTACTS = [];
 
     /* ==========================================================================
        2. INITIALIZE FIREBASE (REAL FIRESTORE & AUTH ONLY)
@@ -3970,6 +3948,209 @@ Terakhir diperbarui: 13 November 2026.`;
     window.validatePromoForPackage = validatePromoForPackage;
     window.isOrderHanging = isOrderHanging;
     window.countActiveUserOrders = countActiveUserOrders;
+
+    /* Pure & Reusable Firestore Error / Timeout / QRIS / Contact Helpers */
+    const FIRESTORE_TIMEOUT_MS = 10000;
+
+    function getFirestoreTimeoutMs() {
+      if (typeof window !== "undefined" && typeof window.__FIRESTORE_TIMEOUT_MS__ === "number" && window.__FIRESTORE_TIMEOUT_MS__ > 0) {
+        return window.__FIRESTORE_TIMEOUT_MS__;
+      }
+      return FIRESTORE_TIMEOUT_MS;
+    }
+
+    function extractFirebaseErrorCode(err) {
+      if (!err) return "unknown";
+      if (typeof err === "string") return err;
+      if (err.code) return String(err.code);
+      if (err.name === "TimeoutError" || String(err.message || "").toLowerCase().includes("timeout")) {
+        return "timeout";
+      }
+      return "unknown";
+    }
+
+    function formatFirestoreErrorInfo(err, isDev = false) {
+      const code = extractFirebaseErrorCode(err);
+      return {
+        message: "Data belum bisa dimuat. Coba lagi.",
+        retryLabel: "Coba lagi",
+        devCodeText: isDev ? `Kode error: ${code}` : null,
+        code
+      };
+    }
+
+    function isValidMediaUrl(url) {
+      return typeof url === "string" && (
+        url.startsWith("data:image/") ||
+        url.startsWith("https://") ||
+        url.startsWith("http://")
+      );
+    }
+
+    function hasValidQrisContent(data) {
+      if (!data || typeof data !== "object") return false;
+      const hasImg = isValidMediaUrl(data.qrisUrl);
+      const hasBank = typeof data.bankText === "string" && data.bankText.trim().length > 0;
+      return hasImg || hasBank;
+    }
+
+    function isPlaceholderPhoneOrUrl(val) {
+      const s = String(val || "").trim();
+      if (!s) return true;
+      return /6281234567890|0812-3456-7890|123-456-7890/.test(s);
+    }
+
+    function getConfiguredWhatsappUrl(contacts = [], messageText = "", fallbackPhone = "") {
+      const encodedMsg = messageText ? encodeURIComponent(messageText) : "";
+      if (Array.isArray(contacts)) {
+        for (const c of contacts) {
+          const url = String(c?.url || "").trim();
+          if (!url || isPlaceholderPhoneOrUrl(url)) continue;
+          const lowerUrl = url.toLowerCase();
+          const lowerName = String(c?.name || "").toLowerCase();
+          if (
+            (lowerUrl.startsWith("https://wa.me/") ||
+             lowerUrl.startsWith("https://api.whatsapp.com/") ||
+             lowerUrl.startsWith("http://wa.me/") ||
+             lowerName.includes("whatsapp")) &&
+            (lowerUrl.startsWith("https://") || lowerUrl.startsWith("http://"))
+          ) {
+            if (!encodedMsg) return url;
+            return url + (url.includes("?") ? "&" : "?") + "text=" + encodedMsg;
+          }
+        }
+      }
+      const phone = String(fallbackPhone || "").replace(/[^\d]/g, "");
+      if (phone && !isPlaceholderPhoneOrUrl(phone)) {
+        return `https://wa.me/${phone}${encodedMsg ? `?text=${encodedMsg}` : ""}`;
+      }
+      return null;
+    }
+
+    function withTimeout(promise, timeoutMs = getFirestoreTimeoutMs()) {
+      let timerId = null;
+      const timeoutPromise = new Promise((_, reject) => {
+        timerId = setTimeout(() => {
+          const err = new Error("Batas waktu memuat data (10 detik) terlampaui.");
+          err.code = "timeout";
+          err.name = "TimeoutError";
+          reject(err);
+        }, timeoutMs);
+      });
+      return Promise.race([Promise.resolve(promise), timeoutPromise]).finally(() => {
+        if (timerId !== null) clearTimeout(timerId);
+      });
+    }
+
+    function attachSnapshotWithTimeout(queryOrRef, {
+      timeoutMs = getFirestoreTimeoutMs(),
+      subscribeFn = onSnapshot,
+      onData,
+      onError
+    } = {}) {
+      let settled = false;
+      let timedOut = false;
+      let unsubscribed = false;
+      let rawUnsub = null;
+
+      const timerId = setTimeout(() => {
+        if (settled || unsubscribed) return;
+        settled = true;
+        timedOut = true;
+        if (typeof rawUnsub === "function") {
+          try { rawUnsub(); } catch (_) {}
+          rawUnsub = null;
+        }
+        const timeoutErr = new Error("Batas waktu memuat data (10 detik) terlampaui.");
+        timeoutErr.code = "timeout";
+        timeoutErr.name = "TimeoutError";
+        if (typeof onError === "function") onError(timeoutErr);
+      }, timeoutMs);
+
+      try {
+        rawUnsub = subscribeFn(
+          queryOrRef,
+          (snap) => {
+            if (unsubscribed || timedOut) return;
+            const isFromCache = Boolean(snap && snap.metadata && snap.metadata.fromCache);
+            const isEmptySnap = !snap || (typeof snap.exists === "function" ? !snap.exists() : Boolean(snap.empty));
+            if (isFromCache && isEmptySnap) {
+              return;
+            }
+            if (!settled) {
+              settled = true;
+              clearTimeout(timerId);
+            }
+            if (typeof onData === "function") onData(snap);
+          },
+          (err) => {
+            if (unsubscribed || timedOut) return;
+            if (!settled) {
+              settled = true;
+              clearTimeout(timerId);
+            }
+            if (typeof onError === "function") onError(err);
+          }
+        );
+      } catch (syncErr) {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timerId);
+        }
+        if (typeof onError === "function") onError(syncErr);
+      }
+
+      return () => {
+        unsubscribed = true;
+        clearTimeout(timerId);
+        if (typeof rawUnsub === "function") {
+          try { rawUnsub(); } catch (_) {}
+          rawUnsub = null;
+        }
+      };
+    }
+
+    function createFirestoreErrorElement({ isDev = STATE.isDev, error = null, onRetry = null } = {}) {
+      const info = formatFirestoreErrorInfo(error, isDev);
+      if (isDev) {
+        console.error(`[Firestore Error] (${info.code})`, error);
+      }
+
+      const card = document.createElement("div");
+      card.className = "firestore-error-card";
+
+      const msgEl = document.createElement("p");
+      msgEl.className = "firestore-error-msg";
+      msgEl.textContent = info.message;
+      card.appendChild(msgEl);
+
+      if (info.devCodeText) {
+        const codeEl = document.createElement("div");
+        codeEl.className = "firestore-error-dev-code";
+        codeEl.textContent = info.devCodeText;
+        card.appendChild(codeEl);
+      }
+
+      if (typeof onRetry === "function") {
+        const retryBtn = document.createElement("button");
+        retryBtn.type = "button";
+        retryBtn.className = "btn-secondary firestore-retry-btn";
+        retryBtn.style.cssText = "padding: 0.4rem 0.95rem; font-size: 0.82rem;";
+        retryBtn.textContent = info.retryLabel;
+        retryBtn.onclick = () => onRetry();
+        card.appendChild(retryBtn);
+      }
+
+      return card;
+    }
+
+    window.extractFirebaseErrorCode = extractFirebaseErrorCode;
+    window.formatFirestoreErrorInfo = formatFirestoreErrorInfo;
+    window.hasValidQrisContent = hasValidQrisContent;
+    window.getConfiguredWhatsappUrl = getConfiguredWhatsappUrl;
+    window.withTimeout = withTimeout;
+    window.attachSnapshotWithTimeout = attachSnapshotWithTimeout;
+    window.createFirestoreErrorElement = createFirestoreErrorElement;
 
     /* Helper: Show Friendly Toast */
     function showToast(message, type = "info") {
@@ -4854,6 +5035,9 @@ Terakhir diperbarui: 13 November 2026.`;
       if (typeof listenToPromos === "function") {
         listenToPromos();
       }
+      if (STATE.isDev && typeof loadDevQrisStatus === "function") {
+        loadDevQrisStatus();
+      }
     }
 
     // Real Firebase Auth state listener
@@ -4893,7 +5077,7 @@ Terakhir diperbarui: 13 November 2026.`;
         avatarBtn.setAttribute("aria-label", "Menu Akun Pengguna");
 
         const img = document.createElement("img");
-        img.src = STATE.user.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80";
+        img.src = STATE.user.photoURL || NEUTRAL_AVATAR_SVG;
         img.alt = "Avatar";
         avatarBtn.appendChild(img);
 
@@ -4931,7 +5115,7 @@ Terakhir diperbarui: 13 November 2026.`;
       const myReqBtn = document.getElementById("menu-my-requests-btn");
       const logoutBtn = document.getElementById("menu-logout-btn");
 
-      if (avatarImg) avatarImg.src = STATE.user.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80";
+      if (avatarImg) avatarImg.src = STATE.user.photoURL || NEUTRAL_AVATAR_SVG;
       if (nameEl) nameEl.textContent = STATE.user.displayName || (STATE.isDev ? "Developer" : "Klien VIP");
       if (devBadge) devBadge.style.display = STATE.isDev ? "inline-block" : "none";
       if (subEl) subEl.textContent = STATE.user.email || (STATE.isDev ? "Solo Developer" : "Klien Terverifikasi");
@@ -4941,6 +5125,7 @@ Terakhir diperbarui: 13 November 2026.`;
         devDashBtn.onclick = () => {
           menu.style.display = "none";
           updatePendingReviewsBadge();
+          if (typeof loadDevQrisStatus === "function") loadDevQrisStatus();
           openSheet("dev-sheet");
         };
       }
@@ -5004,98 +5189,152 @@ Terakhir diperbarui: 13 November 2026.`;
     /* ==========================================================================
        4. PERSISTENT FIRESTORE SYNC & CONTENT MANAGEMENT
        ========================================================================== */
-    async function loadSiteContent() {
-      STATE.siteData = { ...DEFAULT_SITE_CONTENT };
-      STATE.packages = [...DEFAULT_PACKAGES];
-      STATE.reviews = [];
-      STATE.contacts = [...DEFAULT_CONTACTS];
-      STATE.projects = [...DEFAULT_PROJECTS];
+    let siteMainUnsub = null;
+    let projectsUnsub = null;
 
-      if (STATE.isFirebaseActive && db) {
-        try {
-          // Listen to site/main
-          onSnapshot(doc(db, "site", "main"), (snap) => {
-            if (snap.exists()) {
-              const data = snap.data();
-              STATE.siteData = {
-                ...STATE.siteData,
-                ...data,
-                texts: { ...(STATE.siteData.texts || {}), ...(data.texts || {}) }
-              };
-              if (Array.isArray(data.packages)) STATE.packages = data.packages;
-              if (Array.isArray(data.contacts)) STATE.contacts = data.contacts;
-              applySiteContent();
-              renderPackages();
-              renderContacts();
-            } else if (STATE.isDev) {
-              // Seed initial site/main if empty
-              setDoc(doc(db, "site", "main"), {
-                ...DEFAULT_SITE_CONTENT,
-                packages: DEFAULT_PACKAGES,
-                contacts: DEFAULT_CONTACTS
-              });
-            }
-          });
-
-          // Listen to projects collection
-          try {
-            const projQ = query(collection(db, "projects"), orderBy("order", "asc"));
-            onSnapshot(projQ, (snap) => {
-              if (!snap.empty) {
-                const list = [];
-                snap.forEach(d => list.push({ id: d.id, ...d.data() }));
-                STATE.projects = list;
-                renderProjects();
-              } else if (STATE.isDev) {
-                // Seed initial projects
-                DEFAULT_PROJECTS.forEach(p => {
-                  setDoc(doc(db, "projects", p.id), p);
-                });
-              } else {
-                renderProjects();
-              }
-            }, (err) => {
-              console.warn("Projects snapshot fallback to defaults:", err);
-              renderProjects();
-            });
-          } catch (projErr) {
-            console.warn("Projects query fallback:", projErr);
-          }
-
-          // Increment visitor count atomically
-          try {
-            const statsRef = doc(db, "stats", "counter");
-            updateDoc(statsRef, {
-              views: increment(1),
-              lastVisited: serverTimestamp()
-            }).catch(() => {
-              setDoc(statsRef, { views: 1, lastVisited: serverTimestamp() }, { merge: true });
-            });
-          } catch (e) {
-            console.warn("Visitor stat count skipped:", e);
-          }
-        } catch (err) {
-          console.warn("Firestore sync fallback to defaults:", err);
-        }
+    function startSiteMainListener() {
+      if (siteMainUnsub) {
+        siteMainUnsub();
+        siteMainUnsub = null;
       }
 
+      const pkgList = document.getElementById("packages-list");
+      const contactList = document.getElementById("contacts-list");
+      if (pkgList) pkgList.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat paket layanan...</div>`;
+      if (contactList) contactList.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat kontak...</div>`;
+
+      if (!STATE.isFirebaseActive || !db) {
+        STATE.siteData = { ...DEFAULT_SITE_CONTENT, texts: { ...DEFAULT_SITE_CONTENT.texts } };
+        STATE.packages = [];
+        STATE.contacts = [];
+        applySiteContent();
+        renderPackages();
+        renderContacts();
+        return;
+      }
+
+      siteMainUnsub = attachSnapshotWithTimeout(doc(db, "site", "main"), {
+        onData: (snap) => {
+          if (snap.exists()) {
+            const data = snap.data();
+            STATE.siteData = {
+              ...DEFAULT_SITE_CONTENT,
+              ...data,
+              texts: { ...(DEFAULT_SITE_CONTENT.texts || {}), ...(data.texts || {}) }
+            };
+            STATE.packages = Array.isArray(data.packages) ? data.packages : [];
+            STATE.contacts = Array.isArray(data.contacts) ? data.contacts : [];
+          } else {
+            STATE.siteData = {
+              ...DEFAULT_SITE_CONTENT,
+              texts: { ...DEFAULT_SITE_CONTENT.texts }
+            };
+            STATE.packages = [];
+            STATE.contacts = [];
+          }
+          applySiteContent();
+          renderPackages();
+          renderContacts();
+        },
+        onError: (err) => {
+          STATE.siteData = { ...DEFAULT_SITE_CONTENT, texts: { ...DEFAULT_SITE_CONTENT.texts } };
+          STATE.packages = [];
+          STATE.contacts = [];
+          applySiteContent();
+          if (pkgList) {
+            pkgList.innerHTML = "";
+            pkgList.appendChild(createFirestoreErrorElement({
+              isDev: STATE.isDev,
+              error: err,
+              onRetry: startSiteMainListener
+            }));
+          }
+          if (contactList) {
+            contactList.innerHTML = "";
+            contactList.appendChild(createFirestoreErrorElement({
+              isDev: STATE.isDev,
+              error: err,
+              onRetry: startSiteMainListener
+            }));
+          }
+        }
+      });
+    }
+
+    function startProjectsListener() {
+      if (projectsUnsub) {
+        projectsUnsub();
+        projectsUnsub = null;
+      }
+
+      const projList = document.getElementById("projects-list");
+      if (projList) projList.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat karya...</div>`;
+
+      if (!STATE.isFirebaseActive || !db) {
+        STATE.projects = [];
+        renderProjects();
+        return;
+      }
+
+      const projQ = query(collection(db, "projects"), orderBy("order", "asc"));
+      projectsUnsub = attachSnapshotWithTimeout(projQ, {
+        onData: (snap) => {
+          const list = [];
+          snap.forEach(d => list.push({ id: d.id, ...d.data() }));
+          STATE.projects = list;
+          renderProjects();
+        },
+        onError: (err) => {
+          STATE.projects = [];
+          cleanupProjectCarousels();
+          if (projList) {
+            projList.innerHTML = "";
+            projList.appendChild(createFirestoreErrorElement({
+              isDev: STATE.isDev,
+              error: err,
+              onRetry: startProjectsListener
+            }));
+          }
+        }
+      });
+    }
+
+    async function loadSiteContent() {
+      STATE.siteData = { ...DEFAULT_SITE_CONTENT, texts: { ...DEFAULT_SITE_CONTENT.texts } };
+      STATE.packages = [];
+      STATE.reviews = [];
+      STATE.contacts = [];
+      STATE.projects = [];
+
       applySiteContent();
-      renderProjects();
-      renderPackages();
+      startSiteMainListener();
+      startProjectsListener();
       listenToReviews();
-      renderContacts();
+
+      if (STATE.isFirebaseActive && db) {
+        // Increment visitor count atomically (only numeric counter, no identity)
+        try {
+          const statsRef = doc(db, "stats", "counter");
+          updateDoc(statsRef, {
+            views: increment(1),
+            lastVisited: serverTimestamp()
+          }).catch(() => {
+            setDoc(statsRef, { views: 1, lastVisited: serverTimestamp() }, { merge: true }).catch(() => {});
+          });
+        } catch (e) {
+          console.warn("Visitor stat count skipped:", e);
+        }
+      }
     }
 
     function applySiteContent() {
-      const d = STATE.siteData;
-      if (!d) return;
-
+      const d = STATE.siteData || DEFAULT_SITE_CONTENT;
       const texts = d.texts || {};
 
-      // Author & Hero texts
-      const authorName = texts.authorName !== undefined ? texts.authorName : d.authorName;
-      const authorRole = texts.authorRole !== undefined ? texts.authorRole : d.authorRole;
-      const tagline = texts.tagline !== undefined ? texts.tagline : d.tagline;
+      // Author & Hero texts (neutral when empty in Firestore)
+      const authorName = ((texts.authorName !== undefined ? texts.authorName : d.authorName) || "").trim();
+      const authorRole = ((texts.authorRole !== undefined ? texts.authorRole : d.authorRole) || "").trim();
+      const tagline = ((texts.tagline !== undefined ? texts.tagline : d.tagline) || "").trim();
 
       const heroName = document.getElementById("hero-display-name");
       const headerName = document.getElementById("header-author-name");
@@ -5105,47 +5344,66 @@ Terakhir diperbarui: 13 November 2026.`;
       const headerRole = document.getElementById("header-author-role");
       const taglineEl = document.getElementById("hero-display-tagline");
 
-      if (heroName) heroName.textContent = authorName;
-      if (headerName) headerName.textContent = authorName;
-      if (footerName) footerName.textContent = authorName;
+      const displayAuthor = authorName || (STATE.isDev ? "Ketuk untuk isi nama" : "Portofolio");
+      document.title = authorName ? `${authorName} | Portofolio & Request VIP` : "Portofolio & Request VIP";
+
+      if (heroName) heroName.textContent = displayAuthor;
+      if (headerName) headerName.textContent = authorName || "Portofolio";
+      if (footerName) footerName.textContent = authorName || "Portofolio";
       if (monogram) {
-        const initials = (authorName || "Arya A.K").split(" ").map(n => n[0]).slice(0, 2).join("").toUpperCase();
-        monogram.textContent = initials || "AA";
+        const initials = authorName
+          ? authorName.split(" ").filter(Boolean).map(n => n[0]).slice(0, 2).join("").toUpperCase()
+          : "•";
+        monogram.textContent = initials || "•";
       }
-      if (heroRole) heroRole.textContent = authorRole;
+      if (heroRole) {
+        heroRole.textContent = authorRole || (STATE.isDev ? "Ketuk untuk isi peran / profesi" : "");
+        heroRole.style.display = (authorRole || STATE.isDev) ? "block" : "none";
+      }
       if (headerRole) headerRole.textContent = authorRole;
-      if (taglineEl) taglineEl.textContent = tagline;
+      if (taglineEl) {
+        taglineEl.textContent = tagline || (STATE.isDev ? "Ketuk untuk isi tagline / slogan" : "");
+        taglineEl.style.display = (tagline || STATE.isDev) ? "block" : "none";
+      }
 
       // Section titles & texts
       const aboutTitle = document.getElementById("about-title");
       const aboutSubtitle = document.getElementById("about-subtitle");
       const aboutBio = document.getElementById("about-bio-text");
-      if (aboutTitle) aboutTitle.textContent = texts.aboutTitle !== undefined ? texts.aboutTitle : "Tentang Saya";
-      if (aboutSubtitle) aboutSubtitle.textContent = texts.aboutSubtitle !== undefined ? texts.aboutSubtitle : "Filosofi kerja solo developer";
-      if (aboutBio) aboutBio.textContent = texts.aboutContent !== undefined ? texts.aboutContent : d.bio;
+      if (aboutTitle) aboutTitle.textContent = texts.aboutTitle !== undefined && texts.aboutTitle !== "" ? texts.aboutTitle : "Tentang Saya";
+      if (aboutSubtitle) {
+        const sub = texts.aboutSubtitle || "";
+        aboutSubtitle.textContent = sub || (STATE.isDev ? "Ketuk untuk isi subjudul" : "");
+        aboutSubtitle.style.display = (sub || STATE.isDev) ? "block" : "none";
+      }
+      if (aboutBio) {
+        const bioText = (texts.aboutContent !== undefined ? texts.aboutContent : d.bio) || "";
+        aboutBio.textContent = bioText.trim() || "Belum ada deskripsi profil.";
+      }
 
       const karyaTitle = document.getElementById("karya-title");
       const karyaSubtitle = document.getElementById("karya-subtitle");
-      if (karyaTitle) karyaTitle.textContent = texts.karyaTitle !== undefined ? texts.karyaTitle : "Karya & Portofolio";
+      if (karyaTitle) karyaTitle.textContent = texts.karyaTitle !== undefined && texts.karyaTitle !== "" ? texts.karyaTitle : "Karya & Portofolio";
       if (karyaSubtitle) karyaSubtitle.textContent = texts.karyaSubtitle !== undefined ? texts.karyaSubtitle : "Proyek unggulan yang telah diselesaikan";
 
       const paketTitle = document.getElementById("paket-title");
       const paketSubtitle = document.getElementById("paket-subtitle");
-      if (paketTitle) paketTitle.textContent = texts.paketTitle !== undefined ? texts.paketTitle : "Paket Layanan";
-      if (paketSubtitle) paketSubtitle.textContent = texts.paketSubtitle !== undefined ? texts.paketSubtitle : "Transparan, fleksibel, tanpa biaya tersembunyi";
+      if (paketTitle) paketTitle.textContent = texts.paketTitle !== undefined && texts.paketTitle !== "" ? texts.paketTitle : "Paket Layanan";
+      if (paketSubtitle) paketSubtitle.textContent = texts.paketSubtitle !== undefined ? texts.paketSubtitle : "Pilih paket yang sesuai kebutuhan Anda";
 
       const testimoniTitle = document.getElementById("testimoni-title");
       const testimoniSubtitle = document.getElementById("testimoni-subtitle");
-      if (testimoniTitle) testimoniTitle.textContent = texts.testimoniTitle !== undefined ? texts.testimoniTitle : "Testimoni Klien";
-      if (testimoniSubtitle) testimoniSubtitle.textContent = texts.testimoniSubtitle !== undefined ? texts.testimoniSubtitle : "Ulasan jujur dari pemesan yang puas";
+      if (testimoniTitle) testimoniTitle.textContent = texts.testimoniTitle !== undefined && texts.testimoniTitle !== "" ? texts.testimoniTitle : "Testimoni Klien";
+      if (testimoniSubtitle) testimoniSubtitle.textContent = texts.testimoniSubtitle !== undefined ? texts.testimoniSubtitle : "Ulasan jujur dari pemesan";
 
       const syaratTitle = document.getElementById("syarat-title");
       const syaratSubtitle = document.getElementById("syarat-subtitle");
       const termsContainer = document.getElementById("terms-content-container");
-      if (syaratTitle) syaratTitle.textContent = texts.termsTitle !== undefined ? texts.termsTitle : "Syarat & Ketentuan VIP";
+      if (syaratTitle) syaratTitle.textContent = texts.termsTitle !== undefined && texts.termsTitle !== "" ? texts.termsTitle : "Syarat & Ketentuan";
       if (syaratSubtitle) syaratSubtitle.textContent = texts.termsSubtitle !== undefined ? texts.termsSubtitle : "Harap dipahami sebelum mengirimkan pesanan proyek.";
-      if (termsContainer && texts.termsContent !== undefined) {
-        const lines = texts.termsContent.split("\n").map(l => l.trim()).filter(Boolean);
+      if (termsContainer) {
+        const rawTerms = texts.termsContent !== undefined ? String(texts.termsContent) : "";
+        const lines = rawTerms.split("\n").map(l => l.trim()).filter(Boolean);
         if (lines.length > 0) {
           let olHtml = "<ol id='terms-list'>";
           lines.forEach(line => {
@@ -5153,18 +5411,24 @@ Terakhir diperbarui: 13 November 2026.`;
           });
           olHtml += "</ol>";
           termsContainer.innerHTML = olHtml;
+        } else {
+          termsContainer.innerHTML = `<p style="color: var(--text-muted); font-size: 0.9rem;">Belum ada syarat &amp; ketentuan yang diatur.</p>`;
         }
       }
 
       const kontakTitle = document.getElementById("kontak-title");
       const kontakSubtitle = document.getElementById("kontak-subtitle");
-      if (kontakTitle) kontakTitle.textContent = texts.kontakTitle !== undefined ? texts.kontakTitle : "Hubungi Saya";
+      if (kontakTitle) kontakTitle.textContent = texts.kontakTitle !== undefined && texts.kontakTitle !== "" ? texts.kontakTitle : "Hubungi Saya";
       if (kontakSubtitle) kontakSubtitle.textContent = texts.kontakSubtitle !== undefined ? texts.kontakSubtitle : "Diskusi langsung atau kolaborasi proyek";
 
       const footerCopyright = document.getElementById("footer-copyright-text");
       const footerBadge = document.getElementById("footer-badge-text");
-      if (footerCopyright) footerCopyright.textContent = texts.footerCopyright !== undefined ? texts.footerCopyright : "Dibuat dengan cinta & efisiensi solo dev.";
-      if (footerBadge) footerBadge.textContent = texts.footerBadge !== undefined ? texts.footerBadge : "Berjalan di Firebase Spark & PWA GitHub Pages.";
+      if (footerCopyright) footerCopyright.textContent = texts.footerCopyright !== undefined && texts.footerCopyright !== "" ? texts.footerCopyright : "Semua hak cipta dilindungi.";
+      if (footerBadge) {
+        const badgeTxt = texts.footerBadge || "";
+        footerBadge.textContent = badgeTxt || (STATE.isDev ? "Ketuk untuk isi catatan footer" : "");
+        footerBadge.style.display = (badgeTxt || STATE.isDev) ? "block" : "none";
+      }
 
       // Slots & Status Logic
       const statusText = document.getElementById("status-text");
@@ -5192,7 +5456,7 @@ Terakhir diperbarui: 13 November 2026.`;
       }
 
       if (slotsBadge) {
-        if (isSlotSpecified && slotsNum !== null) {
+        if (isSlotSpecified && slotsNum !== null && !Number.isNaN(slotsNum)) {
           slotsBadge.style.display = "inline-flex";
           if (slotsText) slotsText.textContent = `Sisa ${slotsNum} Slot Proyek`;
         } else {
@@ -5201,7 +5465,7 @@ Terakhir diperbarui: 13 November 2026.`;
       }
 
       if (dockSlotSub) {
-        if (isSlotSpecified && slotsNum !== null) {
+        if (isSlotSpecified && slotsNum !== null && !Number.isNaN(slotsNum)) {
           dockSlotSub.style.display = "block";
           dockSlotSub.textContent = `Sisa ${slotsNum} slot bulan ini`;
         } else {
@@ -5244,8 +5508,27 @@ Terakhir diperbarui: 13 November 2026.`;
 
       const coverPhoto = document.getElementById("cover-photo");
       const profilePhoto = document.getElementById("profile-photo");
-      if (coverPhoto && d.coverUrl) coverPhoto.src = d.coverUrl;
-      if (profilePhoto && d.avatarUrl) profilePhoto.src = d.avatarUrl;
+      const profileFallback = document.getElementById("profile-avatar-fallback");
+      if (coverPhoto) {
+        if (isValidMediaUrl(d.coverUrl)) {
+          coverPhoto.src = d.coverUrl;
+          coverPhoto.style.display = "block";
+        } else {
+          coverPhoto.removeAttribute("src");
+          coverPhoto.style.display = "none";
+        }
+      }
+      if (profilePhoto) {
+        if (isValidMediaUrl(d.avatarUrl)) {
+          profilePhoto.src = d.avatarUrl;
+          profilePhoto.style.display = "block";
+          if (profileFallback) profileFallback.style.display = "none";
+        } else {
+          profilePhoto.removeAttribute("src");
+          profilePhoto.style.display = "none";
+          if (profileFallback) profileFallback.style.display = "flex";
+        }
+      }
 
       renderAnnouncement();
       renderSkills();
@@ -5404,13 +5687,11 @@ Terakhir diperbarui: 13 November 2026.`;
       if (!container) return;
       container.innerHTML = "";
 
-      const skills = (STATE.siteData && Array.isArray(STATE.siteData.skills) && STATE.siteData.skills.length > 0)
+      const skills = (STATE.siteData && Array.isArray(STATE.siteData.skills))
         ? STATE.siteData.skills
-        : DEFAULT_SKILLS;
+        : [];
 
-      if (STATE.siteData && !STATE.siteData.skills) {
-        STATE.siteData.skills = [...skills];
-      }
+      container.style.display = (skills.length > 0 || STATE.isDev) ? "flex" : "none";
 
       skills.forEach((skill, index) => {
         const tag = document.createElement("span");
@@ -5716,7 +5997,16 @@ Terakhir diperbarui: 13 November 2026.`;
 
       if (fileInput) fileInput.value = "";
       if (titleEl) titleEl.textContent = type === "cover" ? "Ganti Foto Sampul Landscape" : "Ganti Foto Profil Bulat";
-      if (previewEl) previewEl.src = type === "cover" ? STATE.siteData.coverUrl : STATE.siteData.avatarUrl;
+      const curUrl = type === "cover" ? STATE.siteData?.coverUrl : STATE.siteData?.avatarUrl;
+      if (previewEl) {
+        if (isValidMediaUrl(curUrl)) {
+          previewEl.src = curUrl;
+          previewEl.style.display = "block";
+        } else {
+          previewEl.removeAttribute("src");
+          previewEl.style.display = "none";
+        }
+      }
 
       openSheet("dev-photo-sheet");
     }
@@ -5740,7 +6030,10 @@ Terakhir diperbarui: 13 November 2026.`;
           const qual = STATE.currentEditingPhotoType === "cover" ? 0.75 : 0.8;
           devPendingPhotoDataUrl = await compressImageFile(file, maxDim, qual);
           const previewEl = document.getElementById("dev-photo-preview");
-          if (previewEl) previewEl.src = devPendingPhotoDataUrl;
+          if (previewEl) {
+            previewEl.src = devPendingPhotoDataUrl;
+            previewEl.style.display = "block";
+          }
         } catch (err) {
           showToast("Gagal memproses foto: " + err.message);
         }
@@ -5775,24 +6068,23 @@ Terakhir diperbarui: 13 November 2026.`;
     if (devPhotoResetBtn) {
       devPhotoResetBtn.onclick = async () => {
         const ok = await confirmDialog({
-          title: "Reset Foto",
-          message: "Reset foto ini ke gambar bawaan default?",
-          confirmText: "Reset Foto",
+          title: "Hapus Foto",
+          message: "Kosongkan foto ini dan kembalikan ke tampilan polos?",
+          confirmText: "Kosongkan",
           cancelText: "Batal",
           danger: true
         });
         if (!ok) return;
         const field = STATE.currentEditingPhotoType === "cover" ? "coverUrl" : "avatarUrl";
-        const defaultVal = DEFAULT_SITE_CONTENT[field];
-        STATE.siteData[field] = defaultVal;
+        STATE.siteData[field] = "";
         applySiteContent();
 
         if (STATE.isFirebaseActive && db) {
           try {
-            await setDoc(doc(db, "site", "main"), { [field]: defaultVal }, { merge: true });
-            showToast("Foto direset ke default.");
+            await setDoc(doc(db, "site", "main"), { [field]: "" }, { merge: true });
+            showToast("Foto dikosongkan.");
           } catch (e) {
-            showToast("Gagal reset foto: " + e.message);
+            showToast("Gagal mengosongkan foto: " + e.message);
           }
         }
         closeSheet("dev-photo-sheet");
@@ -5819,6 +6111,11 @@ Terakhir diperbarui: 13 November 2026.`;
       if (!container) return;
       container.innerHTML = "";
 
+      if (!Array.isArray(STATE.projects) || STATE.projects.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">Belum ada karya yang ditampilkan.</div>`;
+        return;
+      }
+
       const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       STATE.projects.forEach((proj, projIndex) => {
@@ -5833,25 +6130,32 @@ Terakhir diperbarui: 13 November 2026.`;
         track.className = "carousel-track";
         track.id = `track-${proj.id}`;
 
-        const images = Array.isArray(proj.images) && proj.images.length > 0 
-          ? proj.images 
-          : ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"];
+        const images = Array.isArray(proj.images)
+          ? proj.images.filter(src => isValidMediaUrl(src))
+          : [];
 
-        images.forEach(imgSrc => {
-          const slide = document.createElement("div");
-          slide.className = "carousel-slide";
-          const img = document.createElement("img");
-          img.src = imgSrc;
-          img.alt = proj.title || "Karya";
-          img.onclick = (e) => {
-            if (!STATE.isDev) {
-              e.stopPropagation();
-              openLightbox(imgSrc);
-            }
-          };
-          slide.appendChild(img);
-          track.appendChild(slide);
-        });
+        if (images.length === 0) {
+          const emptySlide = document.createElement("div");
+          emptySlide.className = "carousel-slide";
+          emptySlide.innerHTML = `<div class="carousel-empty-placeholder">Belum ada foto karya</div>`;
+          track.appendChild(emptySlide);
+        } else {
+          images.forEach(imgSrc => {
+            const slide = document.createElement("div");
+            slide.className = "carousel-slide";
+            const img = document.createElement("img");
+            img.src = imgSrc;
+            img.alt = proj.title || "Karya";
+            img.onclick = (e) => {
+              if (!STATE.isDev) {
+                e.stopPropagation();
+                openLightbox(imgSrc);
+              }
+            };
+            slide.appendChild(img);
+            track.appendChild(slide);
+          });
+        }
 
         carousel.appendChild(track);
 
@@ -6255,7 +6559,7 @@ Terakhir diperbarui: 13 November 2026.`;
           liveUrl,
           repoUrl,
           tags,
-          images: devProjectTempImages.length > 0 ? devProjectTempImages : ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"],
+          images: [...devProjectTempImages],
           updatedAt: new Date().toISOString()
         };
 
@@ -6322,12 +6626,25 @@ Terakhir diperbarui: 13 November 2026.`;
       container.innerHTML = "";
       if (dropdown) dropdown.innerHTML = "";
 
+      if (STATE.packages.length === 0) {
+        if (dropdown) {
+          const opt = document.createElement("option");
+          opt.value = "";
+          opt.textContent = "Belum ada paket tersedia";
+          opt.disabled = true;
+          opt.selected = true;
+          dropdown.appendChild(opt);
+        }
+        container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 2rem;">Belum ada paket layanan tersedia.</div>`;
+        return;
+      }
+
       // Populate VIP request form dropdown with all packages
       STATE.packages.forEach(pkg => {
         if (dropdown) {
           const opt = document.createElement("option");
           opt.value = pkg.name;
-          opt.textContent = `${pkg.name} (${pkg.price}) [${(pkg.group || 'utama').toUpperCase()}]`;
+          opt.textContent = `${pkg.name}${pkg.price ? ` (${pkg.price})` : ""} [${(pkg.group || 'utama').toUpperCase()}]`;
           dropdown.appendChild(opt);
         }
       });
@@ -6568,6 +6885,11 @@ Terakhir diperbarui: 13 November 2026.`;
       if (!container) return;
       container.innerHTML = "";
 
+      if (!Array.isArray(STATE.contacts) || STATE.contacts.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 1.5rem;">Belum ada kontak yang tersedia.</div>`;
+        return;
+      }
+
       STATE.contacts.forEach((c, idx) => {
         const a = document.createElement("a");
         const safeUrl = (c.url && (c.url.startsWith("http://") || c.url.startsWith("https://") || c.url.startsWith("mailto:") || c.url.startsWith("tel:"))) ? c.url : "#";
@@ -6695,15 +7017,20 @@ Terakhir diperbarui: 13 November 2026.`;
         unsubReviews = null;
       }
 
-      if (STATE.isFirebaseActive && db) {
-        try {
-          const revCol = collection(db, "reviews");
-          // Pengunjung hanya memuat show == true, Dev memuat semua dokumen ulasan
-          const revQ = STATE.isDev
-            ? query(revCol)
-            : query(revCol, where("show", "==", true));
+      const container = document.getElementById("reviews-list");
+      if (container) {
+        container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat ulasan...</div>`;
+      }
 
-          unsubReviews = onSnapshot(revQ, (snap) => {
+      if (STATE.isFirebaseActive && db) {
+        const revCol = collection(db, "reviews");
+        // Pengunjung hanya memuat show == true, Dev memuat semua dokumen ulasan
+        const revQ = STATE.isDev
+          ? query(revCol)
+          : query(revCol, where("show", "==", true));
+
+        unsubReviews = attachSnapshotWithTimeout(revQ, {
+          onData: (snap) => {
             const firestoreReviews = [];
             snap.forEach(d => {
               firestoreReviews.push({ id: d.id, ...d.data(), isFromFirestore: true });
@@ -6716,18 +7043,23 @@ Terakhir diperbarui: 13 November 2026.`;
               return tB - tA;
             });
 
-            // Simpan ulasan murni dari Firestore
             STATE.reviews = firestoreReviews;
             renderReviews();
-          }, (err) => {
-            console.warn("Reviews snapshot info:", err.message);
+          },
+          onError: (err) => {
             STATE.reviews = [];
-            renderReviews();
-          });
-          return;
-        } catch (e) {
-          console.warn("Reviews query setup error:", e);
-        }
+            updatePendingReviewsBadge();
+            if (container) {
+              container.innerHTML = "";
+              container.appendChild(createFirestoreErrorElement({
+                isDev: STATE.isDev,
+                error: err,
+                onRetry: listenToReviews
+              }));
+            }
+          }
+        });
+        return;
       }
 
       STATE.reviews = [];
@@ -7047,17 +7379,15 @@ Terakhir diperbarui: 13 November 2026.`;
           // Pastikan requests milik sendiri sudah dicek untuk mencegah pemakaian ulang kode yang sama
           let myRequests = STATE.activeRequests.filter(r => r.userId === STATE.user.uid);
           if (STATE.isFirebaseActive && db && STATE.requestsLoadedUid !== STATE.user.uid) {
-            try {
-              const mySnap = await getDocs(query(collection(db, "requests"), where("userId", "==", STATE.user.uid)));
-              const fetched = [];
-              mySnap.forEach(d => fetched.push({ id: d.id, ...d.data() }));
-              myRequests = fetched;
-              if (!STATE.isDev) {
-                STATE.activeRequests = fetched;
-                STATE.requestsLoadedUid = STATE.user.uid;
-              }
-            } catch (reqErr) {
-              console.warn("Cek riwayat request promo:", reqErr);
+            const mySnap = await withTimeout(
+              getDocs(query(collection(db, "requests"), where("userId", "==", STATE.user.uid)))
+            );
+            const fetched = [];
+            mySnap.forEach(d => fetched.push({ id: d.id, ...d.data() }));
+            myRequests = fetched;
+            if (!STATE.isDev) {
+              STATE.activeRequests = fetched;
+              STATE.requestsLoadedUid = STATE.user.uid;
             }
           }
 
@@ -7069,7 +7399,7 @@ Terakhir diperbarui: 13 November 2026.`;
 
           let promoData = null;
           if (STATE.isFirebaseActive && db) {
-            const pSnap = await getDoc(doc(db, "promos", code));
+            const pSnap = await withTimeout(getDoc(doc(db, "promos", code)));
             if (pSnap.exists()) {
               promoData = pSnap.data();
             }
@@ -7107,8 +7437,29 @@ Terakhir diperbarui: 13 November 2026.`;
           if (clearPromoBtn) clearPromoBtn.style.display = "inline-flex";
           updateOrderPricePreview();
         } catch (err) {
-          console.error("Promo lookup error:", err);
-          setPromoError("Gagal memvalidasi kode promo.");
+          const info = formatFirestoreErrorInfo(err, STATE.isDev);
+          if (STATE.isDev) console.error(`[Promo Error] (${info.code})`, err);
+          STATE.appliedPromo = null;
+          statusEl.innerHTML = "";
+          const msgSpan = document.createElement("span");
+          msgSpan.textContent = info.message + " ";
+          statusEl.appendChild(msgSpan);
+          if (info.devCodeText) {
+            const codeSpan = document.createElement("span");
+            codeSpan.style.cssText = "font-family: monospace; color: var(--status-warning); margin-right: 0.4rem;";
+            codeSpan.textContent = `(${info.devCodeText})`;
+            statusEl.appendChild(codeSpan);
+          }
+          const retryLink = document.createElement("button");
+          retryLink.type = "button";
+          retryLink.className = "btn-secondary";
+          retryLink.style.cssText = "padding: 0.15rem 0.55rem; font-size: 0.74rem; margin-left: 0.25rem;";
+          retryLink.textContent = info.retryLabel;
+          retryLink.onclick = () => applyPromoBtn.click();
+          statusEl.appendChild(retryLink);
+          statusEl.className = "promo-feedback error";
+          if (clearPromoBtn) clearPromoBtn.style.display = "none";
+          updateOrderPricePreview();
         } finally {
           applyPromoBtn.disabled = false;
           applyPromoBtn.textContent = origLabel;
@@ -7139,75 +7490,226 @@ Terakhir diperbarui: 13 November 2026.`;
     if (heroVipBtn) heroVipBtn.onclick = triggerOrderFlow;
     if (dockVipBtn) dockVipBtn.onclick = triggerOrderFlow;
 
+    function renderQrisEmptyOrError(imgContainer, bankContainer, { context = "order", error = null, onRetry = null } = {}) {
+      if (bankContainer) bankContainer.innerHTML = "";
+      if (!imgContainer) return;
+      imgContainer.innerHTML = "";
+
+      const box = document.createElement("div");
+      box.className = "qris-empty-box";
+
+      const msg = document.createElement("div");
+      msg.textContent = "QRIS belum diatur oleh admin. Silakan hubungi lewat chat atau WhatsApp.";
+      box.appendChild(msg);
+
+      if (error) {
+        const info = formatFirestoreErrorInfo(error, STATE.isDev);
+        if (STATE.isDev) {
+          console.error(`[QRIS Error] (${info.code})`, error);
+          const codeEl = document.createElement("div");
+          codeEl.className = "firestore-error-dev-code";
+          codeEl.textContent = info.devCodeText;
+          box.appendChild(codeEl);
+        }
+      }
+
+      const actionsRow = document.createElement("div");
+      actionsRow.style.cssText = "display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;";
+
+      const waUrl = getConfiguredWhatsappUrl(
+        STATE.contacts,
+        "Halo, saya ingin menanyakan info pembayaran QRIS / rekening.",
+        DEV_CONFIG.whatsappPhone
+      );
+
+      if (waUrl) {
+        const waLink = document.createElement("a");
+        waLink.href = waUrl;
+        waLink.target = "_blank";
+        waLink.rel = "noopener noreferrer";
+        waLink.className = "btn-secondary";
+        waLink.style.cssText = "padding: 0.42rem 0.9rem; font-size: 0.8rem;";
+        waLink.textContent = "💬 Hubungi via WhatsApp";
+        actionsRow.appendChild(waLink);
+      } else {
+        const contactBtn = document.createElement("button");
+        contactBtn.type = "button";
+        contactBtn.className = "btn-secondary";
+        contactBtn.style.cssText = "padding: 0.42rem 0.9rem; font-size: 0.8rem;";
+        contactBtn.textContent = context === "chat" ? "💬 Hubungi lewat Chat" : "💬 Hubungi Admin";
+        contactBtn.onclick = () => {
+          if (context === "chat") {
+            closeSheet("chat-qris-sheet");
+            const input = document.getElementById("chat-text-input");
+            if (input && !input.disabled) input.focus();
+          } else {
+            closeSheet("request-sheet");
+            const kontakSec = document.getElementById("kontak");
+            if (kontakSec) kontakSec.scrollIntoView({ behavior: "smooth" });
+          }
+        };
+        actionsRow.appendChild(contactBtn);
+      }
+
+      if (error && typeof onRetry === "function") {
+        const retryBtn = document.createElement("button");
+        retryBtn.type = "button";
+        retryBtn.className = "btn-secondary";
+        retryBtn.style.cssText = "padding: 0.42rem 0.9rem; font-size: 0.8rem;";
+        retryBtn.textContent = "Coba lagi";
+        retryBtn.onclick = () => onRetry();
+        actionsRow.appendChild(retryBtn);
+      }
+
+      box.appendChild(actionsRow);
+      imgContainer.appendChild(box);
+    }
+
+    function renderQrisValid(imgContainer, bankContainer, data, isDarkCard = false) {
+      if (imgContainer) imgContainer.innerHTML = "";
+      if (bankContainer) bankContainer.innerHTML = "";
+
+      const hasImg = isValidMediaUrl(data?.qrisUrl);
+      const bankText = typeof data?.bankText === "string" ? data.bankText.trim() : "";
+
+      if (imgContainer && hasImg) {
+        const qrisImg = document.createElement("img");
+        qrisImg.src = data.qrisUrl;
+        qrisImg.alt = "QRIS Pembayaran";
+        qrisImg.className = "qris-img";
+        qrisImg.style.cssText = "max-height: 200px; object-fit: contain; cursor: zoom-in;";
+        qrisImg.onclick = () => openLightbox(data.qrisUrl);
+
+        const qrisHint = document.createElement("div");
+        qrisHint.style.cssText = isDarkCard
+          ? "font-size: 0.76rem; color: #0f172a; margin-top: 4px; font-weight: 600;"
+          : "font-size: 0.76rem; color: var(--accent); margin-top: 4px;";
+        qrisHint.textContent = "🔍 Ketuk gambar QRIS untuk memperbesar";
+
+        imgContainer.appendChild(qrisImg);
+        imgContainer.appendChild(qrisHint);
+      }
+
+      if (bankContainer) {
+        if (bankText) {
+          bankContainer.innerHTML = escapeHtml(bankText).replace(/\n/g, "<br/>");
+          bankContainer.style.display = "block";
+        } else {
+          bankContainer.style.display = "none";
+        }
+      }
+    }
+
     /* Load Secure QRIS (Only for Authenticated Users) */
     async function loadQRISData() {
       const qrisImgContainer = document.getElementById("qris-image-container");
       const bankInfoContainer = document.getElementById("bank-info-container");
       if (!qrisImgContainer) return;
 
-      if (STATE.isFirebaseActive && db && STATE.user) {
-        try {
-          const snap = await getDoc(doc(db, "site", "qris"));
-          if (snap.exists()) {
-            STATE.qrisData = snap.data();
-          }
-        } catch (err) {
-          console.warn("QRIS load restricted or empty:", err);
-        }
+      qrisImgContainer.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem; padding: 0.75rem;">Memuat info pembayaran...</div>`;
+      if (bankInfoContainer) bankInfoContainer.innerHTML = "";
+
+      if (!STATE.isFirebaseActive || !db || !STATE.user) {
+        STATE.qrisData = null;
+        renderQrisEmptyOrError(qrisImgContainer, bankInfoContainer, { context: "order" });
+        return;
       }
 
-      const rawQris = STATE.qrisData?.qrisUrl || "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
-      const qrisUrl = (rawQris.startsWith("data:image/") || rawQris.startsWith("https://") || rawQris.startsWith("http://")) ? rawQris : "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
-      const bankText = STATE.qrisData?.bankText || "BCA: 123-456-7890 a.n Dika Aditya\nGoPay / Dana: 0812-3456-7890";
-
-      qrisImgContainer.innerHTML = "";
-      const qrisImg = document.createElement("img");
-      qrisImg.src = qrisUrl;
-      qrisImg.alt = "QRIS Pembayaran";
-      qrisImg.className = "qris-img";
-      qrisImg.style.cssText = "max-height: 180px; object-fit: contain; cursor: zoom-in;";
-      qrisImg.onclick = () => openLightbox(qrisUrl);
-
-      const qrisHint = document.createElement("div");
-      qrisHint.style.cssText = "font-size: 0.76rem; color: var(--accent); margin-top: 4px;";
-      qrisHint.textContent = "🔍 Ketuk gambar QRIS untuk memperbesar";
-
-      qrisImgContainer.appendChild(qrisImg);
-      qrisImgContainer.appendChild(qrisHint);
-
-      if (bankInfoContainer) {
-        bankInfoContainer.innerHTML = escapeHtml(bankText).replace(/\n/g, "<br/>");
+      try {
+        const snap = await withTimeout(getDoc(doc(db, "site", "qris")));
+        STATE.qrisLoaded = true;
+        if (snap.exists() && hasValidQrisContent(snap.data())) {
+          STATE.qrisData = snap.data();
+          renderQrisValid(qrisImgContainer, bankInfoContainer, STATE.qrisData, false);
+        } else {
+          STATE.qrisData = null;
+          renderQrisEmptyOrError(qrisImgContainer, bankInfoContainer, { context: "order" });
+        }
+      } catch (err) {
+        STATE.qrisData = null;
+        renderQrisEmptyOrError(qrisImgContainer, bankInfoContainer, {
+          context: "order",
+          error: err,
+          onRetry: loadQRISData
+        });
       }
     }
 
     // Quick QRIS popup in chat
-    function openChatQRISModal() {
+    async function openChatQRISModal() {
       const imgContainer = document.getElementById("chat-qris-img-container");
       const bankContainer = document.getElementById("chat-bank-info-container");
-      const rawQris = STATE.qrisData?.qrisUrl || "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
-      const qrisUrl = (rawQris.startsWith("data:image/") || rawQris.startsWith("https://") || rawQris.startsWith("http://")) ? rawQris : "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80";
-      const bankText = STATE.qrisData?.bankText || "BCA: 123-456-7890 a.n Dika Aditya\nGoPay / Dana: 0812-3456-7890";
-
       if (imgContainer) {
-        imgContainer.innerHTML = "";
-        const qImg = document.createElement("img");
-        qImg.src = qrisUrl;
-        qImg.alt = "QRIS Pembayaran";
-        qImg.className = "qris-img";
-        qImg.style.cssText = "max-height: 200px; object-fit: contain; cursor: zoom-in;";
-        qImg.onclick = () => openLightbox(qrisUrl);
-
-        const qHint = document.createElement("div");
-        qHint.style.cssText = "font-size: 0.76rem; color: #0f172a; margin-top: 4px; font-weight: 600;";
-        qHint.textContent = "🔍 Ketuk gambar untuk memperbesar";
-
-        imgContainer.appendChild(qImg);
-        imgContainer.appendChild(qHint);
+        imgContainer.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem; padding: 0.75rem;">Memuat info pembayaran...</div>`;
       }
       if (bankContainer) {
-        bankContainer.innerHTML = escapeHtml(bankText).replace(/\n/g, "<br/>");
+        bankContainer.innerHTML = "";
+        bankContainer.style.display = "none";
       }
       openSheet("chat-qris-sheet");
+
+      if (!STATE.isFirebaseActive || !db || !STATE.user) {
+        STATE.qrisData = null;
+        renderQrisEmptyOrError(imgContainer, bankContainer, { context: "chat" });
+        return;
+      }
+
+      try {
+        const snap = await withTimeout(getDoc(doc(db, "site", "qris")));
+        STATE.qrisLoaded = true;
+        if (snap.exists() && hasValidQrisContent(snap.data())) {
+          STATE.qrisData = snap.data();
+          renderQrisValid(imgContainer, bankContainer, STATE.qrisData, true);
+        } else {
+          STATE.qrisData = null;
+          renderQrisEmptyOrError(imgContainer, bankContainer, { context: "chat" });
+        }
+      } catch (err) {
+        STATE.qrisData = null;
+        renderQrisEmptyOrError(imgContainer, bankContainer, {
+          context: "chat",
+          error: err,
+          onRetry: openChatQRISModal
+        });
+      }
+    }
+
+    async function loadDevQrisStatus() {
+      if (!STATE.isDev) return;
+      const warnEl = document.getElementById("dev-qris-missing-warning");
+      const statusArea = document.getElementById("dev-qris-status-area");
+      const bankInput = document.getElementById("dev-bank-text");
+      if (statusArea) statusArea.innerHTML = "";
+
+      if (!STATE.isFirebaseActive || !db) {
+        if (warnEl) warnEl.style.display = hasValidQrisContent(STATE.qrisData) ? "none" : "block";
+        return;
+      }
+
+      try {
+        const snap = await withTimeout(getDoc(doc(db, "site", "qris")));
+        STATE.qrisLoaded = true;
+        if (snap.exists() && hasValidQrisContent(snap.data())) {
+          STATE.qrisData = snap.data();
+          if (warnEl) warnEl.style.display = "none";
+          if (bankInput && !bankInput.value.trim() && snap.data().bankText) {
+            bankInput.value = snap.data().bankText;
+          }
+        } else {
+          STATE.qrisData = null;
+          if (warnEl) warnEl.style.display = "block";
+        }
+      } catch (err) {
+        if (warnEl) warnEl.style.display = hasValidQrisContent(STATE.qrisData) ? "none" : "block";
+        if (statusArea) {
+          statusArea.innerHTML = "";
+          statusArea.appendChild(createFirestoreErrorElement({
+            isDev: true,
+            error: err,
+            onRetry: loadDevQrisStatus
+          }));
+        }
+      }
     }
 
     /* Submit VIP Request */
@@ -7240,11 +7742,16 @@ Terakhir diperbarui: 13 November 2026.`;
           let currentUserOrders = STATE.activeRequests.filter(r => r.userId === STATE.user.uid);
           if (STATE.isFirebaseActive && db && STATE.requestsLoadedUid !== STATE.user.uid) {
             try {
-              const snap = await getDocs(query(collection(db, "requests"), where("userId", "==", STATE.user.uid)));
+              const snap = await withTimeout(
+                getDocs(query(collection(db, "requests"), where("userId", "==", STATE.user.uid)))
+              );
               currentUserOrders = [];
               snap.forEach(d => currentUserOrders.push({ id: d.id, ...d.data() }));
             } catch (countErr) {
-              console.warn("Gagal memeriksa batas request aktif:", countErr);
+              const info = formatFirestoreErrorInfo(countErr, STATE.isDev);
+              if (STATE.isDev) console.error(`[Orders Check Error] (${info.code})`, countErr);
+              showToast(info.devCodeText ? `${info.message} (${info.code})` : info.message);
+              return;
             }
           }
           if (countActiveUserOrders(currentUserOrders, STATE.user.uid) >= 3) {
@@ -7310,23 +7817,24 @@ Terakhir diperbarui: 13 November 2026.`;
           orderForm.reset();
           resetRequestPromoUI(true);
 
+          const recipientName = STATE.siteData?.texts?.authorName || STATE.siteData?.authorName || "Admin";
           const waPromoLine = requestData.promoCode
             ? `\n- Kode Promo: ${requestData.promoCode} (Estimasi Total: ${formatIDR(requestData.priceFinalClaimed)})`
             : "";
-          const waMessage = encodeURIComponent(
-            `Halo Dika, saya sudah submit Request VIP:\n- Nama: ${requestData.userName}\n- Paket: ${requestData.packageName}${waPromoLine}\n- Catatan: ${requestData.notes}\nMohon konfirmasi ketersediaan dan verifikasi ya.`
-          );
-          const waUrl = `https://wa.me/${DEV_CONFIG.whatsappPhone}?text=${waMessage}`;
+          const waMessageText = `Halo ${recipientName}, saya sudah submit Request VIP:\n- Nama: ${requestData.userName}\n- Paket: ${requestData.packageName}${waPromoLine}\n- Catatan: ${requestData.notes}\nMohon konfirmasi ketersediaan dan verifikasi ya.`;
+          const waUrl = getConfiguredWhatsappUrl(STATE.contacts, waMessageText, DEV_CONFIG.whatsappPhone);
 
           setTimeout(async () => {
-            const ok = await confirmDialog({
-              title: "Kirim ke WhatsApp?",
-              message: "Request VIP berhasil dicatat! Ingin langsung kirim ringkasan pesanan ke WhatsApp Dev sekarang?",
-              confirmText: "Buka WhatsApp",
-              cancelText: "Nanti Saja"
-            });
-            if (ok) {
-              window.open(waUrl, "_blank");
+            if (waUrl) {
+              const ok = await confirmDialog({
+                title: "Kirim ke WhatsApp?",
+                message: "Request VIP berhasil dicatat! Ingin langsung kirim ringkasan pesanan ke WhatsApp sekarang?",
+                confirmText: "Buka WhatsApp",
+                cancelText: "Nanti Saja"
+              });
+              if (ok) {
+                window.open(waUrl, "_blank");
+              }
             }
             openUserRequestsDrawer();
           }, 500);
@@ -7378,18 +7886,21 @@ Terakhir diperbarui: 13 November 2026.`;
       }
 
       container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat daftar proyek VIP...</div>`;
+      if (STATE.isDev && devOrdersList) {
+        devOrdersList.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat daftar pesanan...</div>`;
+      }
 
       if (STATE.isFirebaseActive && db) {
-        try {
-          if (userRequestsUnsub) {
-            userRequestsUnsub();
-            userRequestsUnsub = null;
-          }
-          const q = STATE.isDev
-            ? query(collection(db, "requests"), orderBy("serverCreatedAt", "desc"))
-            : query(collection(db, "requests"), where("userId", "==", STATE.user.uid));
+        if (userRequestsUnsub) {
+          userRequestsUnsub();
+          userRequestsUnsub = null;
+        }
+        const q = STATE.isDev
+          ? query(collection(db, "requests"), orderBy("serverCreatedAt", "desc"))
+          : query(collection(db, "requests"), where("userId", "==", STATE.user.uid));
 
-          userRequestsUnsub = onSnapshot(q, (snap) => {
+        userRequestsUnsub = attachSnapshotWithTimeout(q, {
+          onData: (snap) => {
             const list = [];
             snap.forEach(docSnap => list.push({ id: docSnap.id, ...docSnap.data() }));
             STATE.activeRequests = list;
@@ -7423,11 +7934,25 @@ Terakhir diperbarui: 13 November 2026.`;
             }
 
             renderUserRequestsList(list);
-          });
-          return;
-        } catch (e) {
-          console.warn("Firestore query fallback:", e);
-        }
+          },
+          onError: (err) => {
+            container.innerHTML = "";
+            container.appendChild(createFirestoreErrorElement({
+              isDev: STATE.isDev,
+              error: err,
+              onRetry: loadUserRequests
+            }));
+            if (STATE.isDev && devOrdersList) {
+              devOrdersList.innerHTML = "";
+              devOrdersList.appendChild(createFirestoreErrorElement({
+                isDev: true,
+                error: err,
+                onRetry: loadUserRequests
+              }));
+            }
+          }
+        });
+        return;
       }
 
       renderUserRequestsList(STATE.activeRequests);
@@ -7593,7 +8118,7 @@ Terakhir diperbarui: 13 November 2026.`;
       if (!code || !STATE.isFirebaseActive || !db) return;
       if (STATE.promos[code] || promoFetchInFlight.has(code)) return;
       promoFetchInFlight.add(code);
-      getDoc(doc(db, "promos", code))
+      withTimeout(getDoc(doc(db, "promos", code)))
         .then((snap) => {
           STATE.promos[code] = snap.exists() ? snap.data() : { _missing: true };
           if (STATE.isDev) renderDevOrdersList(STATE.activeRequests);
@@ -7602,7 +8127,9 @@ Terakhir diperbarui: 13 November 2026.`;
             if (cur && cur.promoCode === code) openChatForRequest(cur.id);
           }
         })
-        .catch(() => {})
+        .catch((err) => {
+          if (STATE.isDev) console.error(`[Promo Detail Error] (${extractFirebaseErrorCode(err)})`, err);
+        })
         .finally(() => promoFetchInFlight.delete(code));
     }
 
@@ -7662,13 +8189,18 @@ Terakhir diperbarui: 13 November 2026.`;
         STATE.promosList = [];
         return;
       }
+      const container = document.getElementById("dev-promos-list");
       if (!STATE.isFirebaseActive || !db) {
         renderDevPromosList();
         return;
       }
 
-      try {
-        promosUnsub = onSnapshot(collection(db, "promos"), (snap) => {
+      if (container) {
+        container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat kode promo...</div>`;
+      }
+
+      promosUnsub = attachSnapshotWithTimeout(collection(db, "promos"), {
+        onData: (snap) => {
           const list = [];
           const map = {};
           snap.forEach((d) => {
@@ -7681,12 +8213,18 @@ Terakhir diperbarui: 13 November 2026.`;
           STATE.promos = { ...STATE.promos, ...map };
           renderDevPromosList();
           renderDevOrdersList(STATE.activeRequests);
-        }, (err) => {
-          console.warn("Promos listener info:", err.message);
-        });
-      } catch (err) {
-        console.warn("Promos listener fallback:", err);
-      }
+        },
+        onError: (err) => {
+          if (container) {
+            container.innerHTML = "";
+            container.appendChild(createFirestoreErrorElement({
+              isDev: true,
+              error: err,
+              onRetry: listenToPromos
+            }));
+          }
+        }
+      });
     }
 
     function formatDatetimeLocalValue(ts) {
@@ -8150,7 +8688,7 @@ Terakhir diperbarui: 13 November 2026.`;
 
       // (a) Delete requests/{id}/chat
       const chatRef = collection(db, "requests", requestId, "chat");
-      const chatSnap = await getDocs(chatRef);
+      const chatSnap = await withTimeout(getDocs(chatRef));
       if (!chatSnap.empty) {
         let batch = writeBatch(db);
         let count = 0;
@@ -8172,7 +8710,7 @@ Terakhir diperbarui: 13 November 2026.`;
 
       // (b) Delete requests/{id}/proofs
       const proofsRef = collection(db, "requests", requestId, "proofs");
-      const proofsSnap = await getDocs(proofsRef);
+      const proofsSnap = await withTimeout(getDocs(proofsRef));
       if (!proofsSnap.empty) {
         let batch = writeBatch(db);
         let count = 0;
@@ -8195,7 +8733,7 @@ Terakhir diperbarui: 13 November 2026.`;
       // (c) Delete notifications with requestId == requestId if exists
       try {
         const notifQ = query(collection(db, "notifications"), where("requestId", "==", requestId));
-        const notifSnap = await getDocs(notifQ);
+        const notifSnap = await withTimeout(getDocs(notifQ));
         if (!notifSnap.empty) {
           let batch = writeBatch(db);
           let count = 0;
@@ -8818,7 +9356,7 @@ Terakhir diperbarui: 13 November 2026.`;
 
                 await addDoc(collection(db, "requests", requestId, "chat"), {
                   senderId: STATE.user.uid,
-                  senderName: "Dev (Dika)",
+                  senderName: STATE.siteData?.authorName ? `Dev (${STATE.siteData.authorName})` : "Admin / Dev",
                   text: `✓ Pembayaran DP telah diverifikasi oleh Dev. Status proyek diubah ke DP Terverifikasi.${verifiedTotalText}`,
                   isDev: true,
                   createdAt: serverTimestamp()
@@ -8888,7 +9426,7 @@ Terakhir diperbarui: 13 November 2026.`;
               });
               await addDoc(collection(db, "requests", requestId, "chat"), {
                 senderId: STATE.user.uid,
-                senderName: "Dev (Dika)",
+                senderName: STATE.siteData?.authorName ? `Dev (${STATE.siteData.authorName})` : "Admin / Dev",
                 text: sysMsg,
                 isDev: true,
                 createdAt: serverTimestamp()
@@ -8927,7 +9465,7 @@ Terakhir diperbarui: 13 November 2026.`;
             if (STATE.isFirebaseActive && db) {
               await addDoc(collection(db, "requests", requestId, "chat"), {
                 senderId: STATE.user.uid,
-                senderName: "Dev (Arya)",
+                senderName: STATE.siteData?.authorName ? `Dev (${STATE.siteData.authorName})` : "Admin / Dev",
                 text: `⚠️ Bukti transfer ditolak: ${reason}. Silakan unggah kembali bukti pembayaran yang valid.`,
                 isDev: true,
                 createdAt: serverTimestamp()
@@ -8968,49 +9506,78 @@ Terakhir diperbarui: 13 November 2026.`;
 
       // Listen for chat messages in subcollection requests/{requestId}/chat
       if (STATE.isFirebaseActive && db) {
+        const chatWrap = document.getElementById("chat-messages-wrap");
+        if (chatWrap) {
+          const loadingEl = document.createElement("div");
+          loadingEl.id = "chat-loading-status";
+          loadingEl.style.cssText = "text-align: center; color: var(--text-muted); font-size: 0.84rem; padding: 0.75rem;";
+          loadingEl.textContent = "Memuat pesan chat...";
+          chatWrap.appendChild(loadingEl);
+        }
+
         const chatRef = collection(db, "requests", requestId, "chat");
         const chatQ = query(chatRef, orderBy("createdAt", "asc"));
         let initialChatLoaded = false;
         const renderedMessageIds = new Set();
 
-        chatMessagesUnsub = onSnapshot(chatQ, (snapshot) => {
-          const wrap = document.getElementById("chat-messages-wrap");
-          if (!wrap) return;
+        chatMessagesUnsub = attachSnapshotWithTimeout(chatQ, {
+          onData: (snapshot) => {
+            const wrap = document.getElementById("chat-messages-wrap");
+            if (!wrap) return;
 
-          if (!initialChatLoaded) {
-            wrap.innerHTML = "";
-            snapshot.forEach(docSnap => {
-              renderedMessageIds.add(docSnap.id);
-              renderChatBubble(wrap, { id: docSnap.id, ...docSnap.data() }, requestId, false);
-            });
-            initialChatLoaded = true;
-            wrap.scrollTop = wrap.scrollHeight;
-          } else {
-            const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            snapshot.docChanges().forEach(change => {
-              if (change.type === "added") {
-                const docSnap = change.doc;
-                if (!renderedMessageIds.has(docSnap.id)) {
+            if (!initialChatLoaded) {
+              const loadingEl = document.getElementById("chat-loading-status");
+              if (loadingEl) loadingEl.remove();
+
+              if (!snapshot.empty) {
+                wrap.innerHTML = "";
+                snapshot.forEach(docSnap => {
                   renderedMessageIds.add(docSnap.id);
-                  const data = docSnap.data();
+                  renderChatBubble(wrap, { id: docSnap.id, ...docSnap.data() }, requestId, false);
+                });
+              }
+              initialChatLoaded = true;
+              wrap.scrollTop = wrap.scrollHeight;
+            } else {
+              const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+              snapshot.docChanges().forEach(change => {
+                if (change.type === "added") {
+                  const docSnap = change.doc;
+                  if (!renderedMessageIds.has(docSnap.id)) {
+                    renderedMessageIds.add(docSnap.id);
+                    const data = docSnap.data();
 
-                  // Check if this matches a pending optimistic bubble sent by current user
-                  const pendingEl = wrap.querySelector(`[data-pending-text="${escapeHtml(data.text || '')}"]`);
-                  if (pendingEl) {
-                    const check = pendingEl.querySelector(".chat-check");
-                    if (check) {
-                      check.classList.remove("sending");
-                      check.classList.add("saved");
-                      check.textContent = "✓";
+                    // Check if this matches a pending optimistic bubble sent by current user
+                    const pendingEl = wrap.querySelector(`[data-pending-text="${escapeHtml(data.text || '')}"]`);
+                    if (pendingEl) {
+                      const check = pendingEl.querySelector(".chat-check");
+                      if (check) {
+                        check.classList.remove("sending");
+                        check.classList.add("saved");
+                        check.textContent = "✓";
+                      }
+                      pendingEl.removeAttribute("data-pending-text");
+                    } else {
+                      renderChatBubble(wrap, { id: docSnap.id, ...data }, requestId, !isReduced);
+                      wrap.scrollTop = wrap.scrollHeight;
                     }
-                    pendingEl.removeAttribute("data-pending-text");
-                  } else {
-                    renderChatBubble(wrap, { id: docSnap.id, ...data }, requestId, !isReduced);
-                    wrap.scrollTop = wrap.scrollHeight;
                   }
                 }
-              }
-            });
+              });
+            }
+          },
+          onError: (err) => {
+            const wrap = document.getElementById("chat-messages-wrap");
+            if (!wrap) return;
+            const loadingEl = document.getElementById("chat-loading-status");
+            if (loadingEl) loadingEl.remove();
+            const prevErr = wrap.querySelector(".firestore-error-card");
+            if (prevErr) prevErr.remove();
+            wrap.appendChild(createFirestoreErrorElement({
+              isDev: STATE.isDev,
+              error: err,
+              onRetry: () => openChatForRequest(requestId)
+            }));
           }
         });
       }
@@ -9018,6 +9585,7 @@ Terakhir diperbarui: 13 November 2026.`;
       // Handle sending text (blocked if cancelled)
       const sendBtn = document.getElementById("chat-send-btn");
       const textInput = document.getElementById("chat-text-input");
+      const devSenderName = STATE.siteData?.authorName ? `Dev (${STATE.siteData.authorName})` : "Admin / Dev";
       const handleSend = async () => {
         const latestReq = STATE.activeRequests.find(r => r.id === requestId) || targetReq;
         if (latestReq && latestReq.status === "dibatalkan") {
@@ -9035,7 +9603,7 @@ Terakhir diperbarui: 13 November 2026.`;
         const optimisticMsg = {
           id: "temp-" + Date.now(),
           senderId: STATE.user.uid,
-          senderName: STATE.isDev ? "Dev (Dika)" : (STATE.user.displayName || "Klien"),
+          senderName: STATE.isDev ? devSenderName : (STATE.user.displayName || "Klien"),
           text: text,
           isDev: STATE.isDev,
           createdAt: new Date(),
@@ -9053,7 +9621,7 @@ Terakhir diperbarui: 13 November 2026.`;
 
         const msgObj = {
           senderId: STATE.user.uid,
-          senderName: STATE.isDev ? "Dev (Dika)" : (STATE.user.displayName || "Klien"),
+          senderName: STATE.isDev ? devSenderName : (STATE.user.displayName || "Klien"),
           text: text,
           isDev: STATE.isDev
         };
@@ -9208,7 +9776,7 @@ Terakhir diperbarui: 13 November 2026.`;
           if (msg.proofId && STATE.isFirebaseActive && db && reqId) {
             try {
               showToast("Memuat gambar bukti penuh...");
-              const pSnap = await getDoc(doc(db, "requests", reqId, "proofs", msg.proofId));
+              const pSnap = await withTimeout(getDoc(doc(db, "requests", reqId, "proofs", msg.proofId)));
               if (pSnap.exists()) {
                 const fullImg = pSnap.data().imageData;
                 if (typeof fullImg === "string" && fullImg.startsWith("data:image/jpeg;base64,")) {
@@ -9217,7 +9785,13 @@ Terakhir diperbarui: 13 November 2026.`;
                 }
               }
             } catch (err) {
-              console.warn("Gagal memuat bukti penuh:", err);
+              const info = formatFirestoreErrorInfo(err, STATE.isDev);
+              if (STATE.isDev) {
+                console.error(`[Proof Error] (${info.code})`, err);
+                showToast(`Gagal memuat bukti penuh (${info.code}).`);
+              } else {
+                showToast("Gambar bukti penuh belum bisa dimuat.");
+              }
             }
           }
           openLightbox(thumbUrl);
@@ -9281,8 +9855,25 @@ Terakhir diperbarui: 13 November 2026.`;
       };
     }
 
+    let notificationsUnsub = null;
+
     function listenToNotifications() {
-      if (!STATE.isFirebaseActive || !db || !STATE.user) return;
+      if (notificationsUnsub) {
+        notificationsUnsub();
+        notificationsUnsub = null;
+      }
+
+      const container = document.getElementById("notif-items-list");
+      if (!STATE.isFirebaseActive || !db || !STATE.user) {
+        if (container) {
+          container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Silakan masuk terlebih dahulu untuk melihat notifikasi.</div>`;
+        }
+        return;
+      }
+
+      if (container) {
+        container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 1.5rem;">Memuat notifikasi...</div>`;
+      }
 
       const targetUserId = STATE.isDev ? DEV_CONFIG.devEmail : STATE.user.uid;
       const notifQ = query(
@@ -9291,35 +9882,45 @@ Terakhir diperbarui: 13 November 2026.`;
         orderBy("createdAt", "desc")
       );
 
-      onSnapshot(notifQ, (snap) => {
-        const list = [];
-        let unreadCount = 0;
-        snap.forEach(d => {
-          const data = d.data();
-          list.push({ id: d.id, ...data });
-          if (!data.read) unreadCount++;
-        });
+      notificationsUnsub = attachSnapshotWithTimeout(notifQ, {
+        onData: (snap) => {
+          const list = [];
+          let unreadCount = 0;
+          snap.forEach(d => {
+            const data = d.data();
+            list.push({ id: d.id, ...data });
+            if (!data.read) unreadCount++;
+          });
 
-        const hasUnread = unreadCount > 0;
-        if (notifDot) {
-          if (hasUnread) notifDot.classList.add("active");
-          else notifDot.classList.remove("active");
-        }
+          const hasUnread = unreadCount > 0;
+          if (notifDot) {
+            if (hasUnread) notifDot.classList.add("active");
+            else notifDot.classList.remove("active");
+          }
 
-        // Shake bell once when new unread notifications arrive
-        if (unreadCount > prevUnreadNotifCount) {
-          if (notifBtn) {
-            notifBtn.classList.remove("bell-shake-once");
-            void notifBtn.offsetWidth; // force reflow
-            notifBtn.classList.add("bell-shake-once");
-            setTimeout(() => notifBtn.classList.remove("bell-shake-once"), 700);
+          // Shake bell once when new unread notifications arrive
+          if (unreadCount > prevUnreadNotifCount) {
+            if (notifBtn) {
+              notifBtn.classList.remove("bell-shake-once");
+              void notifBtn.offsetWidth; // force reflow
+              notifBtn.classList.add("bell-shake-once");
+              setTimeout(() => notifBtn.classList.remove("bell-shake-once"), 700);
+            }
+          }
+          prevUnreadNotifCount = unreadCount;
+
+          renderNotificationItems(list);
+        },
+        onError: (err) => {
+          if (container) {
+            container.innerHTML = "";
+            container.appendChild(createFirestoreErrorElement({
+              isDev: STATE.isDev,
+              error: err,
+              onRetry: listenToNotifications
+            }));
           }
         }
-        prevUnreadNotifCount = unreadCount;
-
-        renderNotificationItems(list);
-      }, (err) => {
-        console.warn("Notification listener info:", err.message);
       });
     }
 
@@ -9561,7 +10162,8 @@ Terakhir diperbarui: 13 November 2026.`;
         saveQrisBtn.onclick = async () => {
           const fileInput = document.getElementById("dev-qris-file");
           const bankTextInput = document.getElementById("dev-bank-text");
-          let qrisDataUrl = STATE.qrisData?.qrisUrl;
+          const warnEl = document.getElementById("dev-qris-missing-warning");
+          let qrisDataUrl = isValidMediaUrl(STATE.qrisData?.qrisUrl) ? STATE.qrisData.qrisUrl : "";
 
           if (fileInput && fileInput.files && fileInput.files[0]) {
             try {
@@ -9573,9 +10175,15 @@ Terakhir diperbarui: 13 November 2026.`;
             }
           }
 
+          const bankTextVal = bankTextInput ? bankTextInput.value.trim() : "";
+          if (!qrisDataUrl && !bankTextVal) {
+            showToast("Unggah gambar QRIS atau isi info rekening terlebih dahulu.");
+            return;
+          }
+
           const qrisPayload = {
-            qrisUrl: qrisDataUrl || "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80",
-            bankText: bankTextInput?.value.trim() || "BCA: 123-456-7890 a.n Dika Aditya\nGoPay: 0812-3456-7890",
+            qrisUrl: qrisDataUrl,
+            bankText: bankTextVal,
             updatedAt: new Date().toISOString()
           };
 
@@ -9583,9 +10191,12 @@ Terakhir diperbarui: 13 November 2026.`;
           if (STATE.isFirebaseActive && db) {
             try {
               await setDoc(doc(db, "site", "qris"), qrisPayload);
+              if (warnEl) warnEl.style.display = "none";
               showToast("Pengaturan QRIS & Rekening tersimpan di site/qris!");
             } catch (e) {
-              showToast("Gagal menyimpan ke Firestore: " + e.message);
+              const code = extractFirebaseErrorCode(e);
+              if (STATE.isDev) console.error(`[Save QRIS Error] (${code})`, e);
+              showToast(`Gagal menyimpan ke Firestore (${code}): ` + e.message);
             }
           } else {
             showToast("Konfigurasi Firebase belum terpasang.");
@@ -9706,6 +10317,7 @@ Terakhir diperbarui: 13 November 2026.`;
           if (targetEl) targetEl.style.display = "block";
           if (target === "tab-promos") renderDevPromosList();
           if (target === "tab-orders") renderDevOrdersList(STATE.activeRequests);
+          if (target === "tab-qris" && typeof loadDevQrisStatus === "function") loadDevQrisStatus();
         };
       });
 
